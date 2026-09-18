@@ -5,62 +5,99 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Відкритий каталог 3D-моделей спільноти 3dMaker: моделі, якими поділилися користувачі, та деталі, імпортовані за посиланнями з Thingiverse та Printables. Замовте 3D-друк будь-якої моделі в 1 клік.">
     <title>Каталог 3D-моделей спільноти — 3dMaker</title>
-</head>
-<body>
 
-    <header>
-        <table width="100%" border="0" cellpadding="10" cellspacing="0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <style>
+        .filter-panel {
+            background-color: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: 18px 24px;
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .filter-panel select {
+            padding: 8px 12px;
+            background: #090d16;
+            color: #ffffff;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm);
+        }
+
+        .model-author-badge {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--color-primary-light);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            padding: 2px 8px;
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            font-family: var(--font-tech);
+        }
+
+        a:active, button:active {
+            color: darkgreen !important;
+            border-color: darkgreen !important;
+        }
+    </style>
+</head>
+<body class="has-fixed-header">
+
+    <header id="site-header" class="header-fixed">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
             <tr>
-                <td width="30%" align="left">
-                    <a href="index.html">
-                        <img src="assets/images/logo.svg" alt="3dMaker Логотип" width="240" height="60">
+                <td width="28%" align="left">
+                    <a href="index.html" class="logo-box">
+                        <img src="assets/images/logo.svg" alt="3dMaker Логотип" width="220" height="55">
                     </a>
                 </td>
-                <td width="45%" align="center">
+                <td width="48%" align="center">
                     <nav>
-                        <p>
-                            <strong>Навігація:</strong> |
-                            <a href="index.html">Головна</a> |
-                            <a href="services.html">Каталог сервісів</a> |
-                            <a href="models-catalog.html"><strong>Каталог 3D-моделей</strong></a> |
-                            <a href="reviews.html">Відгуки про сервіси</a> |
-                            <a href="feedback.html">Зворотній зв’язок</a> |
-                        </p>
+                        <ul>
+                            <li><a href="index.html" class="nav-link">Головна</a></li>
+                            <li><a href="services.html" class="nav-link">Каталог сервісів</a></li>
+                            <li><a href="models-catalog.html" class="nav-link" style="color: var(--color-primary-light); font-weight: bold;">Каталог 3D-моделей</a></li>
+                            <li><a href="reviews.html" class="nav-link">Відгуки про сервіси</a></li>
+                            <li><a href="feedback.html" class="nav-link">Зворотній зв’язок</a></li>
+                        </ul>
                     </nav>
                 </td>
-                <td width="25%" align="right">
+                <td width="24%" align="right">
                     <a href="index.html">
-                        <button type="button">⬅️ На Головну</button>
+                        <button type="button" class="btn-secondary">⬅️ На Головну</button>
                     </a>
                     &nbsp;
                     <a href="cabinet.html">
-                        <button type="button">Мій кабінет</button>
+                        <button type="button" class="pulse-glow">Мій кабінет</button>
                     </a>
                 </td>
             </tr>
         </table>
-        <hr>
     </header>
 
-    <main>
-        <section>
+    <main class="page-grid-layout">
+        <section style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.8) 100%); padding: 24px; border-radius: var(--radius-lg); border: 1px solid var(--color-border);">
             <h1>Каталог 3D-моделей спільноти «3dMaker»</h1>
-            <p>
+            <p style="color: var(--color-text-muted);">
                 У цьому каталозі зібрані тривимірні моделі, якими поділилися користувачі нашого сервісу.
                 Тут є як авторські розробки, завантажені у вигляді файлів, так і моделі, <strong>стягнуті за прямими посиланнями
                 з міжнародних каталогів</strong> (Thingiverse, Printables тощо).
             </p>
-            <p>
+            <p style="margin-top: 10px;">
                 <em>Бажаєте додати власну модель чи лінк у цей каталог?
-                Перейдіть у <a href="cabinet.html">Власний кабінет</a>, завантажте модель та поставте прапорець «Поділитися у каталозі».</em>
+                Перейдіть у <a href="cabinet.html">Власний кабінет</a>, завантажте деталь та увімкніть опцію «Поділитися у каталозі».</em>
             </p>
         </section>
 
-        <hr>
-
-        <section id="catalog-filters">
-            <h3>Фільтр моделей за категоріями:</h3>
-            <form action="#" method="get">
+        <section id="catalog-filters" class="filter-panel">
+            <strong>Фільтр моделей:</strong>
+            <form action="#" method="get" style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap;">
                 <label for="filter-cat">Категорія:</label>
                 <select id="filter-cat" name="category">
                     <option value="all">Усі категорії</option>
@@ -69,7 +106,7 @@
                     <option value="figures">Фігурки та мініатюри</option>
                     <option value="auto">Автомобільні деталі</option>
                 </select>
-                &nbsp;&nbsp;
+
                 <label for="filter-source">Джерело:</label>
                 <select id="filter-source" name="source">
                     <option value="all">Будь-яке джерело</option>
@@ -77,220 +114,166 @@
                     <option value="thingiverse">Стягнуто з Thingiverse</option>
                     <option value="printables">Стягнуто з Printables</option>
                 </select>
-                &nbsp;&nbsp;
+
                 <button type="submit">Застосувати фільтр</button>
             </form>
         </section>
 
-        <hr>
+        <section id="models-list" class="catalog-grid">
 
-        <section id="models-list">
-
-            <article id="model-gear">
-                <table border="1" cellpadding="10" cellspacing="0" width="100%">
-                    <tr bgcolor="#f8fafc">
-                        <td width="25%" align="center" valign="middle">
-                            <img src="assets/images/model-gear.svg" alt="Шестерня планетарна" width="180" height="180">
-                        </td>
-                        <td width="75%" valign="top">
-                            <h3>1. Посилена шестерня планетарного редуктора</h3>
-                            <p>
-                                <strong>Категорія:</strong> Механіка та інженерні вузли |
-                                <strong>Додав користувач:</strong> Андрій Ш. (Maker #4829)
-                            </p>
-                            <p>
-                                <strong>Джерело 3D-даних:</strong> Завантажено вихідним файлом <code>gear_planetary_v2.stl</code>
-                            </p>
-                            <p>
-                                <strong>Опис моделі:</strong> Розрахована на високий крутний момент для заміни зношеної пластикової
-                                шестерні в побутовому електроінструменті та кухонних комбайнах. Має посилений профіль зуба з модулем m=1.5.
-                            </p>
-                            <ul>
-                                <li>Рекомендована технологія: FDM друк</li>
-                                <li>Рекомендований матеріал: PETG або Nylon PA12</li>
-                                <li>Товщина шару: 0.16 мм</li>
-                                <li>Заповнення: від 60% до 100%</li>
-                                <li>Час виготовлення: 2.5 години</li>
-                            </ul>
-                            <p>
-                                <a href="cabinet.html?order_model=gear">
-                                    <button type="button">🛒 Замовити друк цієї моделі</button>
-                                </a>
-                                &nbsp;&nbsp;
-                                <a href="cabinet.html?save_model=gear">
-                                    <button type="button">💾 Зберегти до мого кабінету</button>
-                                </a>
-                            </p>
-                        </td>
-                    </tr>
-                </table>
+            <article id="model-gear" class="catalog-item-v9">
+                <div align="center" style="margin-bottom: 14px;">
+                    <img src="assets/images/model-gear.svg" alt="Шестерня редуктора" width="100%" height="180" class="photo-interactive animate-grayscale" tabindex="0" title="Натисніть або наведіть для чорно-білої анімації">
+                </div>
+                <h3>1. Посилена шестерня планетарного редуктора</h3>
+                <p>
+                    <span class="model-author-badge">Додав: Андрій Ш. (Maker #4829)</span>
+                </p>
+                <p style="margin-top: 6px;">
+                    <span class="material-type-v9">Тип тканини для пошиття / матеріал виробу: PETG Carbon або Nylon PA12</span>
+                </p>
+                <p style="color: var(--color-text-muted); font-size: 0.95rem;">
+                    <strong>Джерело 3D-даних:</strong> Вихідний файл <code>gear_planetary_v2.stl</code> (локальне завантаження).
+                </p>
+                <ul class="service-meta-list" style="font-size: 0.9rem;">
+                    <li>Рекомендована технологія: FDM друк</li>
+                    <li>Товщина шару: 0.16 мм (висока міцність)</li>
+                    <li>Щільність заповнення: 70% – 100%</li>
+                    <li>Час виготовлення: 2.5 години</li>
+                </ul>
+                <div style="display: flex; gap: 10px; justify-content: space-between; margin-top: 14px;">
+                    <a href="cabinet.html?order_model=gear">
+                        <button type="button">🛒 Замовити друк</button>
+                    </a>
+                    <a href="cabinet.html?save_model=gear">
+                        <button type="button" class="btn-secondary">💾 В кабінет</button>
+                    </a>
+                </div>
             </article>
 
-            <br>
-
-            <article id="model-drone">
-                <table border="1" cellpadding="10" cellspacing="0" width="100%">
-                    <tr bgcolor="#f8fafc">
-                        <td width="25%" align="center" valign="middle">
-                            <img src="assets/images/model-drone.svg" alt="Рама дрона 5 дюймів" width="180" height="180">
-                        </td>
-                        <td width="75%" valign="top">
-                            <h3>2. Захисна рама квадрокоптера FPV Freestyle 5"</h3>
-                            <p>
-                                <strong>Категорія:</strong> Дрони та авіамоделізм |
-                                <strong>Додав користувач:</strong> Dmytro_FPV (Maker #1902)
-                            </p>
-                            <p>
-                                <strong>Джерело 3D-даних:</strong>
-                                🔗 <em>Автоматично стягнуто за посиланням з онлайн-репозиторію:</em>
-                                <a href="https://www.thingiverse.com/thing:4829103" target="_blank">Thingiverse (thing:4829103)</a>
-                            </p>
-                            <p>
-                                <strong>Опис моделі:</strong> Полегшена аеродинамічна рама з демпферними кріпленнями для польотного контролера
-                                та камери. Витримує жорсткі посадки та удари.
-                            </p>
-                            <ul>
-                                <li>Рекомендована технологія: FDM або SLS спікання</li>
-                                <li>Рекомендований матеріал: Carbon-Nylon або термостійкий полікарбонат PC</li>
-                                <li>Товщина шару: 0.20 мм</li>
-                                <li>Заповнення: 100% монолітне</li>
-                                <li>Розрахункова вага готової деталі: 78 грамів</li>
-                            </ul>
-                            <p>
-                                <a href="cabinet.html?order_model=drone">
-                                    <button type="button">🛒 Замовити друк цієї моделі</button>
-                                </a>
-                                &nbsp;&nbsp;
-                                <a href="cabinet.html?save_model=drone">
-                                    <button type="button">💾 Зберегти до мого кабінету</button>
-                                </a>
-                            </p>
-                        </td>
-                    </tr>
-                </table>
+            <article id="model-drone" class="catalog-item-v9">
+                <div align="center" style="margin-bottom: 14px;">
+                    <img src="assets/images/model-drone.svg" alt="Рама FPV дрона" width="100%" height="180" class="photo-interactive animate-grayscale" tabindex="0" title="Натисніть або наведіть для чорно-білої анімації">
+                </div>
+                <h3>2. Захисна рама квадрокоптера FPV 5"</h3>
+                <p>
+                    <span class="model-author-badge">Додав: Dmytro_FPV (Maker #1902)</span>
+                </p>
+                <p style="margin-top: 6px;">
+                    <span class="material-type-v9">Тип тканини для пошиття / матеріал виробу: Полікарбонат PC або Carbon-Nylon</span>
+                </p>
+                <p style="color: var(--color-text-muted); font-size: 0.95rem;">
+                    <strong>Джерело 3D-даних:</strong>
+                    🔗 <em>Стягнуто за URL:</em>
+                    <a href="https://www.thingiverse.com/thing:4829103" target="_blank">Thingiverse #4829103</a>
+                </p>
+                <ul class="service-meta-list" style="font-size: 0.9rem;">
+                    <li>Рекомендована технологія: FDM або SLS спікання</li>
+                    <li>Висота шару: 0.20 мм</li>
+                    <li>Заповнення: 100% монолітне</li>
+                    <li>Розрахункова вага деталі: 78 грамів</li>
+                </ul>
+                <div style="display: flex; gap: 10px; justify-content: space-between; margin-top: 14px;">
+                    <a href="cabinet.html?order_model=drone">
+                        <button type="button">🛒 Замовити друк</button>
+                    </a>
+                    <a href="cabinet.html?save_model=drone">
+                        <button type="button" class="btn-secondary">💾 В кабінет</button>
+                    </a>
+                </div>
             </article>
 
-            <br>
-
-            <article id="model-figurine">
-                <table border="1" cellpadding="10" cellspacing="0" width="100%">
-                    <tr bgcolor="#f8fafc">
-                        <td width="25%" align="center" valign="middle">
-                            <img src="assets/images/model-figurine.svg" alt="Колекційна мініатюра" width="180" height="180">
-                        </td>
-                        <td width="75%" valign="top">
-                            <h3>3. Колекційна фігурка Dragon Lord (висока деталізація)</h3>
-                            <p>
-                                <strong>Категорія:</strong> Фігурки, хобі та колекціонування |
-                                <strong>Додав користувач:</strong> MiniSculptor_Art (Maker #3104)
-                            </p>
-                            <p>
-                                <strong>Джерело 3D-даних:</strong>
-                                🔗 <em>Автоматично стягнуто за посиланням з відкритого каталогу:</em>
-                                <a href="https://www.printables.com/model/123982-dragon-sculpture" target="_blank">Printables.com (model/123982)</a>
-                            </p>
-                            <p>
-                                <strong>Опис моделі:</strong> Складна скульптурна модель із дрібними анатомічними лусочками та крилами.
-                                Підготовлена під ґрунтування та художнє розфарбовування акрилом.
-                            </p>
-                            <ul>
-                                <li>Рекомендована технологія: SLA / MSLA фотополімерний друк</li>
-                                <li>Рекомендований матеріал: Grey 8K Standard Resin</li>
-                                <li>Товщина шару: 0.03 мм (30 мікрон)</li>
-                                <li>Порожниста всередині з технологічними отворами для зливу смоли</li>
-                                <li>Висота фігурки: 140 мм</li>
-                            </ul>
-                            <p>
-                                <a href="cabinet.html?order_model=figurine">
-                                    <button type="button">🛒 Замовити друк цієї моделі</button>
-                                </a>
-                                &nbsp;&nbsp;
-                                <a href="cabinet.html?save_model=figurine">
-                                    <button type="button">💾 Зберегти до мого кабінету</button>
-                                </a>
-                            </p>
-                        </td>
-                    </tr>
-                </table>
+            <article id="model-figurine" class="catalog-item-v9">
+                <div align="center" style="margin-bottom: 14px;">
+                    <img src="assets/images/model-figurine.svg" alt="Колекційна мініатюра" width="100%" height="180" class="photo-interactive animate-grayscale" tabindex="0" title="Натисніть або наведіть для чорно-білої анімації">
+                </div>
+                <h3>3. Колекційна фігурка Dragon Lord (8K)</h3>
+                <p>
+                    <span class="model-author-badge">Додав: MiniSculptor (Maker #3104)</span>
+                </p>
+                <p style="margin-top: 6px;">
+                    <span class="material-type-v9">Тип тканини для пошиття / матеріал виробу: Grey 8K Standard / Tough Resin</span>
+                </p>
+                <p style="color: var(--color-text-muted); font-size: 0.95rem;">
+                    <strong>Джерело 3D-даних:</strong>
+                    🔗 <em>Стягнуто за URL:</em>
+                    <a href="https://www.printables.com/model/123982" target="_blank">Printables #123982</a>
+                </p>
+                <ul class="service-meta-list" style="font-size: 0.9rem;">
+                    <li>Рекомендована технологія: SLA стереолітографія</li>
+                    <li>Товщина шару: 0.03 мм (30 мікрон)</li>
+                    <li>Порожниста всередині з промивними каналами</li>
+                    <li>Висота виробу: 140 мм</li>
+                </ul>
+                <div style="display: flex; gap: 10px; justify-content: space-between; margin-top: 14px;">
+                    <a href="cabinet.html?order_model=figurine">
+                        <button type="button">🛒 Замовити друк</button>
+                    </a>
+                    <a href="cabinet.html?save_model=figurine">
+                        <button type="button" class="btn-secondary">💾 В кабінет</button>
+                    </a>
+                </div>
             </article>
 
-            <br>
-
-            <article id="model-bracket">
-                <table border="1" cellpadding="10" cellspacing="0" width="100%">
-                    <tr bgcolor="#f8fafc">
-                        <td width="25%" align="center" valign="middle">
-                            <img src="assets/images/model-bracket.svg" alt="Посилений L-кронштейн" width="180" height="180">
-                        </td>
-                        <td width="75%" valign="top">
-                            <h3>4. Посилений кутовий кронштейн кріплення з ребром жорсткості</h3>
-                            <p>
-                                <strong>Категорія:</strong> Автомобільні деталі та побут |
-                                <strong>Додав користувач:</strong> AutoFix_Kyiv (Maker #5011)
-                            </p>
-                            <p>
-                                <strong>Джерело 3D-даних:</strong> Завантажено вихідним файлом <code>reinforced_bracket_v1.step</code>
-                            </p>
-                            <p>
-                                <strong>Опис моделі:</strong> Універсальний монтажний кронштейн для кріплення додаткових фар,
-                                радіаторів чи поличок у гаражі. Розрахований на статичне навантаження до 35 кг.
-                            </p>
-                            <ul>
-                                <li>Рекомендована технологія: FDM друк</li>
-                                <li>Рекомендований матеріал: ABS або PETG</li>
-                                <li>Товщина шару: 0.20 мм</li>
-                                <li>Заповнення: 70% Gyroid</li>
-                                <li>Отвори під болти M5 з потайними фасками</li>
-                            </ul>
-                            <p>
-                                <a href="cabinet.html?order_model=bracket">
-                                    <button type="button">🛒 Замовити друк цієї моделі</button>
-                                </a>
-                                &nbsp;&nbsp;
-                                <a href="cabinet.html?save_model=bracket">
-                                    <button type="button">💾 Зберегти до мого кабінету</button>
-                                </a>
-                            </p>
-                        </td>
-                    </tr>
-                </table>
+            <article id="model-bracket" class="catalog-item-v9">
+                <div align="center" style="margin-bottom: 14px;">
+                    <img src="assets/images/model-bracket.svg" alt="Посилений кронштейн" width="100%" height="180" class="photo-interactive animate-grayscale" tabindex="0" title="Натисніть або наведіть для чорно-білої анімації">
+                </div>
+                <h3>4. Посилений кутовий кронштейн навантаження</h3>
+                <p>
+                    <span class="model-author-badge">Додав: AutoFix_Kyiv (Maker #5011)</span>
+                </p>
+                <p style="margin-top: 6px;">
+                    <span class="material-type-v9">Тип тканини для пошиття / матеріал виробу: Ударостійкий ABS Pro або Nylon</span>
+                </p>
+                <p style="color: var(--color-text-muted); font-size: 0.95rem;">
+                    <strong>Джерело 3D-даних:</strong> Файл креслення <code>bracket_v1.step</code>.
+                </p>
+                <ul class="service-meta-list" style="font-size: 0.9rem;">
+                    <li>Рекомендована технологія: FDM друк</li>
+                    <li>Товщина шару: 0.20 мм</li>
+                    <li>Заповнення: 70% Gyroid</li>
+                    <li>Отвори під болти M5 з потайними фасками</li>
+                </ul>
+                <div style="display: flex; gap: 10px; justify-content: space-between; margin-top: 14px;">
+                    <a href="cabinet.html?order_model=bracket">
+                        <button type="button">🛒 Замовити друк</button>
+                    </a>
+                    <a href="cabinet.html?save_model=bracket">
+                        <button type="button" class="btn-secondary">💾 В кабінет</button>
+                    </a>
+                </div>
             </article>
 
         </section>
 
-        <hr>
-
-        <p align="center">
+        <p align="center" style="margin: 20px 0;">
             <a href="index.html">
-                <button type="button">⬅️ Повернутися на Головну сторінку</button>
+                <button type="button" class="btn-secondary">⬅️ Повернутися на Головну сторінку</button>
             </a>
             &nbsp;&nbsp;
             <a href="cabinet.html">
-                <button type="button">➕ Додати свою модель або посилання у каталог</button>
+                <button type="button">➕ Додати свою деталь у відкритий каталог</button>
             </a>
         </p>
 
     </main>
 
-    <hr>
-
     <footer>
-        <table width="100%" border="0" cellpadding="8" cellspacing="0">
-            <tr>
-                <td width="50%" align="left">
-                    <p>
-                        <strong>Сервісний центр 3D-друку 3dMaker</strong><br>
-                        м. Київ, вул. Академіка Глушкова, 42 | Тел: <a href="tel:+380442393222">+38 (044) 239-32-22</a>
-                    </p>
-                </td>
-                <td width="50%" align="right">
-                    <p>
-                        &copy; 2026 3dMaker. Лабораторна робота №1. Варіант 9.<br>
-                        <a href="#top">Вгору сторінки ⬆️</a>
-                    </p>
-                </td>
-            </tr>
-        </table>
+        <div class="page-grid-layout" style="grid-template-columns: 1fr 1fr; gap: 20px; padding: 0;">
+            <div>
+                <p>
+                    <strong>Сервісний центр 3D-друку 3dMaker</strong><br>
+                    м. Київ, вул. Академіка Глушкова, 42 | Тел: <a href="tel:+380442393222">+38 (044) 239-32-22</a>
+                </p>
+            </div>
+            <div align="right">
+                <p>
+                    &copy; 2026 3dMaker. Лабораторна робота №2. Варіант 9.<br>
+                    <a href="#site-header" class="nav-link">Вгору сторінки ⬆️</a>
+                </p>
+            </div>
+        </div>
     </footer>
 
 </body>
