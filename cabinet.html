@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Особистий кабінет користувача 3dMaker: завантаження STL-файлів, імпорт за посиланням з Thingiverse та Printables, збереження 3D-моделей та управління публікацією в каталозі.">
+    <title>Власний кабінет — 3dMaker</title>
+</head>
+<body>
+
+    <header>
+        <table width="100%" border="0" cellpadding="10" cellspacing="0">
+            <tr>
+                <td width="30%" align="left">
+                    <a href="index.html">
+                        <img src="assets/images/logo.svg" alt="3dMaker Логотип" width="240" height="60">
+                    </a>
+                </td>
+                <td width="45%" align="center">
+                    <nav>
+                        <p>
+                            <strong>Навігація:</strong> |
+                            <a href="index.html">Головна</a> |
+                            <a href="services.html">Каталог сервісів</a> |
+                            <a href="models-catalog.html">Каталог 3D-моделей</a> |
+                            <a href="reviews.html">Відгуки про сервіси</a> |
+                            <a href="feedback.html">Зворотній зв’язок</a> |
+                        </p>
+                    </nav>
+                </td>
+                <td width="25%" align="right">
+                    <a href="index.html">
+                        <button type="button">⬅️ На Головну</button>
+                    </a>
+                    &nbsp;
+                    <strong>Користувач:</strong> Андрій Ш. (Maker #4829)
+                </td>
+            </tr>
+        </table>
+        <hr>
+    </header>
+
+    <main>
+        <section id="cabinet-header">
+            <h1>Особистий кабінет клієнта</h1>
+            <p>
+                Тут ви можете керувати власними 3D-моделями, відправляти їх на друк, зберігати в персональному сховищі
+                та ділитися файлами або посиланнями зі спільнотою у відкритому каталозі.
+            </p>
+        </section>
+
+        <hr>
+
+        <section id="upload-model-section">
+            <h2>➕ Додати 3D-модель для друку чи збереження</h2>
+            <p>
+                Ви можете завантажити власний 3D-файл або <strong>вставити посилання на зовнішній каталог</strong>
+                (Thingiverse, Printables тощо). Наша система автоматично підтягне дані моделі за посиланням!
+            </p>
+
+            <form action="#" method="post" enctype="multipart/form-data">
+
+                <fieldset>
+                    <legend><strong>1. Джерело тривимірної моделі</strong></legend>
+                    <table border="0" cellpadding="8" cellspacing="0" width="100%">
+                        <tr bgcolor="#f1f5f9">
+                            <td width="30%">
+                                <input type="radio" id="src-file" name="model_source_type" value="file" checked>
+                                <label for="src-file"><strong>Варіант А: Завантажити файл</strong></label>
+                            </td>
+                            <td>
+                                <label for="file-input">Оберіть 3D-файл з комп'ютера:</label><br>
+                                <input type="file" id="file-input" name="uploaded_file" accept=".stl,.obj,.3mf,.step">
+                                <br>
+                                <small>Підтримуються формати: <code>.STL</code>, <code>.OBJ</code>, <code>.3MF</code>, <code>.STEP</code> (макс. 100 МБ).</small>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="2"><hr></td>
+                        </tr>
+
+                        <tr bgcolor="#f1f5f9">
+                            <td>
+                                <input type="radio" id="src-url" name="model_source_type" value="url">
+                                <label for="src-url"><strong>Варіант Б: Посилання на каталог</strong></label>
+                            </td>
+                            <td>
+                                <label for="url-input">Вставте URL-адресу на сторінку моделі:</label><br>
+                                <input type="url" id="url-input" name="model_url" size="65" placeholder="https://www.thingiverse.com/thing:1234567 або Printables / Cults3D">
+                                <br>
+                                <small>
+                                    <em>Сайт автоматично стягне 3D-файли за вказаним посиланням. Популярні ресурси:
+                                        <a href="https://www.thingiverse.com/" target="_blank">Thingiverse</a> |
+                                        <a href="https://www.printables.com/" target="_blank">Printables</a> |
+                                        <a href="https://thangs.com/" target="_blank">Thangs</a>
+                                    </em>
+                                </small>
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+
+                <br>
+
+                <fieldset>
+                    <legend><strong>2. Назва та конфігурація друку</strong></legend>
+                    <table border="0" cellpadding="8" cellspacing="0" width="100%">
+                        <tr>
+                            <td width="30%">
+                                <label for="model-name">Назва моделі / виробу:</label>
+                            </td>
+                            <td>
+                                <input type="text" id="model-name" name="model_name" size="45" placeholder="Наприклад: Шестерня редуктора або Кронштейн фари" required>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <label for="model-category">Категорія виробу:</label>
+                            </td>
+                            <td>
+                                <select id="model-category" name="category" required>
+                                    <option value="mechanics">Механіка, шестерні та передачі</option>
+                                    <option value="electronics">Корпуси приладів та електроніка</option>
+                                    <option value="auto">Автомобільні та мото-деталі</option>
+                                    <option value="drones">Комплектуючі дронів та авіамоделізм</option>
+                                    <option value="decor">Побут, дизайн та декор</option>
+                                    <option value="miniatures">Художні мініатюри та косплей</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <label for="material-select">Матеріал виготовлення:</label>
+                            </td>
+                            <td>
+                                <select id="material-select" name="material" required>
+                                    <option value="pla">PLA (Стандартний біополімер, точний, твердий)</option>
+                                    <option value="petg" selected>PETG (Ударостійкий, стійкий до погодних умов)</option>
+                                    <option value="abs">ABS (Термостійкий міцний технічний пластик)</option>
+                                    <option value="nylon">Nylon PA12 (Підвищена зносостійкість, для тертя)</option>
+                                    <option value="resin">SLA Tough Resin (Високоточна фотополімерна смола)</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <label for="infill-density">Щільність внутрішнього заповнення (%):</label>
+                            </td>
+                            <td>
+                                <input type="range" id="infill-density" name="infill" min="10" max="100" step="5" value="30">
+                                <span>30% (рекомендовано для міцних деталей)</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <label for="item-quantity">Кількість примірників (шт):</label>
+                            </td>
+                            <td>
+                                <input type="number" id="item-quantity" name="quantity" min="1" max="500" value="1" required>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <label for="item-color">Бажаний колір:</label>
+                            </td>
+                            <td>
+                                <input type="color" id="item-color" name="color" value="#0284c7">
+                                <span>(Виберіть колір матеріалу)</span>
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+
+                <br>
+
+                <fieldset>
+                    <legend><strong>3. Збереження та відкритий каталог (Спільнота)</strong></legend>
+                    <p>
+                        <input type="checkbox" id="save-local" name="save_in_cabinet" checked>
+                        <label for="save-local">
+                            <strong>Зберегти цю модель у моєму особистому кабінеті</strong>
+                            (ви зможете в будь-який момент повторити замовлення без повторного завантаження файлу).
+                        </label>
+                    </p>
+                    <p>
+                        <input type="checkbox" id="share-community" name="share_in_catalog" checked>
+                        <label for="share-community">
+                            <strong>Поділитися цією моделлю у загальному «Каталозі 3D-моделей» спільноти 3dMaker!</strong>
+                            <br>
+                            <small>
+                                <em>Інші відвідувачі сайту зможуть побачити вашу модель у каталозі, переглянути першоджерело та замовити її друк.
+                                Ви вказуєтеся як автор або першоджерело додавання.</em>
+                            </small>
+                        </label>
+                    </p>
+                </fieldset>
+
+                <br>
+
+                <table border="0" cellpadding="8" cellspacing="0">
+                    <tr>
+                        <td>
+                            <button type="submit" style="padding: 8px 16px; font-weight: bold;">
+                                🚀 Розрахувати вартість та відправити у виробництво
+                            </button>
+                            &nbsp;&nbsp;
+                            <button type="reset" style="padding: 8px 16px;">
+                                Скинути форму
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+
+            </form>
+        </section>
+
+        <hr>
+
+        <section id="my-saved-models">
+            <h2>📁 Мої збережені 3D-моделі</h2>
+            <p>
+                Нижче наведено список ваших моделей, які зберігаються у хмарі лабораторії 3dMaker.
+                Ви можете повторно замовити друк, змінити видимість моделі в каталозі або перейти до першоджерела.
+            </p>
+
+            <table border="1" cellpadding="8" cellspacing="0" width="100%">
+                <thead>
+                    <tr bgcolor="#cbd5e1">
+                        <th>Прев'ю</th>
+                        <th>Назва моделі</th>
+                        <th>Джерело (Файл / Посилання)</th>
+                        <th>Матеріал & Конфіг</th>
+                        <th>Видимість у каталозі</th>
+                        <th>Статус друку</th>
+                        <th>Дії</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td align="center">
+                            <img src="assets/images/model-gear.svg" alt="Шестерня" width="70" height="70">
+                        </td>
+                        <td>
+                            <strong>Шестерня редуктора планетарна</strong><br>
+                            <small>Категорія: Механіка | Додано: 02.09.2026</small>
+                        </td>
+                        <td>
+                            <code>gear_planetary_v2.stl</code><br>
+                            <small>(Завантажено локальним файлом, 4.8 МБ)</small>
+                        </td>
+                        <td>PETG чорний, 50% інфіл</td>
+                        <td align="center" bgcolor="#dcfce7">
+                            <strong>🌐 Опубліковано</strong><br>
+                            <small><a href="models-catalog.html#model-gear">Переглянути в каталозі</a></small>
+                        </td>
+                        <td align="center">
+                            <span style="color: green;">✅ Надруковано</span>
+                        </td>
+                        <td align="center">
+                            <button type="button">Повторити друк</button><br>
+                            <button type="button">Приховати з каталогу</button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td align="center">
+                            <img src="assets/images/model-drone.svg" alt="Рама дрона" width="70" height="70">
+                        </td>
+                        <td>
+                            <strong>Рама для FPV-дрона 5 дюймів</strong><br>
+                            <small>Категорія: Дрони | Додано: 05.09.2026</small>
+                        </td>
+                        <td>
+                            <a href="https://www.thingiverse.com/thing:4829103" target="_blank">
+                                🔗 Thingiverse (thing:4829103)
+                            </a>
+                            <br>
+                            <small><em>Стягнуто автоматично за посиланням</em></small>
+                        </td>
+                        <td>Nylon Carbon, 100% заповнення</td>
+                        <td align="center" bgcolor="#dcfce7">
+                            <strong>🌐 Опубліковано</strong><br>
+                            <small><a href="models-catalog.html#model-drone">Переглянути в каталозі</a></small>
+                        </td>
+                        <td align="center">
+                            <span style="color: blue;">⚙️ У черзі на друк</span>
+                        </td>
+                        <td align="center">
+                            <button type="button">Змінити конфіг</button><br>
+                            <button type="button">Скасувати</button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td align="center">
+                            <img src="assets/images/model-bracket.svg" alt="Кронштейн" width="70" height="70">
+                        </td>
+                        <td>
+                            <strong>Кронштейн кріплення радіатора авто</strong><br>
+                            <small>Категорія: Автодеталі | Додано: 07.09.2026</small>
+                        </td>
+                        <td>
+                            <code>custom_bracket_audi_a6.step</code><br>
+                            <small>(Завантажено файлом, приватне)</small>
+                        </td>
+                        <td>ABS Pro сірий, 60% інфіл</td>
+                        <td align="center" bgcolor="#fef3c7">
+                            <strong>🔒 Приватна</strong><br>
+                            <small>(Тільки в особистому кабінеті)</small>
+                        </td>
+                        <td align="center">
+                            <span style="color: orange;">⏳ Розрахунок вартості</span>
+                        </td>
+                        <td align="center">
+                            <button type="button">Опублікувати в каталозі</button><br>
+                            <button type="button">Видалити</button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr bgcolor="#f8fafc">
+                        <td colspan="7">
+                            <em>Всього у вашому кабінеті: 3 збережені моделі (2 публічні у каталозі, 1 приватна).</em>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+
+        <hr>
+
+        <p align="center">
+            <a href="index.html">
+                <button type="button">⬅️ Повернутися на Головну сторінку 3dMaker</button>
+            </a>
+            &nbsp;&nbsp;
+            <a href="models-catalog.html">
+                <button type="button">🌐 Перейти до Каталогу моделей спільноти ➡️</button>
+            </a>
+        </p>
+
+    </main>
+
+    <hr>
+
+    <footer>
+        <table width="100%" border="0" cellpadding="8" cellspacing="0">
+            <tr>
+                <td width="50%" align="left">
+                    <p>
+                        <strong>Сервісний центр 3D-друку 3dMaker</strong><br>
+                        м. Київ, вул. Академіка Глушкова, 42 | Тел: <a href="tel:+380442393222">+38 (044) 239-32-22</a>
+                    </p>
+                </td>
+                <td width="50%" align="right">
+                    <p>
+                        &copy; 2026 3dMaker. Лабораторна робота №1. Варіант 9.<br>
+                        <a href="#top">Вгору сторінки ⬆️</a>
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </footer>
+
+</body>
+</html>

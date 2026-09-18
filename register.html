@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Реєстрація нового користувача в сервісному центрі 3D-друку 3dMaker. Створіть кабінет для збереження моделей та замовлення друку.">
+    <title>Реєстрація — 3dMaker</title>
+</head>
+<body>
+
+    <header>
+        <table width="100%" border="0" cellpadding="10" cellspacing="0">
+            <tr>
+                <td width="30%" align="left">
+                    <a href="index.html">
+                        <img src="assets/images/logo.svg" alt="3dMaker Логотип" width="240" height="60">
+                    </a>
+                </td>
+                <td width="45%" align="center">
+                    <nav>
+                        <p>
+                            <strong>Навігація:</strong> |
+                            <a href="index.html">Головна</a> |
+                            <a href="services.html">Каталог сервісів</a> |
+                            <a href="models-catalog.html">Каталог 3D-моделей</a> |
+                            <a href="reviews.html">Відгуки про сервіси</a> |
+                            <a href="feedback.html">Зворотній зв’язок</a> |
+                        </p>
+                    </nav>
+                </td>
+                <td width="25%" align="right">
+                    <a href="index.html">
+                        <button type="button">⬅️ На Головну</button>
+                    </a>
+                    &nbsp;
+                    <a href="cabinet.html">
+                        <button type="button">Вхід до кабінету</button>
+                    </a>
+                </td>
+            </tr>
+        </table>
+        <hr>
+    </header>
+
+    <main>
+        <section>
+            <h1>Реєстрація нового користувача в системі «3dMaker»</h1>
+            <p>
+                Створіть власний обліковий запис, щоб зберігати історію 3D-моделей, відстежувати статуси виготовлення
+                виробів у реальному часі та ділитися власними проєктами у відкритому каталозі.
+            </p>
+        </section>
+
+        <hr>
+
+        <section id="register-form-section">
+            <form action="cabinet.html" method="post">
+                <fieldset>
+                    <legend><strong>Дані для створення облікового запису</strong></legend>
+                    <table border="0" cellpadding="8" cellspacing="0">
+                        <tr>
+                            <td>
+                                <label for="reg-fullname"><strong>Прізвище та ім’я:</strong></label>
+                            </td>
+                            <td>
+                                <input type="text" id="reg-fullname" name="reg_fullname" size="40" placeholder="Шишкін Андрій" required autofocus>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="reg-email"><strong>Електронна пошта (E-mail):</strong></label>
+                            </td>
+                            <td>
+                                <input type="email" id="reg-email" name="reg_email" size="40" placeholder="your_email@domain.com" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="reg-phone"><strong>Контактний номер телефону:</strong></label>
+                            </td>
+                            <td>
+                                <input type="tel" id="reg-phone" name="reg_phone" size="40" placeholder="+38 (0__) ___-__-__" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="reg-password"><strong>Пароль:</strong></label>
+                            </td>
+                            <td>
+                                <input type="password" id="reg-password" name="reg_password" size="40" minlength="8" required>
+                                <br>
+                                <small>Мінімум 8 символів.</small>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="reg-confirm"><strong>Підтвердження пароля:</strong></label>
+                            </td>
+                            <td>
+                                <input type="password" id="reg-confirm" name="reg_confirm" size="40" minlength="8" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="reg-role"><strong>Тип вашої діяльності:</strong></label>
+                            </td>
+                            <td>
+                                <select id="reg-role" name="reg_role">
+                                    <option value="maker">Мейкер / Ентузіаст 3D-друку</option>
+                                    <option value="engineer">Інженер / CAD-конструктор</option>
+                                    <option value="business">Представник бізнесу / Виробництво</option>
+                                    <option value="student">Студент / Науковець</option>
+                                    <option value="individual">Приватний замовник</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input type="checkbox" id="reg-terms" name="reg_terms" required>
+                                <label for="reg-terms">
+                                    Я погоджуюся з <strong>Правилами сервісу</strong> та Політикою конфіденційності.
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input type="checkbox" id="reg-newsletter" name="reg_newsletter" checked>
+                                <label for="reg-newsletter">
+                                    Отримувати сповіщення про знижки на матеріали та нові сервіси.
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <br>
+                                <button type="submit" style="padding: 8px 20px; font-weight: bold;">
+                                    Створити кабінет та перейти до роботи
+                                </button>
+                                &nbsp;&nbsp;
+                                <button type="reset" style="padding: 8px 16px;">
+                                    Очистити
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+            </form>
+        </section>
+
+        <hr>
+
+        <p align="center">
+            <a href="index.html">
+                <button type="button">⬅️ Повернутися на Головну сторінку 3dMaker</button>
+            </a>
+        </p>
+
+    </main>
+
+    <hr>
+
+    <footer>
+        <table width="100%" border="0" cellpadding="8" cellspacing="0">
+            <tr>
+                <td width="50%" align="left">
+                    <p>
+                        <strong>Сервісний центр 3D-друку 3dMaker</strong><br>
+                        м. Київ, вул. Академіка Глушкова, 42 | Тел: <a href="tel:+380442393222">+38 (044) 239-32-22</a>
+                    </p>
+                </td>
+                <td width="50%" align="right">
+                    <p>
+                        &copy; 2026 3dMaker. Лабораторна робота №1. Варіант 9.<br>
+                        <a href="#top">Вгору сторінки ⬆️</a>
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </footer>
+
+</body>
+</html>
