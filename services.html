@@ -5,350 +5,343 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Каталог сервісів лабораторії 3dMaker: пошаровий FDM друк, SLA фотополімери, SLS спікання, реверс-інжиніринг, друк за посиланням з онлайн-каталогів та постобробка виробів.">
     <title>Каталог сервісів — 3dMaker</title>
-</head>
-<body>
 
-    <header>
-        <table width="100%" border="0" cellpadding="10" cellspacing="0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <style>
+        .catalog-header-info {
+            background: linear-gradient(135deg, rgba(181, 137, 0, 0.1) 0%, rgba(15, 23, 42, 0.9) 100%);
+            border: 1px solid rgba(181, 137, 0, 0.3);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        a:active, button:active {
+            color: darkgreen !important;
+            border-color: darkgreen !important;
+        }
+
+        a[href*="cabinet.html"] {
+            border-radius: var(--radius-sm);
+        }
+
+        .service-meta-list {
+            margin-left: 20px;
+            margin-top: 10px;
+            margin-bottom: 16px;
+            color: #cbd5e1;
+        }
+
+        .service-meta-list li {
+            margin-bottom: 6px;
+        }
+    </style>
+</head>
+<body class="has-fixed-header">
+
+    <header id="site-header" class="header-fixed">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
             <tr>
-                <td width="30%" align="left">
-                    <a href="index.html">
-                        <img src="assets/images/logo.svg" alt="3dMaker Логотип" width="240" height="60">
+                <td width="28%" align="left">
+                    <a href="index.html" class="logo-box">
+                        <img src="assets/images/logo.svg" alt="3dMaker Логотип" width="220" height="55">
                     </a>
                 </td>
-                <td width="45%" align="center">
+                <td width="48%" align="center">
                     <nav>
-                        <p>
-                            <strong>Навігація:</strong> |
-                            <a href="index.html">Головна</a> |
-                            <a href="services.html">Каталог сервісів</a> |
-                            <a href="models-catalog.html">Каталог 3D-моделей</a> |
-                            <a href="reviews.html">Відгуки про сервіси</a> |
-                            <a href="feedback.html">Зворотній зв’язок</a> |
-                        </p>
+                        <ul>
+                            <li><a href="index.html" class="nav-link">Головна</a></li>
+                            <li><a href="services.html" class="nav-link" style="color: var(--color-primary-light); font-weight: bold;">Каталог сервісів</a></li>
+                            <li><a href="models-catalog.html" class="nav-link">Каталог 3D-моделей</a></li>
+                            <li><a href="reviews.html" class="nav-link">Відгуки про сервіси</a></li>
+                            <li><a href="feedback.html" class="nav-link">Зворотній зв’язок</a></li>
+                        </ul>
                     </nav>
                 </td>
-                <td width="25%" align="right">
+                <td width="24%" align="right">
                     <a href="index.html">
-                        <button type="button">⬅️ На Головну сторінку</button>
+                        <button type="button" class="btn-secondary">⬅️ На Головну</button>
                     </a>
                     &nbsp;
                     <a href="cabinet.html">
-                        <button type="button">Мій кабінет</button>
+                        <button type="button" class="pulse-glow">Мій кабінет</button>
                     </a>
                 </td>
             </tr>
         </table>
-        <hr>
     </header>
 
-    <main>
-        <section>
-            <h1>Каталог виробничих сервісів та технологій 3dMaker</h1>
+    <main class="page-grid-layout">
+
+        <section class="catalog-header-info">
+            <h1>Каталог виробничих сервісів та технологій «3dMaker»</h1>
             <p>
                 Наша лабораторія надає повний комплекс послуг швидкого виготовлення виробів: від створення 3D-моделі
-                за ескізом або посиланням до фінішного фарбування та збирання готових механізмів. Ознайомтеся з основними сервісами нижче:
+                за ескізом або посиланням до фінішного фарбування та збирання готових механізмів.
             </p>
         </section>
 
-        <hr>
+        <section id="services-list" class="catalog-grid">
 
-        <section id="services-list">
+            <article id="service-1" class="catalog-item-v9">
+                <div align="center" style="margin-bottom: 16px;">
+                    <img src="assets/images/fdm.svg" alt="FDM 3D-друк термопластами" width="100%" height="190" class="photo-interactive animate-grayscale" tabindex="0" title="Натисніть або наведіть для чорно-білої анімації">
+                </div>
+                <h2>1. Пошаровий FDM-друк конструкційними термопластами</h2>
 
-            <article id="service-1">
-                <table border="1" cellpadding="10" cellspacing="0" width="100%">
-                    <tr bgcolor="#f8fafc">
-                        <td width="35%" align="center" valign="middle">
-                            <img src="assets/images/fdm.svg" alt="FDM 3D-друк термопластами" width="280" height="175">
-                            <br>
-                            <small><em>Технологія: FDM / FFF Екструзія</em></small>
-                        </td>
-                        <td width="65%" valign="top">
-                            <h2>1. Пошаровий FDM-друк конструкційними термопластами (PLA, PETG, ABS, Nylon)</h2>
-                            <p>
-                                Найбільш універсальний та економічний метод створення міцних корпусів, функціональних деталей,
-                                перехідників і кронштейнів з різноманітних полімерних ниток.
-                            </p>
-                            <h4>Основні характеристики сервісу:</h4>
-                            <ul>
-                                <li><strong>Максимальна робоча зона друку:</strong> монолітні деталі до 300 × 300 × 400 мм (великі вироби збираються зі сегментів).</li>
-                                <li><strong>Висота робочого шару:</strong> настроювана від 0.12 мм (висока якість) до 0.28 мм (швидкісний друк).</li>
-                                <li><strong>Вибір конструкційних матеріалів:</strong> біорозкладний PLA, ударостійкий PETG, термостійкий ABS, еластичний TPU, зносостійкий Nylon.</li>
-                                <li><strong>Широка колірна гама:</strong> понад 25 кольорів і відтінків (включаючи білий, чорний, сірий, сигнальний помаранчевий та прозорий).</li>
-                                <li><strong>Сфера використання:</strong> корпуси електроніки, автомобільний тюнінг, побутові фіксатори, прототипи промислового обладнання.</li>
-                            </ul>
-                            <p>
-                                <a href="cabinet.html?service=fdm">
-                                    <button type="button">Замовити розрахунок FDM-друку</button>
-                                </a>
-                            </p>
-                        </td>
-                    </tr>
-                </table>
+                <p>
+                    <span class="material-type-v9">Тип тканини для пошиття / матеріал виробу: PLA, PETG, ABS, TPU, Nylon</span>
+                </p>
+
+                <p style="color: var(--color-text-muted);">
+                    Найбільш універсальний та економічний метод створення міцних корпусів, деталей техніки та кронштейнів.
+                </p>
+
+                <h4>5 основних характеристик:</h4>
+                <ul class="service-meta-list">
+                    <li><strong>Максимальна робоча зона:</strong> деталі до 300 × 300 × 400 мм.</li>
+                    <li><strong>Висота робочого шару:</strong> настроювана від 0.12 мм до 0.28 мм.</li>
+                    <li><strong>Конструкційні матеріали:</strong> біорозкладний PLA, міцний PETG, зносостійкий Nylon.</li>
+                    <li><strong>Широка колірна гама:</strong> понад 25 відтінків у наявності.</li>
+                    <li><strong>Сфера застосування:</strong> корпуси приладів, автозапчастини, шестерні.</li>
+                </ul>
+                <p align="right">
+                    <a href="cabinet.html?service=fdm">
+                        <button type="button">Замовити розрахунок FDM-друку</button>
+                    </a>
+                </p>
             </article>
 
-            <br>
+            <article id="service-2" class="catalog-item-v9">
+                <div align="center" style="margin-bottom: 16px;">
+                    <img src="assets/images/sla.svg" alt="SLA фотополімерний друк" width="100%" height="190" class="photo-interactive animate-grayscale" tabindex="0" title="Натисніть або наведіть для чорно-білої анімації">
+                </div>
+                <h2>2. Високоточний стереолітографічний SLA-друк фотополімерами</h2>
 
-            <article id="service-2">
-                <table border="1" cellpadding="10" cellspacing="0" width="100%">
-                    <tr bgcolor="#f8fafc">
-                        <td width="35%" align="center" valign="middle">
-                            <img src="assets/images/sla.svg" alt="SLA фотополімерний друк" width="280" height="175">
-                            <br>
-                            <small><em>Технологія: SLA / MSLA Фотополімеризація</em></small>
-                        </td>
-                        <td width="65%" valign="top">
-                            <h2>2. Високоточний стереолітографічний SLA-друк фотополімерними смолами</h2>
-                            <p>
-                                Професійне виготовлення виробів із мікроскопічною деталізацією та абсолютно гладкою поверхнею без видимих шарів друку.
-                            </p>
-                            <h4>Основні характеристики сервісу:</h4>
-                            <ul>
-                                <li><strong>Оптична роздільна здатність матриці:</strong> 8K Ultra-HD із розміром пікселя лише 22 мікрони.</li>
-                                <li><strong>Мінімальна товщина шару засвічування:</strong> від 0.02 мм (20 мікрон) до 0.05 мм.</li>
-                                <li><strong>Спеціальні види смол:</strong> Standard, Tough (аналог міцного ABS-пластику), Castable (випалювана смола для ювелірного литва), Dental.</li>
-                                <li><strong>Максимальний розмір камери побудови:</strong> 218 × 123 × 250 мм.</li>
-                                <li><strong>Сфера використання:</strong> колекційні мініатюри, сувенірна продукція, ювелірні моделі, стоматологічні шаблони та точні прототипи.</li>
-                            </ul>
-                            <p>
-                                <a href="cabinet.html?service=sla">
-                                    <button type="button">Замовити розрахунок SLA-друку</button>
-                                </a>
-                            </p>
-                        </td>
-                    </tr>
-                </table>
+                <p>
+                    <span class="material-type-v9">Тип тканини для пошиття / матеріал виробу: SLA Tough Resin, Dental, Castable Wax</span>
+                </p>
+
+                <p style="color: var(--color-text-muted);">
+                    Виготовлення виробів із мікроскопічною деталізацією та абсолютно гладкою поверхнею без видимих шарів.
+                </p>
+
+                <h4>5 основних характеристик:</h4>
+                <ul class="service-meta-list">
+                    <li><strong>Оптична роздільна здатність:</strong> 8K Ultra-HD із пікселем 22 мікрони.</li>
+                    <li><strong>Мінімальна товщина шару:</strong> від 0.02 мм (20 мікрон) до 0.05 мм.</li>
+                    <li><strong>Спеціальні види смол:</strong> Standard, Tough (аналог ABS), випалювана смола.</li>
+                    <li><strong>Габарити камери друку:</strong> 218 × 123 × 250 мм.</li>
+                    <li><strong>Сфера застосування:</strong> ювелірні моделі, мініатюри, прототипи.</li>
+                </ul>
+                <p align="right">
+                    <a href="cabinet.html?service=sla">
+                        <button type="button">Замовити розрахунок SLA-друку</button>
+                    </a>
+                </p>
             </article>
 
-            <br>
+            <article id="service-3" class="catalog-item-v9">
+                <div align="center" style="margin-bottom: 16px;">
+                    <img src="assets/images/sls.svg" alt="SLS лазерне спікання" width="100%" height="190" class="photo-interactive animate-grayscale" tabindex="0" title="Натисніть або наведіть для чорно-білої анімації">
+                </div>
+                <h2>3. Промислове лазерне спікання порошкового поліаміду (SLS)</h2>
 
-            <article id="service-3">
-                <table border="1" cellpadding="10" cellspacing="0" width="100%">
-                    <tr bgcolor="#f8fafc">
-                        <td width="35%" align="center" valign="middle">
-                            <img src="assets/images/sls.svg" alt="SLS лазерне спікання" width="280" height="175">
-                            <br>
-                            <small><em>Технологія: SLS Лазерне спікання</em></small>
-                        </td>
-                        <td width="65%" valign="top">
-                            <h2>3. Промислове виготовлення методом лазерного спікання порошкового поліаміду (SLS)</h2>
-                            <p>
-                                Виробництво високонавантажених функціональних деталей з поліаміду PA12 без необхідності побудови підтримкових структур.
-                            </p>
-                            <h4>Основні характеристики сервісу:</h4>
-                            <ul>
-                                <li><strong>Використовуваний порошок:</strong> чистий технічний поліамід PA12 (Nylon 12) та склонаповнений поліамід.</li>
-                                <li><strong>Відсутність слідів від підтримок:</strong> деталь вільно підтримується навколишнім порошком у камері.</li>
-                                <li><strong>Рівномірна міцність (ізотропність):</strong> однакова стійкість до розриву та ударів у всіх напрямках навантаження.</li>
-                                <li><strong>Діапазон робочих температур:</strong> збереження механічних властивостей від -40°C до +120°C.</li>
-                                <li><strong>Габарити камери спікання:</strong> 380 × 380 × 580 мм (ідеально для малих серій деталей дронів та техніки).</li>
-                            </ul>
-                            <p>
-                                <a href="cabinet.html?service=sls">
-                                    <button type="button">Замовити розрахунок SLS-друку</button>
-                                </a>
-                            </p>
-                        </td>
-                    </tr>
-                </table>
+                <p>
+                    <span class="material-type-v9">Тип тканини для пошиття / матеріал виробу: Дрібнодисперсний поліамід PA12 Nylon</span>
+                </p>
+
+                <p style="color: var(--color-text-muted);">
+                    Виробництво навантажених функціональних виробів без підтримкових структур.
+                </p>
+
+                <h4>5 основних характеристик:</h4>
+                <ul class="service-meta-list">
+                    <li><strong>Матеріал порошку:</strong> технічний поліамід PA12 та карбононаповнений Nylon.</li>
+                    <li><strong>Відсутність підтримок:</strong> деталь підтримується неспеченим порошком.</li>
+                    <li><strong>Ізотропна міцність:</strong> однакова стійкість у всіх площинах.</li>
+                    <li><strong>Робочі температури:</strong> від -40°C до +120°C без деформацій.</li>
+                    <li><strong>Об'єм камери спікання:</strong> 380 × 380 × 580 мм.</li>
+                </ul>
+                <p align="right">
+                    <a href="cabinet.html?service=sls">
+                        <button type="button">Замовити розрахунок SLS-друку</button>
+                    </a>
+                </p>
             </article>
 
-            <br>
+            <article id="service-4" class="catalog-item-v9">
+                <div align="center" style="margin-bottom: 16px;">
+                    <img src="assets/images/url-import.svg" alt="Прямий друк за посиланням" width="100%" height="190" class="photo-interactive animate-grayscale" tabindex="0" title="Натисніть або наведіть для чорно-білої анімації">
+                </div>
+                <h2>4. Друк за прямим посиланням з онлайн-каталогів</h2>
 
-            <article id="service-4">
-                <table border="1" cellpadding="10" cellspacing="0" width="100%">
-                    <tr bgcolor="#f8fafc">
-                        <td width="35%" align="center" valign="middle">
-                            <img src="assets/images/url-import.svg" alt="Прямий друк за посиланням" width="280" height="175">
-                            <br>
-                            <small><em>Функція: Авто-стягування моделей за веб-посиланням</em></small>
-                        </td>
-                        <td width="65%" valign="top">
-                            <h2>4. Виготовлення деталей за прямим посиланням з онлайн-каталогів (Thingiverse / Printables)</h2>
-                            <p>
-                                Знайшли цікаву деталь в інтернеті? Вам не потрібно зберігати гігабайти на свій комп'ютер — просто вкажіть URL!
-                            </p>
-                            <h4>Основні характеристики сервісу:</h4>
-                            <ul>
-                                <li><strong>Підтримувані веб-платформи:</strong> прямі посилання на моделі з Thingiverse, Printables, Thangs, Cults3D, MyMiniFactory.</li>
-                                <li><strong>Автоматичний імпорт геометрії:</strong> система витягує всі зв'язані STL-файли безпосередньо в чергу обробки.</li>
-                                <li><strong>Збереження в кабінеті користувача:</strong> модель закріплюється за вашим обліковим записом для повторних замовлень.</li>
-                                <li><strong>Можливість поділитися:</strong> ви можете одним кліком додати знайдену модель у спільний каталог сайту 3dMaker.</li>
-                                <li><strong>Перевірка ліцензійних прав:</strong> верифікація ліцензій Creative Commons для легального виготовлення.</li>
-                            </ul>
-                            <p>
-                                <a href="cabinet.html?action=import">
-                                    <button type="button">Вставити посилання та розрахувати</button>
-                                </a>
-                            </p>
-                        </td>
-                    </tr>
-                </table>
+                <p>
+                    <span class="material-type-v9">Тип тканини для пошиття / матеріал виробу: Будь-який термопласт або фотополімер на вибір</span>
+                </p>
+
+                <p style="color: var(--color-text-muted);">
+                    Вставте посилання на вподобану деталь з Thingiverse чи Printables — система все підтягне сама.
+                </p>
+
+                <h4>5 основних характеристик:</h4>
+                <ul class="service-meta-list">
+                    <li><strong>Платформи-джерела:</strong> Thingiverse, Printables, Thangs, Cults3D.</li>
+                    <li><strong>Автоматичний імпорт геометрії:</strong> без завантаження на ваш комп'ютер.</li>
+                    <li><strong>Особисте збереження:</strong> модель зберігається у вашому кабінеті.</li>
+                    <li><strong>Відкритий доступ:</strong> можливість поділитися моделлю у каталозі.</li>
+                    <li><strong>Перевірка ліцензії:</strong> дотримання прав Creative Commons.</li>
+                </ul>
+                <p align="right">
+                    <a href="cabinet.html?action=import">
+                        <button type="button">Вставити URL та розрахувати</button>
+                    </a>
+                </p>
             </article>
 
-            <br>
+            <article id="service-5" class="catalog-item-v9">
+                <div align="center" style="margin-bottom: 16px;">
+                    <img src="assets/images/scan.svg" alt="3D сканування деталей" width="100%" height="190" class="photo-interactive animate-grayscale" tabindex="0" title="Натисніть або наведіть для чорно-білої анімації">
+                </div>
+                <h2>5. Оптичне 3D-сканування та реверс-інжиніринг</h2>
 
-            <article id="service-5">
-                <table border="1" cellpadding="10" cellspacing="0" width="100%">
-                    <tr bgcolor="#f8fafc">
-                        <td width="35%" align="center" valign="middle">
-                            <img src="assets/images/scan.svg" alt="3D сканування та реверс-інжиніринг" width="280" height="175">
-                            <br>
-                            <small><em>Сервіс: Оцифрування та реверс-інжиніринг</em></small>
-                        </td>
-                        <td width="65%" valign="top">
-                            <h2>5. Оптичне 3D-сканування та реверс-інжиніринг зношених деталей</h2>
-                            <p>
-                                Відновлення зламаних шестерень, засувок, кріплень та автомобільних елементів за оригінальним зразком або його уламками.
-                            </p>
-                            <h4>Основні характеристики сервісу:</h4>
-                            <ul>
-                                <li><strong>Точність оцифрування:</strong> професійний структурований сканер з похибкою не більше 0.04 мм.</li>
-                                <li><strong>Обробка пошкоджень:</strong> цифрове відновлення відсутніх зубів шестерень та тріщин вихідної деталі.</li>
-                                <li><strong>Експорт у параметричні тверді тіла:</strong> надання клієнту файлів у форматах STEP, IGES, Parasolid або готового STL.</li>
-                                <li><strong>Діапазон розмірів деталей:</strong> від дрібних елементів годинникових механізмів (10 мм) до великих бамперів (до 2 м).</li>
-                                <li><strong>Повний цикл під ключ:</strong> сканування &rarr; CAD-моделювання &rarr; тестовий 3D-друк &rarr; контрольне вимірювання.</li>
-                            </ul>
-                            <p>
-                                <a href="feedback.html?purpose=cooperation">
-                                    <button type="button">Замовити 3D-сканування</button>
-                                </a>
-                            </p>
-                        </td>
-                    </tr>
-                </table>
+                <p>
+                    <span class="material-type-v9">Тип тканини для пошиття / матеріал виробу: Твердотільна цифрова CAD-модель (STEP, STL)</span>
+                </p>
+
+                <p style="color: var(--color-text-muted);">
+                    Відновлення зламаних шестерень, засувок, кріплень та автомобільних елементів за оригінальним зразком.
+                </p>
+
+                <h4>5 основних характеристик:</h4>
+                <ul class="service-meta-list">
+                    <li><strong>Точність сканування:</strong> структуроване світло з похибкою до 0.04 мм.</li>
+                    <li><strong>Відновлення геометрії:</strong> добудова відламаних елементів та зубів.</li>
+                    <li><strong>Параметричний експорт:</strong> готові креслення та файли STEP, IGES.</li>
+                    <li><strong>Діапазон розмірів:</strong> від деталей 10 мм до кузовних елементів 2 м.</li>
+                    <li><strong>Повний цикл:</strong> сканування &rarr; моделювання &rarr; тестовий друк.</li>
+                </ul>
+                <p align="right">
+                    <a href="feedback.html?purpose=cooperation">
+                        <button type="button">Замовити 3D-сканування</button>
+                    </a>
+                </p>
             </article>
 
-            <br>
+            <article id="service-6" class="catalog-item-v9">
+                <div align="center" style="margin-bottom: 16px;">
+                    <img src="assets/images/postprocess.svg" alt="Постобробка та фарбування" width="100%" height="190" class="photo-interactive animate-grayscale" tabindex="0" title="Натисніть або наведіть для чорно-білої анімації">
+                </div>
+                <h2>6. Фінішна постобробка, хімічне згладжування та фарбування</h2>
 
-            <article id="service-6">
-                <table border="1" cellpadding="10" cellspacing="0" width="100%">
-                    <tr bgcolor="#f8fafc">
-                        <td width="35%" align="center" valign="middle">
-                            <img src="assets/images/postprocess.svg" alt="Постобробка та фарбування" width="280" height="175">
-                            <br>
-                            <small><em>Сервіс: Фінішна обробка та фарбування</em></small>
-                        </td>
-                        <td width="65%" valign="top">
-                            <h2>6. Фінішна постобробка, хімічне згладжування та фарбування виробів</h2>
-                            <p>
-                                Надання надрукованому виробу бездоганного товарного вигляду серійного лиття під тиском.
-                            </p>
-                            <h4>Основні характеристики сервісу:</h4>
-                            <ul>
-                                <li><strong>Хімічне згладжування випарами:</strong> повне усунення мікрошарів на поверхні виробів з ABS, ASA та PVB.</li>
-                                <li><strong>Механічне шліфування та піскоструминна обробка:</strong> підготовка поверхні до нанесення ґрунту.</li>
-                                <li><strong>Професійне фарбування:</strong> нанесення зносостійких емалей у будь-який відтінок міжнародної шкали RAL.</li>
-                                <li><strong>Запресовування латунної фурнітури:</strong> монтаж міцних металевих різьбових втулок під гвинти M2, M3, M4, M5, M6.</li>
-                                <li><strong>Захисні покриття:</strong> нанесення поліуретанового лаку для захисту від ультрафіолету та агресивних хімічних рідин.</li>
-                            </ul>
-                            <p>
-                                <a href="feedback.html?purpose=cooperation">
-                                    <button type="button">Дізнатися вартість постобробки</button>
-                                </a>
-                            </p>
-                        </td>
-                    </tr>
-                </table>
+                <p>
+                    <span class="material-type-v9">Тип тканини для пошиття / матеріал виробу: Акрилові поліуретанові емалі RAL, металеві інсерти</span>
+                </p>
+
+                <p style="color: var(--color-text-muted);">
+                    Надання виробу бездоганного товарного вигляду серійного лиття під тиском.
+                </p>
+
+                <h4>5 основних характеристик:</h4>
+                <ul class="service-meta-list">
+                    <li><strong>Хімічне згладжування:</strong> повне усунення шарів для ABS та ASA.</li>
+                    <li><strong>Абразивне шліфування:</strong> дзеркальна підготовка під ґрунт.</li>
+                    <li><strong>Кольорове фарбування:</strong> будь-який відтінок міжнародної шкали RAL.</li>
+                    <li><strong>Різьбові втулки:</strong> впаювання латунних інсертів M2–M8 під гвинти.</li>
+                    <li><strong>Захисний лак:</strong> стійкість до ультрафіолету та бензомастил.</li>
+                </ul>
+                <p align="right">
+                    <a href="feedback.html?purpose=cooperation">
+                        <button type="button">Дізнатися вартість постобробки</button>
+                    </a>
+                </p>
             </article>
 
-            <br>
+            <article id="service-7" class="catalog-item-v9">
+                <div align="center" style="margin-bottom: 16px;">
+                    <img src="assets/images/model-bracket.svg" alt="Серійне виробництво" width="100%" height="190" class="photo-interactive animate-grayscale" tabindex="0" title="Натисніть або наведіть для чорно-білої анімації">
+                </div>
+                <h2>7. Дрібносерійне контрактне виробництво виробів</h2>
 
-            <article id="service-7">
-                <table border="1" cellpadding="10" cellspacing="0" width="100%">
-                    <tr bgcolor="#f8fafc">
-                        <td width="35%" align="center" valign="middle">
-                            <img src="assets/images/model-bracket.svg" alt="Серійне виробництво деталей" width="280" height="175">
-                            <br>
-                            <small><em>Сервіс: Серійне виготовлення партій</em></small>
-                        </td>
-                        <td width="65%" valign="top">
-                            <h2>7. Дрібносерійне контрактне виробництво партій виробів для бізнесу</h2>
-                            <p>
-                                Швидкий запуск виробництва корпусних виробів, сувенірів та технічних компонентів тиражем від 10 до 2000 штук без дорогих прес-форм.
-                            </p>
-                            <h4>Основні характеристики сервісу:</h4>
-                            <ul>
-                                <li><strong>Власний парк обладнання:</strong> понад 20 одночасно працюючих 3D-ферм для паралельного виконання замовлення.</li>
-                                <li><strong>Терміни виконання:</strong> перша тестова партія з 50 одиниць готова вже за 48 годин після узгодження моделі.</li>
-                                <li><strong>Гнучке ціноутворення:</strong> прогресивна шкала знижок до 45% залежно від загального обсягу партії.</li>
-                                <li><strong>Індивідуальне брендування:</strong> нанесення логотипів компанії, написів та серійних індивідуальних номерів на кожну деталь.</li>
-                                <li><strong>Контроль якості (ВТК):</strong> вибіркова перевірка геометричних параметрів калібрами та штангенциркулями.</li>
-                            </ul>
-                            <p>
-                                <a href="feedback.html?purpose=cooperation">
-                                    <button type="button">Отримати комерційну пропозицію</button>
-                                </a>
-                            </p>
-                        </td>
-                    </tr>
-                </table>
+                <p>
+                    <span class="material-type-v9">Тип тканини для пошиття / матеріал виробу: Інженерні полімери партіями від 10 до 2000 шт</span>
+                </p>
+
+                <p style="color: var(--color-text-muted);">
+                    Швидкий запуск виробництва корпусних виробів та технічних деталей без прес-форм.
+                </p>
+
+                <h4>5 основних характеристик:</h4>
+                <ul class="service-meta-list">
+                    <li><strong>Власний парк:</strong> понад 20 одночасно працюючих 3D-принтерів.</li>
+                    <li><strong>Терміни партій:</strong> від 48 годин на тираж з 50 одиниць.</li>
+                    <li><strong>Гнучкі знижки:</strong> до 45% від базової роздрібної вартості.</li>
+                    <li><strong>Брендування:</strong> тиснення або друк логотипу на кожному виробі.</li>
+                    <li><strong>Контроль ВТК:</strong> вибірковий контроль мікрометром кожного тиражу.</li>
+                </ul>
+                <p align="right">
+                    <a href="feedback.html?purpose=cooperation">
+                        <button type="button">Отримати оптовий прорахунок</button>
+                    </a>
+                </p>
             </article>
 
-            <br>
+            <article id="service-8" class="catalog-item-v9">
+                <div align="center" style="margin-bottom: 16px;">
+                    <img src="assets/images/model-gear.svg" alt="3D моделювання" width="100%" height="190" class="photo-interactive animate-grayscale" tabindex="0" title="Натисніть або наведіть для чорно-білої анімації">
+                </div>
+                <h2>8. Інженерне CAD-моделювання за ескізами та кресленнями</h2>
 
-            <article id="service-8">
-                <table border="1" cellpadding="10" cellspacing="0" width="100%">
-                    <tr bgcolor="#f8fafc">
-                        <td width="35%" align="center" valign="middle">
-                            <img src="assets/images/model-gear.svg" alt="3D CAD-моделювання" width="280" height="175">
-                            <br>
-                            <small><em>Сервіс: Інженерне CAD-конструювання</em></small>
-                        </td>
-                        <td width="65%" valign="top">
-                            <h2>8. Інженерне 3D-моделювання та доопрацювання креслень клієнта</h2>
-                            <p>
-                                Перетворення паперових креслень, ескізів від руки або пошкоджених 3D-файлів у повноцінну виробничу модель.
-                            </p>
-                            <h4>Основні характеристики сервісу:</h4>
-                            <ul>
-                                <li><strong>Програмні середовища розробки:</strong> професійні ліцензовані САПР (Autodesk Fusion 360, SolidWorks).</li>
-                                <li><strong>Оптимізація під технології друку:</strong> розрахунок кутів нависання, компенсація усадки матеріалу та міцнісні фаски.</li>
-                                <li><strong>Розрахунок заповнення та стінок:</strong> оптимізація витрати пластику без втрати жорсткості виробу.</li>
-                                <li><strong>Безкоштовне внесення правок:</strong> до трьох ітерацій коригування моделі за бажанням клієнта.</li>
-                                <li><strong>Передача вихідних матеріалів:</strong> надання замовнику повного пакету CAD-файлів (.STEP, .STL, .PDF креслення).</li>
-                            </ul>
-                            <p>
-                                <a href="feedback.html?purpose=suggestion">
-                                    <button type="button">Замовити 3D-моделювання</button>
-                                </a>
-                            </p>
-                        </td>
-                    </tr>
-                </table>
+                <p>
+                    <span class="material-type-v9">Тип тканини для пошиття / матеріал виробу: Цифрові параметричні моделі SolidWorks / Fusion 360</span>
+                </p>
+
+                <p style="color: var(--color-text-muted);">
+                    Перетворення паперових креслень або уламків деталей у повноцінну виробничу модель.
+                </p>
+
+                <h4>5 основних характеристик:</h4>
+                <ul class="service-meta-list">
+                    <li><strong>Програмні САПР:</strong> Autodesk Fusion 360, SolidWorks.</li>
+                    <li><strong>DFAM-оптимізація:</strong> проєктування спеціально під адитивні технології.</li>
+                    <li><strong>Аналіз міцності:</strong> розрахунок навантаження методом скінченних елементів.</li>
+                    <li><strong>До 3 раундів правок:</strong> безкоштовне коригування за бажанням клієнта.</li>
+                    <li><strong>Передача прав:</strong> вихідні файли повністю переходять замовнику.</li>
+                </ul>
+                <p align="right">
+                    <a href="feedback.html?purpose=suggestion">
+                        <button type="button">Замовити 3D-моделювання</button>
+                    </a>
+                </p>
             </article>
 
         </section>
 
-        <hr>
-
-        <p align="center">
+        <p align="center" style="margin: 20px 0;">
             <a href="index.html">
-                <button type="button" style="padding: 10px 20px; font-size: 16px;">⬅️ Повернутися на Головну сторінку 3dMaker</button>
+                <button type="button" class="btn-secondary" style="font-size: 1.1rem; padding: 12px 28px;">⬅️ Повернутися на Головну сторінку 3dMaker</button>
             </a>
         </p>
 
     </main>
 
-    <hr>
-
     <footer>
-        <table width="100%" border="0" cellpadding="8" cellspacing="0">
-            <tr>
-                <td width="50%" align="left">
-                    <p>
-                        <strong>Сервісний центр 3D-друку 3dMaker</strong><br>
-                        м. Київ, вул. Академіка Глушкова, 42 | Тел: <a href="tel:+380442393222">+38 (044) 239-32-22</a>
-                    </p>
-                </td>
-                <td width="50%" align="right">
-                    <p>
-                        &copy; 2026 3dMaker. Лабораторна робота №1. Варіант 9.<br>
-                        <a href="#top">Вгору сторінки ⬆️</a>
-                    </p>
-                </td>
-            </tr>
-        </table>
+        <div class="page-grid-layout" style="grid-template-columns: 1fr 1fr; gap: 20px; padding: 0;">
+            <div>
+                <p>
+                    <strong>Сервісний центр 3D-друку 3dMaker</strong><br>
+                    м. Київ, вул. Академіка Глушкова, 42 | Тел: <a href="tel:+380442393222">+38 (044) 239-32-22</a>
+                </p>
+            </div>
+            <div align="right">
+                <p>
+                    &copy; 2026 3dMaker. Лабораторна робота №2. Варіант 9.<br>
+                    <a href="#site-header" class="nav-link">Вгору сторінки ⬆️</a>
+                </p>
+            </div>
+        </div>
     </footer>
 
 </body>

@@ -1,0 +1,80 @@
+@keyframes to-grayscale-anim {
+    0% {
+        filter: grayscale(0%) contrast(100%);
+        transform: scale(1);
+    }
+    50% {
+        filter: grayscale(50%) contrast(110%);
+        transform: scale(1.02);
+    }
+    100% {
+        filter: grayscale(100%) contrast(120%);
+        transform: scale(1.03);
+    }
+}
+
+.animate-grayscale:focus,
+.animate-grayscale:hover {
+    animation-name: to-grayscale-anim;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes neon-pulse {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(2, 132, 199, 0.4), 0 0 10px rgba(2, 132, 199, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 15px rgba(56, 189, 248, 0.8), 0 0 25px rgba(2, 132, 199, 0.5);
+    }
+}
+
+.pulse-glow {
+    animation: neon-pulse 2.5s infinite ease-in-out;
+}
+
+@keyframes laser-scan {
+    0% {
+        transform: translateY(0) scaleX(0.95);
+        opacity: 0.4;
+    }
+    50% {
+        transform: translateY(80px) scaleX(1);
+        opacity: 0.85;
+    }
+    100% {
+        transform: translateY(0) scaleX(0.95);
+        opacity: 0.4;
+    }
+}
+
+.laser-beam {
+    animation-name: laser-scan;
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+.rotate-tech-icon {
+    transition: transform 0.4s ease;
+}
+
+.rotate-tech-icon:hover {
+    transform: rotate(15deg) scale(1.1);
+}
+
+@keyframes slide-down-fade {
+    from {
+        opacity: 0;
+        transform: translateY(-16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-down {
+    animation: slide-down-fade 0.6s ease-out;
+}

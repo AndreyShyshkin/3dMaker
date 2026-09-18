@@ -7,83 +7,155 @@
     <meta name="keywords" content="3D друк, виготовлення виробів, 3dMaker, FDM, SLA, SLS, 3D моделі, Thingiverse, Printables, замовити 3D друк">
     <meta name="author" content="3dMaker Studio">
     <title>3dMaker — Сервісний сайт із виготовлення виробів та 3D-друку</title>
-</head>
-<body>
 
-    <header id="top">
-        <table width="100%" border="0" cellpadding="10" cellspacing="0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <style>
+        .hero-banner {
+            position: relative;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(22, 33, 56, 0.85) 100%);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-hi-tech);
+            overflow: hidden;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background-color: var(--color-badge-bg);
+            color: var(--color-primary-light);
+            font-family: var(--font-tech);
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            margin-bottom: 16px;
+            letter-spacing: 0.05em;
+        }
+
+        a[target="_blank"]::after {
+            content: " ↗";
+            font-size: 0.85em;
+            color: var(--color-primary-light);
+        }
+
+        .article-intro::first-letter {
+            font-size: 2.3rem;
+            font-weight: bold;
+            color: var(--color-primary-light);
+            float: left;
+            margin-right: 10px;
+            line-height: 1;
+        }
+
+        .order-card-table {
+            border: none;
+            background: rgba(11, 17, 32, 0.7);
+            border-radius: var(--radius-md);
+        }
+
+        .order-card-table td {
+            padding: 16px 20px;
+            border-color: rgba(51, 65, 85, 0.5);
+        }
+
+        .custom-input {
+            width: 100%;
+            max-width: 480px;
+            padding: 10px 14px;
+            background: #090d16;
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            color: #ffffff;
+            font-size: 0.95rem;
+            transition: border-color 0.25s, box-shadow 0.25s;
+        }
+
+        .custom-input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 10px rgba(2, 132, 199, 0.4);
+        }
+    </style>
+</head>
+<body class="has-absolute-header">
+
+    <header id="site-header" class="header-absolute">
+        <table border="0" cellpadding="0" cellspacing="0">
             <tr>
-                <td width="30%" align="left">
-                    <a href="index.html">
-                        <img src="assets/images/logo.svg" alt="3dMaker - Сервіс 3D-друку та виготовлення виробів" width="260" height="65">
+                <td width="28%" align="left">
+                    <a href="index.html" class="logo-box">
+                        <img src="assets/images/logo.svg" alt="3dMaker - Сервіс 3D-друку та виготовлення виробів" width="220" height="55">
                     </a>
                 </td>
-                <td width="45%" align="center">
+                <td width="48%" align="center">
                     <nav>
-                        <p>
-                            <strong>Навігація:</strong> |
-                            <a href="index.html">Головна</a> |
-                            <a href="services.html">Каталог сервісів</a> |
-                            <a href="models-catalog.html">Каталог 3D-моделей</a> |
-                            <a href="reviews.html">Відгуки про сервіси</a> |
-                            <a href="feedback.html">Зворотній зв’язок</a> |
-                        </p>
+                        <ul>
+                            <li><a href="index.html" class="nav-link" style="color: var(--color-primary-light); font-weight: bold;">Головна</a></li>
+                            <li><a href="services.html" class="nav-link">Каталог сервісів</a></li>
+                            <li><a href="models-catalog.html" class="nav-link">Каталог 3D-моделей</a></li>
+                            <li><a href="reviews.html" class="nav-link">Відгуки про сервіси</a></li>
+                            <li><a href="feedback.html" class="nav-link">Зворотній зв’язок</a></li>
+                        </ul>
                     </nav>
                 </td>
-                <td width="25%" align="right">
+                <td width="24%" align="right">
                     <a href="cabinet.html">
-                        <button type="button">Перейти у власний кабінет</button>
+                        <button type="button" class="pulse-glow">Особистий кабінет</button>
                     </a>
                     &nbsp;
                     <a href="register.html">
-                        <button type="button">Зареєструватись</button>
+                        <button type="button" class="btn-secondary">Зареєструватись</button>
                     </a>
                 </td>
             </tr>
         </table>
-        <hr>
     </header>
 
-    <nav aria-label="Швидкий перехід по сторінці">
-        <p>
-            <em>Швидкий перехід по розділах:</em>
-            [ <a href="#about-mission">Мета та завдання сервісу</a> ]
-            [ <a href="#quick-order">Завантажити модель / посилання</a> ]
-            [ <a href="#services-table">Порівняльна таблиця сервісів</a> ]
-            [ <a href="#media-section">Відео та аудіо презентація</a> ]
-            [ <a href="#contacts">Контактна інформація</a> ]
-        </p>
-    </nav>
-    <hr>
+    <main class="page-grid-layout">
 
-    <main>
-
-        <section id="hero">
-            <h1>Сервісний центр 3D-друку та виготовлення виробів «3dMaker»</h1>
-            <p>
+        <section id="hero" class="hero-banner">
+            <span class="hero-badge">⚡ HI-TECH АДИКТИВНЕ ВИРОБНИЦТВО</span>
+            <h1>Сервісний центр 3D-друку та швидкого виготовлення виробів «3dMaker»</h1>
+            <p style="font-size: 1.1rem; color: #cbd5e1; max-width: 900px;">
                 Вітаємо на інноваційній платформі цифрового виробництва! У нас ви можете замовити виготовлення
                 будь-яких деталей, інженерних вузлів, прототипів, мініатюр та корпусів. Просто завантажте власний файл
-                3D-моделі або <strong>вкажіть посилання</strong> на вподобану деталь з відкритих онлайн-бібліотек.
+                3D-моделі або <strong>вкажіть посилання</strong> на деталь з відкритих онлайн-бібліотек.
             </p>
 
-            <p>
+            <p class="styled-sentence">
                 <span>Сервісна лабораторія <b>3dMaker</b> гарантує <i>високоточне</i> та <em>оперативне</em> виготовлення виробів на 3D-принтерах за <u>найкращими галузевими стандартами</u>.</span>
             </p>
         </section>
 
-        <hr>
-
-        <section id="about-mission">
-            <h2>Мета створення сервісного сайту</h2>
+        <nav class="sticky-subnav" aria-label="Швидкий перехід по сторінці">
             <p>
+                <strong style="color: var(--color-primary-light); margin-right: 4px;">⚡ Швидкий перехід:</strong>
+                <a href="#about-mission" class="nav-link">🎯 Мета та завдання</a>
+                <a href="#quick-order" class="nav-link">🚀 Замовити 3D-друк</a>
+                <a href="#services-table" class="nav-link">📊 Таблиця сервісів</a>
+                <a href="#technology-article" class="nav-link">⚙️ Технології</a>
+                <a href="#media-section" class="nav-link">🎬 Медіа</a>
+                <a href="#contacts" class="nav-link">📍 Контакти</a>
+            </p>
+        </nav>
+
+        <section id="about-mission" class="mission-block-v9">
+            <h2>Мета створення сервісного сайту</h2>
+            <p style="margin-top: 8px;">
                 Головною метою створення сервісного сайту <strong>«3dMaker»</strong> є забезпечення максимальної доступності
                 технологій швидкого адитивного виробництва для приватних замовників, інженерів, студентів, стартапів та виробничих підприємств.
                 Сервіс покликаний усунути бар'єри між цифровим 3D-проектом та фізичним виробом завдяки автоматизованому розрахунку вартості,
                 підтримці широкого спектра конструкційних полімерів та зручній інтеграції зі світовими сховищами тривимірних моделей.
             </p>
 
-            <h3>Завдання для досягнення поставленої мети:</h3>
-            <ol type="I">
+            <h3 style="margin-top: 24px; color: #ffffff;">Завдання для досягнення поставленої мети:</h3>
+            <ol type="I" class="mission-tasks">
                 <li>
                     <strong>Організація безперебійного сервісу адитивного виробництва:</strong> впровадження сучасного парку
                     3D-принтерів технологій FDM, SLA та SLS для якісного виготовлення виробів будь-якої складності та габаритів.
@@ -110,81 +182,93 @@
             </ol>
         </section>
 
-        <hr>
-
-        <section id="quick-order">
+        <section id="quick-order" class="hero-banner">
             <h2>Швидкий прорахунок та замовлення 3D-друку</h2>
-            <p>
+            <p style="color: var(--color-text-muted); margin-bottom: 20px;">
                 Ви можете прямо зараз надіслати нам модель на прорахунок. Оберіть зручний для вас варіант: завантажити власний файл
                 або надати посилання на зовнішній каталог моделей.
             </p>
 
             <form action="cabinet.html" method="get">
-                <table border="1" cellpadding="8" cellspacing="0" width="100%">
-                    <tr>
-                        <th colspan="2" align="left" bgcolor="#e2e8f0">
-                            Параметри відправки 3D-моделі
-                        </th>
-                    </tr>
-                    <tr>
-                        <td width="35%">
-                            <label for="upload-choice-file"><strong>Спосіб 1:</strong> Завантажити файл моделі</label>
-                        </td>
-                        <td>
-                            <input type="file" id="upload-choice-file" name="model_file" accept=".stl,.obj,.3mf,.step">
-                            <small>(Підтримувані формати: .STL, .OBJ, .3MF, .STEP до 100 МБ)</small>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="upload-choice-url"><strong>Спосіб 2:</strong> Або вкажіть посилання на каталог моделей</label>
-                        </td>
-                        <td>
-                            <input type="url" id="upload-choice-url" name="model_url" size="50" placeholder="https://www.thingiverse.com/thing:12345 або Printables URL">
-                            <br>
-                            <small><em>Сервіс самостійно витягне 3D-файли за цим посиланням! Зовнішні джерела:
-                                <a href="https://www.thingiverse.com/" target="_blank">Thingiverse</a>,
-                                <a href="https://www.printables.com/" target="_blank">Printables</a>,
-                                <a href="https://cults3d.com/" target="_blank">Cults3D</a>.
-                            </em></small>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="print-tech">Оберіть бажану технологію:</label>
-                        </td>
-                        <td>
-                            <select id="print-tech" name="technology">
-                                <option value="fdm" selected>FDM (Пластикова нитка: PLA, PETG, ABS, Nylon)</option>
-                                <option value="sla">SLA (Фотополімерна рідка смола високої деталізації)</option>
-                                <option value="sls">SLS (Порошковий поліамід, промислова міцність)</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <strong>Дії з моделлю:</strong>
-                        </td>
-                        <td>
-                            <input type="checkbox" id="save-in-cabinet" name="save_cabinet" checked>
-                            <label for="save-in-cabinet">Зберегти цю модель у моєму особистому кабінеті</label>
-                            <br>
-                            <input type="checkbox" id="share-publicly" name="share_public">
-                            <label for="share-publicly">Поділитися моделлю у відкритому каталозі спільноти 3dMaker</label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" align="center" bgcolor="#f8fafc">
-                            <input type="submit" value="Перейти до оформлення у кабінеті">
-                            &nbsp;&nbsp;
-                            <input type="reset" value="Скинути форму">
-                        </td>
-                    </tr>
+                <table class="order-card-table" cellpadding="10" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th colspan="2" align="left" style="background: rgba(30, 41, 59, 0.9); border-bottom: 1px solid var(--color-border); border-radius: 8px 8px 0 0;">
+                                🚀 ПАРАМЕТРИ ВІДПРАВКИ 3D-МОДЕЛІ
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td width="35%">
+                                <label for="upload-choice-file"><strong>Спосіб 1:</strong> Завантажити файл моделі</label>
+                            </td>
+                            <td>
+                                <input type="file" id="upload-choice-file" name="model_file" accept=".stl,.obj,.3mf,.step" style="padding: 6px; color: #cbd5e1;">
+                                <br>
+                                <small style="color: var(--color-text-muted);">(Підтримувані формати: .STL, .OBJ, .3MF, .STEP до 100 МБ)</small>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="upload-choice-url"><strong>Спосіб 2:</strong> Вказати посилання на модель</label>
+                            </td>
+                            <td>
+                                <input type="url" id="upload-choice-url" name="model_url" class="custom-input" placeholder="https://www.thingiverse.com/thing:12345 або Printables URL">
+                                <br>
+                                <small style="color: var(--color-text-muted); margin-top: 4px; display: inline-block;">
+                                    <em>Сервіс автоматично стягне 3D-файли за лінком! Ресурси:
+                                        <a href="https://www.thingiverse.com/" target="_blank">Thingiverse</a>,
+                                        <a href="https://www.printables.com/" target="_blank">Printables</a>,
+                                        <a href="https://cults3d.com/" target="_blank">Cults3D</a>.
+                                    </em>
+                                </small>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="print-tech">Оберіть технологію друку:</label>
+                            </td>
+                            <td>
+                                <select id="print-tech" name="technology" class="custom-input" style="max-width: 320px;">
+                                    <option value="fdm" selected>FDM (Пластикова нитка: PLA, PETG, ABS, Nylon)</option>
+                                    <option value="sla">SLA (Фотополімерна рідка смола високої деталізації)</option>
+                                    <option value="sls">SLS (Порошковий поліамід, промислова міцність)</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>Опції моделі:</strong>
+                            </td>
+                            <td>
+                                <div style="display: flex; flex-direction: column; gap: 8px;">
+                                    <div>
+                                        <input type="checkbox" id="save-in-cabinet" name="save_cabinet" checked style="accent-color: var(--color-primary); cursor: pointer;">
+                                        <label for="save-in-cabinet" style="cursor: pointer;">Зберегти цю деталь у моєму особистому кабінеті</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id="share-publicly" name="share_public" style="accent-color: var(--color-primary); cursor: pointer;">
+                                        <label for="share-publicly" style="cursor: pointer;">Поділитися моделлю у відкритому каталозі спільноти 3dMaker</label>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2" align="left" style="background: rgba(15, 23, 42, 0.85); border-top: 1px solid var(--color-border); border-radius: 0 0 8px 8px;">
+                                <button type="submit" class="pulse-glow" style="padding: 11px 24px; font-size: 0.95rem;">
+                                    Перейти до оформлення у кабінеті 🚀
+                                </button>
+                                &nbsp;&nbsp;
+                                <button type="reset" class="btn-secondary">Скинути форму</button>
+                            </td>
+                        </tr>
+                    </tfoot>
                 </table>
             </form>
         </section>
-
-        <hr>
 
         <section id="services-table">
             <h2>Порівняльна характеристика типів виробничих сервісів та технологій 3D-друку</h2>
@@ -193,224 +277,203 @@
                 матеріали, що використовуються, їхні експлуатаційні властивості та базову вартість.
             </p>
 
-            <table border="1" cellpadding="8" cellspacing="0" width="100%">
-                <caption>
-                    <strong>Таблиця 1.</strong> Зведена класифікація сервісів 3D-друку та виготовлення виробів лабораторії «3dMaker»
-                </caption>
+            <div class="services-table-wrapper">
+                <table border="0" cellpadding="10" cellspacing="0" width="100%">
+                    <caption>
+                        <strong>Таблиця 1.</strong> Зведена класифікація сервісів 3D-друку та виготовлення виробів лабораторії «3dMaker»
+                    </caption>
 
-                <thead>
-                    <tr bgcolor="#cbd5e1">
-                        <th rowspan="2">Категорія сервісу</th>
-                        <th rowspan="2">Назва технології / послуги</th>
-                        <th colspan="2">Технічні параметри</th>
-                        <th rowspan="2">Матеріали виконання</th>
-                        <th rowspan="2">Орієнтовна вартість (грн / см³)</th>
-                    </tr>
-                    <tr bgcolor="#e2e8f0">
-                        <th>Точність шару</th>
-                        <th>Макс. габарити (мм)</th>
-                    </tr>
-                </thead>
+                    <thead>
+                        <tr>
+                            <th rowspan="2">Категорія сервісу</th>
+                            <th rowspan="2">Назва технології / послуги</th>
+                            <th colspan="2">Технічні параметри</th>
+                            <th rowspan="2">Матеріали виконання</th>
+                            <th rowspan="2">Орієнтовна вартість (грн / см³)</th>
+                        </tr>
+                        <tr>
+                            <th>Точність шару</th>
+                            <th>Макс. габарити (мм)</th>
+                        </tr>
+                    </thead>
 
-                <tbody>
-                    <tr>
-                        <td rowspan="2" align="center" bgcolor="#f1f5f9">
-                            <strong>Адитивне пошарове виготовлення (FDM)</strong>
-                        </td>
-                        <td>Друк стандартними термопластами (PLA, CoPET)</td>
-                        <td>0.12 – 0.28 мм</td>
-                        <td>300 × 300 × 400</td>
-                        <td>Біорозкладний PLA, міцний PETG</td>
-                        <td>від 2.50 грн</td>
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <td rowspan="2" align="center">
+                                <strong>Адитивне пошарове виготовлення (FDM)</strong>
+                            </td>
+                            <td>Друк стандартними термопластами (PLA, CoPET)</td>
+                            <td>0.12 – 0.28 мм</td>
+                            <td>300 × 300 × 400</td>
+                            <td>Біорозкладний PLA, міцний PETG</td>
+                            <td>від 2.50 грн</td>
+                        </tr>
 
-                    <tr>
-                        <td>Друк інженерними полімерами підвищеної термостійкості</td>
-                        <td>0.10 – 0.20 мм</td>
-                        <td>250 × 250 × 300</td>
-                        <td>ABS, Поліамід (Nylon), Карбон-композит</td>
-                        <td>від 4.20 грн</td>
-                    </tr>
+                        <tr>
+                            <td>Друк інженерними полімерами підвищеної термостійкості</td>
+                            <td>0.10 – 0.20 мм</td>
+                            <td>250 × 250 × 300</td>
+                            <td>ABS, Поліамід (Nylon), Карбон-композит</td>
+                            <td>від 4.20 грн</td>
+                        </tr>
 
-                    <tr>
-                        <td rowspan="2" align="center" bgcolor="#f1f5f9">
-                            <strong>Фотополімерна стереолітографія (SLA / MSLA)</strong>
-                        </td>
-                        <td>Високоточний художній та ювелірний друк</td>
-                        <td>0.02 – 0.05 мм</td>
-                        <td>192 × 120 × 200</td>
-                        <td>Стандартна смола, випалювана фотополімерна смола</td>
-                        <td>від 6.00 грн</td>
-                    </tr>
+                        <tr>
+                            <td rowspan="2" align="center">
+                                <strong>Фотополімерна стереолітографія (SLA / MSLA)</strong>
+                            </td>
+                            <td>Високоточний художній та ювелірний друк</td>
+                            <td>0.02 – 0.05 мм</td>
+                            <td>192 × 120 × 200</td>
+                            <td>Стандартна смола, випалювана фотополімерна смола</td>
+                            <td>від 6.00 грн</td>
+                        </tr>
 
-                    <tr>
-                        <td>Друк функціональними міцними смолами (Tough / Dental)</td>
-                        <td>0.03 – 0.05 мм</td>
-                        <td>218 × 123 × 250</td>
-                        <td>ABS-like фотополімер, гнучка гумоподібна смола</td>
-                        <td>від 8.50 грн</td>
-                    </tr>
+                        <tr>
+                            <td>Друк функціональними міцними смолами (Tough / Dental)</td>
+                            <td>0.03 – 0.05 мм</td>
+                            <td>218 × 123 × 250</td>
+                            <td>ABS-like фотополімер, гнучка гумоподібна смола</td>
+                            <td>від 8.50 грн</td>
+                        </tr>
 
-                    <tr>
-                        <td align="center" bgcolor="#f1f5f9">
-                            <strong>Селективне лазерне спікання (SLS)</strong>
-                        </td>
-                        <td>Дрібносерійне промислове спікання без підтримкових структур</td>
-                        <td>0.08 – 0.12 мм</td>
-                        <td>380 × 380 × 580</td>
-                        <td>Дрібнодисперсний поліамід PA12 (Nylon)</td>
-                        <td>від 12.00 грн</td>
-                    </tr>
+                        <tr>
+                            <td align="center">
+                                <strong>Селективне лазерне спікання (SLS)</strong>
+                            </td>
+                            <td>Дрібносерійне промислове спікання без підтримкових структур</td>
+                            <td>0.08 – 0.12 мм</td>
+                            <td>380 × 380 × 580</td>
+                            <td>Дрібнодисперсний поліамід PA12 (Nylon)</td>
+                            <td>від 12.00 грн</td>
+                        </tr>
 
-                    <tr>
-                        <td rowspan="2" align="center" bgcolor="#f1f5f9">
-                            <strong>Супутні інженерні сервіси</strong>
-                        </td>
-                        <td>3D-сканування фізичних зразків та реверс-інжиніринг</td>
-                        <td>до 0.04 мм</td>
-                        <td>до 2000 мм</td>
-                        <td colspan="2" align="center">
-                            Формування твердотільної CAD-моделі (.STEP, .STL) — від 450 грн/деталь
-                        </td>
-                    </tr>
+                        <tr>
+                            <td rowspan="2" align="center">
+                                <strong>Супутні інженерні сервіси</strong>
+                            </td>
+                            <td>3D-сканування фізичних зразків та реверс-інжиніринг</td>
+                            <td>до 0.04 мм</td>
+                            <td>до 2000 мм</td>
+                            <td colspan="2" align="center">
+                                Формування твердотільної CAD-моделі (.STEP, .STL) — від 450 грн/деталь
+                            </td>
+                        </tr>
 
-                    <tr>
-                        <td>Хімічне згладжування, ґрунтування та порошкове фарбування</td>
-                        <td colspan="2" align="center">Глянцева або матова поверхня</td>
-                        <td>Акрилові емалі, хімічні розчинники</td>
-                        <td>від 80 грн/виріб</td>
-                    </tr>
+                        <tr>
+                            <td>Хімічне згладжування, ґрунтування та порошкове фарбування</td>
+                            <td colspan="2" align="center">Глянцева або матова поверхня</td>
+                            <td>Акрилові емалі, хімічні розчинники</td>
+                            <td>від 80 грн/виріб</td>
+                        </tr>
 
-                    <tr>
-                        <td align="center" bgcolor="#f1f5f9">
-                            <strong>Інтернет-інтеграція</strong>
-                        </td>
-                        <td>Виготовлення за зовнішнім URL з Thingiverse/Printables</td>
-                        <td colspan="2" align="center">Визначається обраною технологією</td>
-                        <td>Будь-який матеріал на вибір клієнта</td>
-                        <td>За стандартним тарифом обраного матеріалу</td>
-                    </tr>
-                </tbody>
+                        <tr>
+                            <td align="center">
+                                <strong>Інтернет-інтеграція</strong>
+                            </td>
+                            <td>Виготовлення за зовнішнім URL з Thingiverse/Printables</td>
+                            <td colspan="2" align="center">Визначається обраною технологією</td>
+                            <td>Будь-який матеріал на вибір клієнта</td>
+                            <td>За стандартним тарифом обраного матеріалу</td>
+                        </tr>
+                    </tbody>
 
-                <tfoot>
-                    <tr bgcolor="#cbd5e1">
-                        <th colspan="2" align="left">
-                            Разом підтримуваних технологій:
-                        </th>
-                        <td colspan="4">
-                            <strong>3 базові методи друку + повний спектр постобробки та CAD-підготовки</strong>. Мінімальне замовлення — від 100 грн.
-                        </td>
-                    </tr>
-                </tfoot>
-            </table>
+                    <tfoot>
+                        <tr>
+                            <th colspan="2" align="left">
+                                Разом підтримуваних технологій:
+                            </th>
+                            <td colspan="4">
+                                <strong>3 базові методи друку + повний спектр постобробки та CAD-підготовки</strong>. Мінімальне замовлення — від 100 грн.
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
         </section>
 
-        <hr>
+        <div class="main-sidebar-grid">
 
-        <article id="technology-article">
-            <h2>Як працює сервіс «3dMaker»: від ідеї до готового фізичного виробу</h2>
-            <p>
-                Сучасне адитивне виробництво пройшло шлях від експериментальних лабораторій до надійного методу створення готової кінцевої продукції.
-                У лабораторії <strong>3dMaker</strong> процес замовлення побудований за принципом повної прозорості:
-            </p>
+            <article id="technology-article" class="hero-banner">
+                <h2>Як працює сервіс «3dMaker»: від ідеї до готового фізичного виробу</h2>
+                <div class="clearfix">
+                    <img src="assets/images/fdm.svg" alt="Процес пошарового наплавлення матеріалу на 3D-принтері" width="280" class="float-left-img photo-interactive" tabindex="0">
+                    <p class="article-intro">
+                        Сучасне адитивне виробництво пройшло шлях від експериментальних лабораторій до надійного методу створення готової кінцевої продукції.
+                        У лабораторії <strong>3dMaker</strong> процес замовлення побудований за принципом повної прозорості.
+                    </p>
+                    <p>
+                        Коли ви завантажуєте модель або вказуєте посилання на сторонній репозиторій, наш автоматичний парсер зчитує
+                        тривимірну сітку, перевіряє її на наявність замкненого об'єму (non-manifold edges) та розраховує точну масу матеріалу.
+                        Далі деталь передається на друк на відповідному обладнанні.
+                    </p>
+                </div>
 
-            <figure>
-                <img src="assets/images/fdm.svg" alt="Процес пошарового наплавлення матеріалу на 3D-принтері" width="450">
-                <figcaption><em>Рис. 1. Схематичне зображення робочого процесу екструзійного 3D-друку (FDM).</em></figcaption>
-            </figure>
+                <section id="media-section" style="margin-top: 24px;">
+                    <h3>Мультимедійна презентація роботи обладнання лабораторії</h3>
 
-            <p>
-                Коли ви завантажуєте модель або вказуєте посилання на сторонній репозиторій, наш автоматичний парсер зчитує
-                тривимірну сітку, перевіряє її на наявність замкненого об'єму (non-manifold edges) та розраховує точну масу матеріалу.
-                Далі деталь передається на друк на відповідному обладнанні.
-            </p>
-
-            <section id="media-section">
-                <h3>Мультимедійна презентація роботи обладнання лабораторії</h3>
-
-                <table border="0" cellpadding="10" cellspacing="0" width="100%">
-                    <tr>
-                        <td width="50%" valign="top">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 14px;">
+                        <div>
                             <h4>Відеозапис процесу високошвидкісного 3D-друку:</h4>
-                            <video width="420" height="260" controls poster="assets/images/fdm.svg">
+                            <video width="100%" height="220" controls poster="assets/images/fdm.svg" style="border-radius: var(--radius-md); border: 1px solid var(--color-border); background: #000;">
                                 <source src="assets/media/printer-demo.mp4" type="video/mp4">
-                                <p>Ваш браузер не підтримує відтворення HTML5-відео. Ви можете завантажити файл безпосередньо.</p>
+                                <p>Ваш браузер не підтримує відтворення HTML5-відео.</p>
                             </video>
-                            <p><small><em>Відео демонструє формування складного виробу шар за шаром.</em></small></p>
-                        </td>
-                        <td width="50%" valign="top">
-                            <h4>Аудіогід лабораторії та звуковий супровід виробництва:</h4>
-                            <audio controls>
+                        </div>
+                        <div>
+                            <h4>Аудіогід лабораторії та сигнали обладнання:</h4>
+                            <audio controls style="width: 100%; margin-top: 10px;">
                                 <source src="assets/media/audio-presentation.wav" type="audio/wav">
                                 <p>Ваш браузер не підтримує елемент <code>audio</code>.</p>
                             </audio>
-                            <p>
-                                <small><em>Аудіозапис знайомить замовника з правилами техніки безпеки та звуковим сигналом завершення друку.</em></small>
-                            </p>
-
-                            <hr>
-
-                            <h4>Корисні зовнішні ресурси для пошуку готових 3D-моделей:</h4>
-                            <ul>
-                                <li>
-                                    <a href="https://www.thingiverse.com/" target="_blank" rel="noopener noreferrer">
-                                        Thingiverse.com — найбільша вільна база моделей для 3D-друку
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://www.printables.com/" target="_blank" rel="noopener noreferrer">
-                                        Printables.com — офіційна спільнота високоякісних 3D-моделей Prusa
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://cults3d.com/" target="_blank" rel="noopener noreferrer">
-                                        Cults3D — каталог дизайнерських та інженерних 3D-проєктів
-                                    </a>
-                                </li>
+                            <h4 style="margin-top: 16px;">Зовнішні сховища 3D-моделей:</h4>
+                            <ul style="margin-left: 18px; line-height: 1.8;">
+                                <li><a href="https://www.thingiverse.com/" target="_blank" rel="noopener noreferrer">Thingiverse.com</a></li>
+                                <li><a href="https://www.printables.com/" target="_blank" rel="noopener noreferrer">Printables.com</a></li>
+                                <li><a href="https://cults3d.com/" target="_blank" rel="noopener noreferrer">Cults3D.com</a></li>
                             </ul>
-                        </td>
-                    </tr>
-                </table>
-            </section>
-        </article>
+                        </div>
+                    </div>
+                </section>
+            </article>
 
-        <hr>
+            <aside id="useful-tips" class="scrollable-content-box">
+                <h3 style="color: var(--color-primary-light);">💡 Поради інженера 3dMaker</h3>
+                <blockquote style="margin: 10px 0; border-left: 2px solid var(--color-primary); padding-left: 10px;">
+                    <p style="font-size: 0.92rem; color: #94a3b8; margin-bottom: 6px;">
+                        «Перед завантаженням файлу перевірте, чи товщина стінок виробу становить не менше <strong>1.2 мм</strong> для FDM-друку
+                        та не менше <strong>0.8 мм</strong> для фотополімерного SLA-друку.»
+                    </p>
+                    <cite style="color: var(--color-primary-light); font-size: 0.82rem;">— Головний інженер Коваленко О. В.</cite>
+                </blockquote>
 
-        <aside id="useful-tips">
-            <h3>Поради інженера 3dMaker щодо підготовки моделей</h3>
-            <blockquote>
-                <p>
-                    «Перед завантаженням файлу перевірте, чи товщина стінок виробу становить не менше <strong>1.2 мм</strong> для FDM-друку
-                    та не менше <strong>0.8 мм</strong> для фотополімерного SLA-друку. Це забезпечить достатню міцність вашого виробу під час експлуатації.»
-                </p>
-                <cite>— Головний інженер виробництва 3dMaker, Коваленко О. В.</cite>
-            </blockquote>
+                <h4 style="margin-top: 14px; border-bottom: 1px solid var(--color-border); padding-bottom: 4px;">Короткий довідник полімерів:</h4>
+                <dl style="font-size: 0.88rem;">
+                    <dt style="color: var(--color-primary-light); margin-top: 8px;"><strong>PLA (Полілактид)</strong></dt>
+                    <dd style="color: var(--color-text-muted);">Екологічний жорсткий термопласт із кукурудзяного крохмалю. Ідеальний для макетів та прототипів.</dd>
 
-            <h4>Короткий довідник матеріалів:</h4>
-            <dl>
-                <dt><strong>PLA (Полілактид)</strong></dt>
-                <dd>Екологічний жорсткий термопласт із кукурудзяного крохмалю. Ідеальний для макетів, декору та прототипів.</dd>
+                    <dt style="color: var(--color-primary-light); margin-top: 8px;"><strong>PETG (Кополіефір)</strong></dt>
+                    <dd style="color: var(--color-text-muted);">Ударостійкий, вологостійкий та хімічно стійкий пластик. Найкращий вибір для побутових і автодеталей.</dd>
 
-                <dt><strong>PETG (Поліетилентерефталатгліколь)</strong></dt>
-                <dd>Ударостійкий, вологостійкий та хімічно стійкий пластик. Найкращий вибір для функціональних побутових і автодеталей.</dd>
+                    <dt style="color: var(--color-primary-light); margin-top: 8px;"><strong>ABS (Термостійкий)</strong></dt>
+                    <dd style="color: var(--color-text-muted);">Міцний пластик, що витримує температуру до 95°C і піддається хімічному ацетоновому згладжуванню.</dd>
 
-                <dt><strong>ABS (Акрилонітрилбутадієнстирол)</strong></dt>
-                <dd>Термостійкий міцний пластик, що витримує температуру до 95°C і піддається ацетоновому згладжуванню.</dd>
+                    <dt style="color: var(--color-primary-light); margin-top: 8px;"><strong>Фотополімерна смола (Resin)</strong></dt>
+                    <dd style="color: var(--color-text-muted);">Рідкий полімер, що твердне під УФ-випромінюванням. Забезпечує мікроскопічну деталізацію до 22 мікрон.</dd>
 
-                <dt><strong>Фотополімерна смола (Resin)</strong></dt>
-                <dd>Рідкий полімер, що твердне під УФ-випромінюванням. Забезпечує мікроскопічну деталізацію до 25 мікрон.</dd>
-            </dl>
-        </aside>
+                    <dt style="color: var(--color-primary-light); margin-top: 8px;"><strong>Nylon PA12 (Поліамід)</strong></dt>
+                    <dd style="color: var(--color-text-muted);">Промисловий самозмащувальний пластик для високонавантажених шестерень та коліс.</dd>
+                </dl>
+            </aside>
+
+        </div>
 
     </main>
 
-    <hr>
-
     <footer id="contacts">
-        <table width="100%" border="0" cellpadding="8" cellspacing="0">
-            <tr>
-                <td width="35%" valign="top">
-                    <h4>Контактна інформація та адреса сервісу:</h4>
+        <div class="page-grid-layout" style="grid-template-columns: 1.5fr 1.5fr 1fr; gap: 24px; padding: 0;">
+            <div>
+                <h4>Контактна інформація та адреса сервісу:</h4>
+                <div class="contacts-v9" title="Наведіть курсор та затримайте на 2 секунди для збільшення шрифту">
                     <address>
                         <strong>Сервісний центр 3dMaker</strong><br>
                         вул. Академіка Глушкова, буд. 42, корпус 6<br>
@@ -420,39 +483,39 @@
                         📱 <a href="tel:+380671234567">+38 (067) 123-45-67</a><br>
                         Електронна пошта: ✉️ <a href="mailto:support@3dmaker.ua">support@3dmaker.ua</a>
                     </address>
-                </td>
-                <td width="35%" valign="top">
-                    <h4>Графік роботи виробництва:</h4>
-                    <p>
-                        Понеділок – П'ятниця: з 09:00 до 19:00<br>
-                        Субота: з 10:00 до 16:00<br>
-                        Неділя: черговий прийом онлайн-заявок<br>
-                        <em>Видача замовлень та кур'єрська доставка діють по всій території України.</em>
-                    </p>
-                </td>
-                <td width="30%" valign="top">
-                    <h4>Швидкі посилання:</h4>
-                    <ul>
-                        <li><a href="index.html">Головна сторінка</a></li>
-                        <li><a href="services.html">Каталог послуг виготовлення</a></li>
-                        <li><a href="models-catalog.html">Каталог моделей спільноти</a></li>
-                        <li><a href="reviews.html">Відгуки клієнтів</a></li>
-                        <li><a href="feedback.html">Форма зворотного зв'язку</a></li>
-                        <li><a href="#top">Повернутися нагору сторінки ⬆️</a></li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="3" align="center">
-                    <hr>
-                    <p>
-                        &copy; 2026 <strong>3dMaker</strong> — Сервісний сайт із виготовлення виробів на 3D-принтерах. Всі права захищено.
-                        <br>
-                        <small>Лабораторна робота №1 з дисципліни «Розробка фронтенду програмних систем». Варіант №9.</small>
-                    </p>
-                </td>
-            </tr>
-        </table>
+                </div>
+            </div>
+
+            <div>
+                <h4>Графік роботи виробництва:</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8;">
+                    Понеділок – П'ятниця: з 09:00 до 19:00<br>
+                    Субота: з 10:00 до 16:00<br>
+                    Неділя: черговий прийом онлайн-заявок<br>
+                    <em>Видача замовлень та кур'єрська доставка діють по всій території України.</em>
+                </p>
+            </div>
+
+            <div>
+                <h4>Швидкі посилання:</h4>
+                <ul style="list-style: none; line-height: 2;">
+                    <li><a href="index.html" class="nav-link">Головна сторінка</a></li>
+                    <li><a href="services.html" class="nav-link">Каталог послуг</a></li>
+                    <li><a href="models-catalog.html" class="nav-link">Каталог моделей</a></li>
+                    <li><a href="reviews.html" class="nav-link">Відгуки клієнтів</a></li>
+                    <li><a href="feedback.html" class="nav-link">Зворотній зв'язок</a></li>
+                    <li><a href="#site-header" class="nav-link">Вгору сторінки ⬆️</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px; border-top: 1px solid var(--color-border); padding-top: 18px;">
+            <p style="color: var(--color-text-muted); font-size: 0.9rem;">
+                &copy; 2026 <strong>3dMaker</strong> — Сервісний сайт із виготовлення виробів на 3D-принтерах. Всі права захищено.
+                <br>
+                <small>Лабораторна робота №2 з дисципліни «Розробка фронтенду програмних систем». Варіант №9.</small>
+            </p>
+        </div>
     </footer>
 
 </body>

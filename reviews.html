@@ -5,224 +5,211 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Відгуки клієнтів сервісного центру 3dMaker: оцінки якості 3D-друку, виготовлення деталей, термінів виконання та досвід замовлення за посиланнями з Thingiverse.">
     <title>Відгуки про сервіси — 3dMaker</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <style>
+        .review-card {
+            background-color: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-left: 4px solid var(--color-primary);
+            border-radius: var(--radius-md);
+            padding: 22px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-hi-tech);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .review-card:hover {
+            transform: translateY(-3px);
+            border-left-color: var(--color-primary-light);
+        }
+
+        .review-rating-stars {
+            color: #fbbf24;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        a:active, button:active {
+            color: darkgreen !important;
+            border-color: darkgreen !important;
+        }
+    </style>
 </head>
 <body>
 
-    <header>
-        <table width="100%" border="0" cellpadding="10" cellspacing="0">
+    <header id="site-header">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
             <tr>
-                <td width="30%" align="left">
-                    <a href="index.html">
-                        <img src="assets/images/logo.svg" alt="3dMaker Логотип" width="240" height="60">
+                <td width="28%" align="left">
+                    <a href="index.html" class="logo-box">
+                        <img src="assets/images/logo.svg" alt="3dMaker Логотип" width="220" height="55">
                     </a>
                 </td>
-                <td width="45%" align="center">
+                <td width="48%" align="center">
                     <nav>
-                        <p>
-                            <strong>Навігація:</strong> |
-                            <a href="index.html">Головна</a> |
-                            <a href="services.html">Каталог сервісів</a> |
-                            <a href="models-catalog.html">Каталог 3D-моделей</a> |
-                            <a href="reviews.html"><strong>Відгуки про сервіси</strong></a> |
-                            <a href="feedback.html">Зворотній зв’язок</a> |
-                        </p>
+                        <ul>
+                            <li><a href="index.html" class="nav-link">Головна</a></li>
+                            <li><a href="services.html" class="nav-link">Каталог сервісів</a></li>
+                            <li><a href="models-catalog.html" class="nav-link">Каталог 3D-моделей</a></li>
+                            <li><a href="reviews.html" class="nav-link" style="color: var(--color-primary-light); font-weight: bold;">Відгуки про сервіси</a></li>
+                            <li><a href="feedback.html" class="nav-link">Зворотній зв’язок</a></li>
+                        </ul>
                     </nav>
                 </td>
-                <td width="25%" align="right">
+                <td width="24%" align="right">
                     <a href="index.html">
-                        <button type="button">⬅️ На Головну</button>
+                        <button type="button" class="btn-secondary">⬅️ На Головну</button>
                     </a>
                     &nbsp;
                     <a href="cabinet.html">
-                        <button type="button">Мій кабінет</button>
+                        <button type="button" class="pulse-glow">Мій кабінет</button>
                     </a>
                 </td>
             </tr>
         </table>
-        <hr>
     </header>
 
-    <main>
-        <section>
+    <br>
+
+    <main class="page-grid-layout">
+        <section style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.8) 100%); padding: 24px; border-radius: var(--radius-lg); border: 1px solid var(--color-border);">
             <h1>Відгуки клієнтів про сервіси «3dMaker»</h1>
-            <p>
+            <p style="color: var(--color-text-muted);">
                 Тут ви можете ознайомитися зі справжніми відгуками користувачів, які замовляли виготовлення виробів,
                 3D-друк за моделями та прямий імпорт за веб-посиланнями в нашій лабораторії.
             </p>
         </section>
 
-        <hr>
-
         <section id="reviews-list">
 
-            <article>
-                <table border="1" cellpadding="8" cellspacing="0" width="100%">
-                    <tr bgcolor="#f1f5f9">
-                        <td width="70%">
-                            <strong>Олександр Мельник</strong> (Інженер-робототехнік, м. Харків)
-                        </td>
-                        <td width="30%" align="right">
-                            <span>⭐⭐⭐⭐⭐ (5/5) | <time datetime="2026-08-28">28 серпня 2026</time></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <p>
-                                <strong>Замовлена послуга:</strong> FDM-друк шестерень із пластику PETG та Nylon PA12.
-                            </p>
-                            <p>
-                                <em>«Дуже задоволений сервісом! Мені терміново потрібна була заміна зламаної шестерні в редукторі.
-                                Надіслав свій STL-файл через сайт о 10 ранку, а вже о 16:00 деталь була надрукована і відправлена поштою.
-                                Точність ідеальна, все сіло на вал без найменшого люфту. Окреме спасибі за акуратну постобробку!»</em>
-                            </p>
-                        </td>
-                    </tr>
-                </table>
+            <article class="review-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px solid var(--color-border); padding-bottom: 8px;">
+                    <div>
+                        <strong>Олександр Мельник</strong>
+                        <span style="color: var(--color-text-muted); font-size: 0.9rem;">(Інженер-робототехнік, м. Харків)</span>
+                    </div>
+                    <div class="review-rating-stars">
+                        ⭐⭐⭐⭐⭐ (5/5) &nbsp; <small style="color: var(--color-text-muted); font-weight: normal;"><time datetime="2026-08-28">28.08.2026</time></small>
+                    </div>
+                </div>
+                <p style="color: var(--color-primary-light); font-size: 0.95rem; margin-bottom: 6px;">
+                    <strong>Замовлена послуга:</strong> FDM-друк шестерень із пластику PETG та Nylon PA12.
+                </p>
+                <p style="color: #cbd5e1; font-style: italic;">
+                    «Дуже задоволений сервісом! Мені терміново потрібна була заміна зламаної шестерні в редукторі.
+                    Надіслав свій STL-файл через сайт о 10 ранку, а вже о 16:00 деталь була надрукована і відправлена поштою.
+                    Точність ідеальна, все сіло на вал без найменшого люфту. Окреме спасибі за акуратну постобробку!»
+                </p>
             </article>
 
-            <br>
-
-            <article>
-                <table border="1" cellpadding="8" cellspacing="0" width="100%">
-                    <tr bgcolor="#f1f5f9">
-                        <td width="70%">
-                            <strong>Катерина Василенко</strong> (Дизайнер інтер'єру, м. Київ)
-                        </td>
-                        <td width="30%" align="right">
-                            <span>⭐⭐⭐⭐⭐ (5/5) | <time datetime="2026-09-02">2 вересня 2026</time></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <p>
-                                <strong>Замовлена послуга:</strong> Виготовлення деталей за посиланням з Thingiverse та хімічне фарбування.
-                            </p>
-                            <p>
-                                <em>«Функція прямого імпорту за посиланням — це справжня знахідка! Я знайшла стильні кашпо для квітів
-                                на Thingiverse, просто вставила URL у кабінеті й сайт сам все прорахував. Не довелося нічого завантажувати й розбиратися в програмах.
-                                Отримала пофарбовані в матовий чорний колір вироби. Якість як із магазину!»</em>
-                            </p>
-                        </td>
-                    </tr>
-                </table>
+            <article class="review-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px solid var(--color-border); padding-bottom: 8px;">
+                    <div>
+                        <strong>Катерина Василенко</strong>
+                        <span style="color: var(--color-text-muted); font-size: 0.9rem;">(Дизайнер інтер'єру, м. Київ)</span>
+                    </div>
+                    <div class="review-rating-stars">
+                        ⭐⭐⭐⭐⭐ (5/5) &nbsp; <small style="color: var(--color-text-muted); font-weight: normal;"><time datetime="2026-09-02">02.09.2026</time></small>
+                    </div>
+                </div>
+                <p style="color: var(--color-primary-light); font-size: 0.95rem; margin-bottom: 6px;">
+                    <strong>Замовлена послуга:</strong> Виготовлення деталей за посиланням з Thingiverse та хімічне фарбування.
+                </p>
+                <p style="color: #cbd5e1; font-style: italic;">
+                    «Функція прямого імпорту за посиланням — це справжня знахідка! Я знайшла стильні кашпо для квітів
+                    на Thingiverse, просто вставила URL у кабінеті й сайт сам все прорахував. Не довелося нічого завантажувати й розбиратися в програмах.
+                    Отримала пофарбовані в матовий чорний колір вироби. Якість як із магазину!»
+                </p>
             </article>
 
-            <br>
-
-            <article>
-                <table border="1" cellpadding="8" cellspacing="0" width="100%">
-                    <tr bgcolor="#f1f5f9">
-                        <td width="70%">
-                            <strong>Сергій Бондаренко</strong> (Автомеханік, м. Дніпро)
-                        </td>
-                        <td width="30%" align="right">
-                            <span>⭐⭐⭐⭐☆ (4.5/5) | <time datetime="2026-09-05">5 вересня 2026</time></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <p>
-                                <strong>Замовлена послуга:</strong> 3D-сканування уламка кронштейна та друк з ABS-пластику.
-                            </p>
-                            <p>
-                                <em>«Оригінальний кронштейн фари на японське авто коштував шалених грошей і чекати треба було місяць.
-                                Хлопці з 3dMaker відсканували зламаний зразок, добудували відламане вушко в CAD і надрукували міцний аналог з ABS.
-                                Все підійшло чітко по отворах.»</em>
-                            </p>
-                        </td>
-                    </tr>
-                </table>
+            <article class="review-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px solid var(--color-border); padding-bottom: 8px;">
+                    <div>
+                        <strong>Сергій Бондаренко</strong>
+                        <span style="color: var(--color-text-muted); font-size: 0.9rem;">(Автомеханік, м. Дніпро)</span>
+                    </div>
+                    <div class="review-rating-stars">
+                        ⭐⭐⭐⭐☆ (4.5/5) &nbsp; <small style="color: var(--color-text-muted); font-weight: normal;"><time datetime="2026-09-05">05.09.2026</time></small>
+                    </div>
+                </div>
+                <p style="color: var(--color-primary-light); font-size: 0.95rem; margin-bottom: 6px;">
+                    <strong>Замовлена послуга:</strong> 3D-сканування уламка кронштейна та друк з ABS-пластику.
+                </p>
+                <p style="color: #cbd5e1; font-style: italic;">
+                    «Оригінальний кронштейн фари на японське авто коштував шалених грошей і чекати треба було місяць.
+                    Хлопці з 3dMaker відсканували зламаний зразок, добудували відламане вушко в CAD і надрукували міцний аналог з ABS.
+                    Все підійшло чітко по отворах.»
+                </p>
             </article>
 
         </section>
 
-        <hr>
-
-        <section id="add-review-section">
+        <section id="add-review-section" style="background-color: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 24px;">
             <h2>Залишити свій відгук про сервіс</h2>
-            <form action="#" method="post">
-                <table border="0" cellpadding="6" cellspacing="0">
-                    <tr>
-                        <td>
-                            <label for="review-author">Ваше ім'я та прізвище:</label>
-                        </td>
-                        <td>
-                            <input type="text" id="review-author" name="author" size="35" required>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="review-service">Яку послугу ви замовляли:</label>
-                        </td>
-                        <td>
-                            <select id="review-service" name="service">
-                                <option value="fdm">FDM-друк термопластами</option>
-                                <option value="sla">SLA фотополімерний друк</option>
-                                <option value="sls">SLS спікання поліаміду</option>
-                                <option value="url-print">Друк за посиланням з онлайн-каталогів</option>
-                                <option value="scan">3D-сканування та моделювання</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="review-rating">Ваша оцінка якості:</label>
-                        </td>
-                        <td>
-                            <select id="review-rating" name="rating">
-                                <option value="5">⭐⭐⭐⭐⭐ Відмінно (5)</option>
-                                <option value="4">⭐⭐⭐⭐ Добре (4)</option>
-                                <option value="3">⭐⭐⭐ Задовільно (3)</option>
-                                <option value="2">⭐⭐ Погано (2)</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td valign="top">
-                            <label for="review-text">Текст відгуку:</label>
-                        </td>
-                        <td>
-                            <textarea id="review-text" name="comment" rows="4" cols="45" maxlength="300" placeholder="Опишіть ваші враження від виготовленого виробу..." required></textarea>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <button type="submit">Опублікувати відгук</button>
-                        </td>
-                    </tr>
-                </table>
+            <form action="#" method="post" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 14px;">
+                <div>
+                    <label for="review-author">Ваше ім'я та прізвище:</label><br>
+                    <input type="text" id="review-author" name="author" placeholder="Олександр Іванов" required style="width: 100%; padding: 8px 12px; background: #090d16; border: 1px solid var(--color-border); border-radius: 4px; color: white; margin-top: 6px;">
+                </div>
+
+                <div>
+                    <label for="review-service">Яку послугу ви замовляли:</label><br>
+                    <select id="review-service" name="service" style="width: 100%; padding: 8px 12px; background: #090d16; border: 1px solid var(--color-border); border-radius: 4px; color: white; margin-top: 6px;">
+                        <option value="fdm">FDM-друк термопластами</option>
+                        <option value="sla">SLA фотополімерний друк</option>
+                        <option value="sls">SLS спікання поліаміду</option>
+                        <option value="url-print">Друк за посиланням з онлайн-каталогів</option>
+                        <option value="scan">3D-сканування та моделювання</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="review-rating">Ваша оцінка якості:</label><br>
+                    <select id="review-rating" name="rating" style="width: 100%; padding: 8px 12px; background: #090d16; border: 1px solid var(--color-border); border-radius: 4px; color: white; margin-top: 6px;">
+                        <option value="5">⭐⭐⭐⭐⭐ Відмінно (5)</option>
+                        <option value="4">⭐⭐⭐⭐ Добре (4)</option>
+                        <option value="3">⭐⭐⭐ Задовільно (3)</option>
+                        <option value="2">⭐⭐ Погано (2)</option>
+                    </select>
+                </div>
+
+                <div style="grid-column: 1 / -1;">
+                    <label for="review-text">Текст відгуку:</label><br>
+                    <textarea id="review-text" name="comment" rows="4" maxlength="300" placeholder="Опишіть ваші враження від якості виробу..." required style="width: 100%; padding: 10px; background: #090d16; border: 1px solid var(--color-border); border-radius: 4px; color: white; margin-top: 6px;"></textarea>
+                </div>
+
+                <div style="grid-column: 1 / -1;">
+                    <button type="submit">Опублікувати відгук</button>
+                </div>
             </form>
         </section>
 
-        <hr>
-
-        <p align="center">
+        <p align="center" style="margin: 20px 0;">
             <a href="index.html">
-                <button type="button">⬅️ Повернутися на Головну сторінку 3dMaker</button>
+                <button type="button" class="btn-secondary">⬅️ Повернутися на Головну сторінку 3dMaker</button>
             </a>
         </p>
 
     </main>
 
-    <hr>
-
     <footer>
-        <table width="100%" border="0" cellpadding="8" cellspacing="0">
-            <tr>
-                <td width="50%" align="left">
-                    <p>
-                        <strong>Сервісний центр 3D-друку 3dMaker</strong><br>
-                        м. Київ, вул. Академіка Глушкова, 42 | Тел: <a href="tel:+380442393222">+38 (044) 239-32-22</a>
-                    </p>
-                </td>
-                <td width="50%" align="right">
-                    <p>
-                        &copy; 2026 3dMaker. Лабораторна робота №1. Варіант 9.<br>
-                        <a href="#top">Вгору сторінки ⬆️</a>
-                    </p>
-                </td>
-            </tr>
-        </table>
+        <div class="page-grid-layout" style="grid-template-columns: 1fr 1fr; gap: 20px; padding: 0;">
+            <div>
+                <p>
+                    <strong>Сервісний центр 3D-друку 3dMaker</strong><br>
+                    м. Київ, вул. Академіка Глушкова, 42 | Тел: <a href="tel:+380442393222">+38 (044) 239-32-22</a>
+                </p>
+            </div>
+            <div align="right">
+                <p>
+                    &copy; 2026 3dMaker. Лабораторна робота №2. Варіант 9.<br>
+                    <a href="#site-header" class="nav-link">Вгору сторінки ⬆️</a>
+                </p>
+            </div>
+        </div>
     </footer>
 
 </body>
