@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
+  <rect width="100%" height="100%" fill="#f1f5f9" rx="8" />
+  <rect x="50" y="145" width="220" height="20" fill="#334155" rx="3" />
+  <rect x="55" y="140" width="210" height="8" fill="#10b981" opacity="0.8" />
+  <polygon points="160,170 120,140 200,140" fill="#a855f7" opacity="0.4" />
+  <rect x="100" y="40" width="120" height="15" fill="#475569" rx="2" />
+  <rect x="155" y="15" width="10" height="25" fill="#64748b" />
+  <path d="M140,55 L180,55 L175,90 L165,90 L170,125 L150,125 L155,90 L145,90 Z" fill="#34d399" stroke="#059669" stroke-width="2" />
+  <circle cx="160" cy="70" r="10" fill="#6ee7b7" />
+  <text x="160" y="190" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#1e293b">SLA / DLP Фотополімерний друк</text>
+</svg>

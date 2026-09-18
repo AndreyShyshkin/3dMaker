@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Сторінка зворотного зв'язку сервісного центру 3dMaker. Надішліть питання, пропозицію чи скаргу щодо послуг 3D-виробництва.">
+    <title>Зворотній зв’язок — 3dMaker</title>
+</head>
+<body>
+
+    <header>
+        <table width="100%" border="0" cellpadding="10" cellspacing="0">
+            <tr>
+                <td width="30%" align="left">
+                    <a href="index.html">
+                        <img src="assets/images/logo.svg" alt="3dMaker Логотип" width="240" height="60">
+                    </a>
+                </td>
+                <td width="45%" align="center">
+                    <nav>
+                        <p>
+                            <strong>Навігація:</strong> |
+                            <a href="index.html">Головна</a> |
+                            <a href="services.html">Каталог сервісів</a> |
+                            <a href="models-catalog.html">Каталог 3D-моделей</a> |
+                            <a href="reviews.html">Відгуки про сервіси</a> |
+                            <a href="feedback.html"><strong>Зворотній зв’язок</strong></a> |
+                        </p>
+                    </nav>
+                </td>
+                <td width="25%" align="right">
+                    <a href="index.html">
+                        <button type="button">⬅️ На Головну сторінку</button>
+                    </a>
+                    &nbsp;
+                    <a href="cabinet.html">
+                        <button type="button">Мій кабінет</button>
+                    </a>
+                </td>
+            </tr>
+        </table>
+        <hr>
+    </header>
+
+    <main>
+        <section id="feedback-section">
+            <h1>Форма зворотного зв'язку сервісу «3dMaker»</h1>
+            <p>
+                Шановні клієнти та партнери! За допомогою цієї форми ви можете звернутися до нашої інженерної служби,
+                надіслати пропозицію щодо співпраці, повідомити про помилку на сайті або залишити відгук щодо якості виготовленого виробу.
+            </p>
+
+            <form action="#" method="post">
+
+                <fieldset>
+                    <legend><strong>Персональна інформація</strong></legend>
+                    <table border="0" cellpadding="6" cellspacing="0">
+                        <tr>
+                            <td>
+                                <label for="fullname"><strong>1. Прізвище та ім’я:</strong></label>
+                            </td>
+                            <td>
+                                <input type="text" id="fullname" name="fullname" size="40" placeholder="Введіть ваше прізвище та ім'я" required autofocus>
+                                <span style="color: red;">*</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="email"><strong>2. E-mail адреса:</strong></label>
+                            </td>
+                            <td>
+                                <input type="email" id="email" name="email" size="40" placeholder="name@domain.com" required>
+                                <span style="color: red;">*</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="age"><strong>3. Вік (років):</strong></label>
+                            </td>
+                            <td>
+                                <input type="number" id="age" name="age" min="12" max="120" step="1" placeholder="Вкажіть ваш вік" required>
+                                <span style="color: red;">*</span>
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+
+                <br>
+
+                <fieldset>
+                    <legend><strong>Деталі звернення</strong></legend>
+                    <table border="0" cellpadding="6" cellspacing="0">
+                        <tr>
+                            <td valign="top">
+                                <label for="purpose"><strong>4. Мета зворотнього зв’язку:</strong></label>
+                            </td>
+                            <td>
+                                <select id="purpose" name="feedback_purpose" required>
+                                    <option value="" disabled selected>-- Оберіть варіант зі списку --</option>
+                                    <option value="співпраця">співпраця</option>
+                                    <option value="скарга на неякісний пошив">скарга на неякісний пошив (виготовлення виробу)</option>
+                                    <option value="пропозиція">пропозиція</option>
+                                    <option value="наявність помилки">наявність помилки</option>
+                                </select>
+                                <span style="color: red;">*</span>
+                                <br>
+                                <small><em>Оберіть категорію вашого звернення до адміністрації лабораторії 3dMaker.</em></small>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td valign="top">
+                                <label for="details"><strong>5. Текст звернення у поле «Детально»:</strong></label>
+                            </td>
+                            <td>
+                                <textarea id="details" name="details" rows="6" cols="48" maxlength="500" placeholder="Введіть текст вашого повідомлення (максимально допустимо до 500 символів)..." required></textarea>
+                                <span style="color: red;">*</span>
+                                <br>
+                                <small>
+                                    <em>Поле має фіксовані обмеження: висота = 6 рядків (<code>rows="6"</code>), ширина = 48 колонок (<code>cols="48"</code>), максимум 500 символів (<code>maxlength="500"</code>).</em>
+                                </small>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="2">
+                                <br>
+                                <input type="checkbox" id="consent" name="consent" required>
+                                <label for="consent">
+                                    <strong>7. Я даю згоду на обробку моїх персональних даних</strong> відповідно до Закону України «Про захист персональних даних».
+                                </label>
+                                <span style="color: red;">*</span>
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+
+                <br>
+
+                <table border="0" cellpadding="6" cellspacing="0">
+                    <tr>
+                        <td>
+                            <button type="submit">
+                                ✉️ Надіслати інформацію
+                            </button>
+                            &nbsp;&nbsp;
+                            <button type="reset">
+                                🔄 Очистити форму
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+
+                <p><small><span style="color: red;">*</span> — обов'язкові для заповнення поля.</small></p>
+
+            </form>
+        </section>
+
+        <hr>
+
+        <section>
+            <h3>Інші канали зв'язку з підтримкою</h3>
+            <p>
+                Якщо вам потрібна термінова консультація щодо статусу вашого 3D-друку, ви також можете зателефонувати:
+                <br>
+                📞 Телефон гарячої лінії: <a href="tel:+380442393222">+38 (044) 239-32-22</a> (щодня з 09:00 до 19:00)
+                <br>
+                ✉️ Технічний відділ: <a href="mailto:engineer@3dmaker.ua">engineer@3dmaker.ua</a>
+            </p>
+        </section>
+
+        <hr>
+
+        <p align="center">
+            <a href="index.html">
+                <button type="button">⬅️ Повернутися на Головну сторінку 3dMaker</button>
+            </a>
+        </p>
+
+    </main>
+
+    <hr>
+
+    <footer>
+        <table width="100%" border="0" cellpadding="8" cellspacing="0">
+            <tr>
+                <td width="50%" align="left">
+                    <p>
+                        <strong>Сервісний центр 3D-друку 3dMaker</strong><br>
+                        м. Київ, вул. Академіка Глушкова, 42 | Тел: <a href="tel:+380442393222">+38 (044) 239-32-22</a>
+                    </p>
+                </td>
+                <td width="50%" align="right">
+                    <p>
+                        &copy; 2026 3dMaker. Лабораторна робота №1. Варіант 9.<br>
+                        <a href="#top">Вгору сторінки ⬆️</a>
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </footer>
+
+</body>
+</html>
