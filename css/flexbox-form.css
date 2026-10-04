@@ -32,12 +32,12 @@
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     padding: 24px;
-    background: rgba(30, 41, 59, 0.35);
+    background: #faf8f4;
 }
 
 .flex-fieldset legend {
     padding: 0 12px;
-    color: var(--color-primary-light);
+    color: var(--color-text-main);
     font-weight: 700;
     font-size: 1.1rem;
 }
@@ -65,17 +65,17 @@
     font-family: var(--font-primary);
     font-size: 1rem;
     padding: 10px 14px;
-    background-color: #0b0f19;
+    background-color: #ffffff;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-sm);
-    color: #ffffff;
+    color: var(--color-text-main);
     transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .flex-input-control:focus {
     outline: none;
     border-color: var(--color-primary);
-    box-shadow: 0 0 12px rgba(2, 132, 199, 0.4);
+    box-shadow: 0 0 0 3px rgba(43, 76, 104, 0.1);
 }
 
 .flex-textarea {
@@ -150,12 +150,13 @@
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     padding: 20px;
+    box-shadow: var(--shadow-hi-tech);
     transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
 .flex-support-card:hover {
-    transform: translateY(-3px);
-    border-color: var(--color-primary);
+    transform: translateY(-2px);
+    border-color: var(--color-accent-gold);
 }
 
 @media (max-width: 650px) {

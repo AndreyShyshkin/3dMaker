@@ -23,11 +23,11 @@
 
         .review-card:hover {
             transform: translateY(-3px);
-            border-left-color: var(--color-primary-light);
+            border-left-color: var(--color-accent-gold);
         }
 
         .review-rating-stars {
-            color: #fbbf24;
+            color: #b58900;
             font-size: 1.1rem;
             font-weight: bold;
         }
@@ -75,7 +75,7 @@
     <br>
 
     <main class="page-grid-layout">
-        <section style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.8) 100%); padding: 24px; border-radius: var(--radius-lg); border: 1px solid var(--color-border);">
+        <section style="background: #ffffff; padding: 28px; border-radius: var(--radius-lg); border: 1px solid var(--color-border); box-shadow: var(--shadow-hi-tech);">
             <h1>Відгуки клієнтів про сервіси «3dMaker»</h1>
             <p style="color: var(--color-text-muted);">
                 Тут ви можете ознайомитися зі справжніми відгуками користувачів, які замовляли виготовлення виробів,
@@ -98,7 +98,7 @@
                 <p style="color: var(--color-primary-light); font-size: 0.95rem; margin-bottom: 6px;">
                     <strong>Замовлена послуга:</strong> FDM-друк шестерень із пластику PETG та Nylon PA12.
                 </p>
-                <p style="color: #cbd5e1; font-style: italic;">
+                <p style="color: #57534e; font-style: italic;">
                     «Дуже задоволений сервісом! Мені терміново потрібна була заміна зламаної шестерні в редукторі.
                     Надіслав свій STL-файл через сайт о 10 ранку, а вже о 16:00 деталь була надрукована і відправлена поштою.
                     Точність ідеальна, все сіло на вал без найменшого люфту. Окреме спасибі за акуратну постобробку!»
@@ -118,7 +118,7 @@
                 <p style="color: var(--color-primary-light); font-size: 0.95rem; margin-bottom: 6px;">
                     <strong>Замовлена послуга:</strong> Виготовлення деталей за посиланням з Thingiverse та хімічне фарбування.
                 </p>
-                <p style="color: #cbd5e1; font-style: italic;">
+                <p style="color: #57534e; font-style: italic;">
                     «Функція прямого імпорту за посиланням — це справжня знахідка! Я знайшла стильні кашпо для квітів
                     на Thingiverse, просто вставила URL у кабінеті й сайт сам все прорахував. Не довелося нічого завантажувати й розбиратися в програмах.
                     Отримала пофарбовані в матовий чорний колір вироби. Якість як із магазину!»
@@ -138,7 +138,7 @@
                 <p style="color: var(--color-primary-light); font-size: 0.95rem; margin-bottom: 6px;">
                     <strong>Замовлена послуга:</strong> 3D-сканування уламка кронштейна та друк з ABS-пластику.
                 </p>
-                <p style="color: #cbd5e1; font-style: italic;">
+                <p style="color: #57534e; font-style: italic;">
                     «Оригінальний кронштейн фари на японське авто коштував шалених грошей і чекати треба було місяць.
                     Хлопці з 3dMaker відсканували зламаний зразок, добудували відламане вушко в CAD і надрукували міцний аналог з ABS.
                     Все підійшло чітко по отворах.»
@@ -152,12 +152,12 @@
             <form action="#" method="post" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 14px;">
                 <div>
                     <label for="review-author">Ваше ім'я та прізвище:</label><br>
-                    <input type="text" id="review-author" name="author" placeholder="Олександр Іванов" required style="width: 100%; padding: 8px 12px; background: #090d16; border: 1px solid var(--color-border); border-radius: 4px; color: white; margin-top: 6px;">
+                    <input type="text" id="review-author" name="author" placeholder="Олександр Іванов" required style="width: 100%; padding: 8px 12px; background: #ffffff; border: 1px solid var(--color-border); border-radius: 4px; color: var(--color-text-main); margin-top: 6px;">
                 </div>
 
                 <div>
                     <label for="review-service">Яку послугу ви замовляли:</label><br>
-                    <select id="review-service" name="service" style="width: 100%; padding: 8px 12px; background: #090d16; border: 1px solid var(--color-border); border-radius: 4px; color: white; margin-top: 6px;">
+                    <select id="review-service" name="service" style="width: 100%; padding: 8px 12px; background: #ffffff; border: 1px solid var(--color-border); border-radius: 4px; color: var(--color-text-main); margin-top: 6px;">
                         <option value="fdm">FDM-друк термопластами</option>
                         <option value="sla">SLA фотополімерний друк</option>
                         <option value="sls">SLS спікання поліаміду</option>
@@ -168,7 +168,7 @@
 
                 <div>
                     <label for="review-rating">Ваша оцінка якості:</label><br>
-                    <select id="review-rating" name="rating" style="width: 100%; padding: 8px 12px; background: #090d16; border: 1px solid var(--color-border); border-radius: 4px; color: white; margin-top: 6px;">
+                    <select id="review-rating" name="rating" style="width: 100%; padding: 8px 12px; background: #ffffff; border: 1px solid var(--color-border); border-radius: 4px; color: var(--color-text-main); margin-top: 6px;">
                         <option value="5">⭐⭐⭐⭐⭐ Відмінно (5)</option>
                         <option value="4">⭐⭐⭐⭐ Добре (4)</option>
                         <option value="3">⭐⭐⭐ Задовільно (3)</option>
@@ -178,7 +178,7 @@
 
                 <div style="grid-column: 1 / -1;">
                     <label for="review-text">Текст відгуку:</label><br>
-                    <textarea id="review-text" name="comment" rows="4" maxlength="300" placeholder="Опишіть ваші враження від якості виробу..." required style="width: 100%; padding: 10px; background: #090d16; border: 1px solid var(--color-border); border-radius: 4px; color: white; margin-top: 6px;"></textarea>
+                    <textarea id="review-text" name="comment" rows="4" maxlength="300" placeholder="Опишіть ваші враження від якості виробу..." required style="width: 100%; padding: 10px; background: #ffffff; border: 1px solid var(--color-border); border-radius: 4px; color: var(--color-text-main); margin-top: 6px;"></textarea>
                 </div>
 
                 <div style="grid-column: 1 / -1;">

@@ -1,16 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" width="220" height="220">
-  <rect width="100%" height="100%" fill="#0b1329" rx="10" stroke="#1e293b" stroke-width="1.5" />
+  <rect width="100%" height="100%" fill="#fdfbf7" rx="10" stroke="#e5dfd3" stroke-width="1.5" />
   <g transform="translate(110,105)">
-    <circle cx="0" cy="0" r="26" fill="#1e293b" stroke="#38bdf8" stroke-width="2" />
-    <line x1="-70" y1="-70" x2="70" y2="70" stroke="#334155" stroke-width="14" stroke-linecap="round" />
-    <line x1="-70" y1="70" x2="70" y2="-70" stroke="#334155" stroke-width="14" stroke-linecap="round" />
-    <line x1="-70" y1="-70" x2="70" y2="70" stroke="#0ea5e9" stroke-width="4" stroke-linecap="round" />
-    <line x1="-70" y1="70" x2="70" y2="-70" stroke="#0ea5e9" stroke-width="4" stroke-linecap="round" />
-    <circle cx="-70" cy="-70" r="16" fill="#0284c7" stroke="#38bdf8" stroke-width="2" />
-    <circle cx="70" cy="70" r="16" fill="#0284c7" stroke="#38bdf8" stroke-width="2" />
-    <circle cx="-70" cy="70" r="16" fill="#0284c7" stroke="#38bdf8" stroke-width="2" />
-    <circle cx="70" cy="-70" r="16" fill="#0284c7" stroke="#38bdf8" stroke-width="2" />
-    <circle cx="0" cy="0" r="12" fill="#f59e0b" />
+    <circle cx="0" cy="0" r="26" fill="#2c3e50" stroke="#1d2d44" stroke-width="2" />
+    <line x1="-70" y1="-70" x2="70" y2="70" stroke="#dcd5c7" stroke-width="12" stroke-linecap="round" />
+    <line x1="-70" y1="70" x2="70" y2="-70" stroke="#dcd5c7" stroke-width="12" stroke-linecap="round" />
+
+    <circle cx="-65" cy="-65" r="16" fill="#ffffff" stroke="#b58900" stroke-width="2" />
+    <circle cx="65" cy="-65" r="16" fill="#ffffff" stroke="#b58900" stroke-width="2" />
+    <circle cx="-65" cy="65" r="16" fill="#ffffff" stroke="#b58900" stroke-width="2" />
+    <circle cx="65" cy="65" r="16" fill="#ffffff" stroke="#b58900" stroke-width="2" />
+
+    <circle cx="0" cy="0" r="14" fill="#b58900" />
+    <circle cx="0" cy="-10" r="3" fill="#ffffff" />
   </g>
-  <text x="110" y="202" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" fill="#7dd3fc">Рама FPV 5" Carbon</text>
 </svg>

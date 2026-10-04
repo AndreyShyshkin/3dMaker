@@ -1,53 +1,41 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 210" width="360" height="210">
   <defs>
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0b1329" />
-      <stop offset="100%" stop-color="#070b18" />
+      <stop offset="0%" stop-color="#fdfbf7" />
+      <stop offset="100%" stop-color="#f4efe6" />
     </linearGradient>
     <linearGradient id="bedGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#1e293b" />
-      <stop offset="50%" stop-color="#334155" />
-      <stop offset="100%" stop-color="#1e293b" />
-    </linearGradient>
-    <linearGradient id="heatGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#0284c7" />
-      <stop offset="50%" stop-color="#38bdf8" />
-      <stop offset="100%" stop-color="#0284c7" />
+      <stop offset="0%" stop-color="#e5dfd3" />
+      <stop offset="50%" stop-color="#dcd5c7" />
+      <stop offset="100%" stop-color="#e5dfd3" />
     </linearGradient>
     <linearGradient id="partGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#38bdf8" />
-      <stop offset="100%" stop-color="#0284c7" />
+      <stop offset="0%" stop-color="#3e5c76" />
+      <stop offset="100%" stop-color="#1d2d44" />
     </linearGradient>
-    <filter id="glowFdm">
-      <feGaussianBlur stdDeviation="3" result="blur" />
-      <feMerge>
-        <feMergeNode in="blur" />
-        <feMergeNode in="SourceGraphic" />
-      </feMerge>
-    </filter>
   </defs>
 
-  <rect width="100%" height="100%" fill="url(#bgGrad)" rx="10" stroke="#1e293b" stroke-width="1.5" />
+  <rect width="100%" height="100%" fill="url(#bgGrad)" rx="10" stroke="#e5dfd3" stroke-width="1.5" />
 
-  <line x1="20" y1="50" x2="340" y2="50" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,4" />
-  <line x1="20" y1="100" x2="340" y2="100" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,4" />
-  <line x1="20" y1="150" x2="340" y2="150" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,4" />
+  <line x1="20" y1="50" x2="340" y2="50" stroke="#ece6db" stroke-width="1" stroke-dasharray="4,4" />
+  <line x1="20" y1="100" x2="340" y2="100" stroke="#ece6db" stroke-width="1" stroke-dasharray="4,4" />
+  <line x1="20" y1="150" x2="340" y2="150" stroke="#ece6db" stroke-width="1" stroke-dasharray="4,4" />
 
-  <rect x="50" y="152" width="260" height="14" fill="url(#bedGrad)" rx="3" stroke="#475569" stroke-width="1" />
-  <rect x="60" y="148" width="240" height="4" fill="url(#heatGrad)" filter="url(#glowFdm)" />
+  <rect x="50" y="152" width="260" height="14" fill="url(#bedGrad)" rx="3" stroke="#cfc7b6" stroke-width="1" />
+  <rect x="60" y="148" width="240" height="4" fill="#b58900" opacity="0.8" />
 
-  <rect x="100" y="112" width="160" height="36" fill="url(#partGrad)" rx="2" stroke="#7dd3fc" stroke-width="1.5" />
-  <rect x="125" y="82" width="110" height="30" fill="#0284c7" rx="2" stroke="#38bdf8" stroke-width="1.5" />
-  <rect x="150" y="62" width="60" height="20" fill="#0369a1" rx="2" stroke="#38bdf8" stroke-width="1.5" />
+  <rect x="100" y="112" width="160" height="36" fill="url(#partGrad)" rx="2" stroke="#2c3e50" stroke-width="1.5" />
+  <rect x="125" y="82" width="110" height="30" fill="#2b4c68" rx="2" stroke="#1d2d44" stroke-width="1.5" />
+  <rect x="150" y="62" width="60" height="20" fill="#3d5a80" rx="2" stroke="#2b4c68" stroke-width="1.5" />
 
-  <line x1="102" y1="122" x2="258" y2="122" stroke="#bae6fd" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.8" />
-  <line x1="102" y1="132" x2="258" y2="132" stroke="#bae6fd" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.8" />
-  <line x1="102" y1="142" x2="258" y2="142" stroke="#bae6fd" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.8" />
+  <line x1="102" y1="122" x2="258" y2="122" stroke="#98c1d9" stroke-width="1.2" stroke-dasharray="3,2" opacity="0.6" />
+  <line x1="102" y1="132" x2="258" y2="132" stroke="#98c1d9" stroke-width="1.2" stroke-dasharray="3,2" opacity="0.6" />
+  <line x1="102" y1="142" x2="258" y2="142" stroke="#98c1d9" stroke-width="1.2" stroke-dasharray="3,2" opacity="0.6" />
 
-  <rect x="162" y="24" width="36" height="26" fill="#334155" rx="3" stroke="#64748b" stroke-width="1.5" />
-  <polygon points="172,50 188,50 180,62" fill="#f59e0b" stroke="#fbbf24" stroke-width="1" filter="url(#glowFdm)" />
-  <line x1="180" y1="5" x2="180" y2="24" stroke="#ef4444" stroke-width="3.5" stroke-linecap="round" />
+  <rect x="165" y="15" width="30" height="25" fill="#dcd5c7" rx="2" stroke="#b5ad9e" stroke-width="1" />
+  <polygon points="170,40 190,40 183,52 177,52" fill="#b58900" stroke="#967000" stroke-width="1" />
+  <circle cx="180" cy="56" r="2.5" fill="#b58900" />
 
-  <rect x="80" y="180" width="200" height="22" fill="#0f172a" rx="11" stroke="#334155" stroke-width="1" />
-  <text x="180" y="195" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" fill="#38bdf8" letter-spacing="1">FDM / FFF ПОШАРОВИЙ ДРУК</text>
+  <rect x="90" y="178" width="180" height="22" fill="#ffffff" rx="11" stroke="#e5dfd3" stroke-width="1" />
+  <text x="180" y="193" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" fill="#2c3e50" letter-spacing="1">FDM / FFF ТЕХНОЛОГІЯ</text>
 </svg>
