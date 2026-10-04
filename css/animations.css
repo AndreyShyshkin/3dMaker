@@ -4,12 +4,12 @@
         transform: scale(1);
     }
     50% {
-        filter: grayscale(50%) contrast(110%);
-        transform: scale(1.02);
+        filter: grayscale(50%) contrast(105%);
+        transform: scale(1.01);
     }
     100% {
-        filter: grayscale(100%) contrast(120%);
-        transform: scale(1.03);
+        filter: grayscale(100%) contrast(110%);
+        transform: scale(1.02);
     }
 }
 
@@ -21,31 +21,31 @@
     animation-fill-mode: forwards;
 }
 
-@keyframes neon-pulse {
+@keyframes warm-pulse {
     0%, 100% {
-        box-shadow: 0 0 5px rgba(2, 132, 199, 0.4), 0 0 10px rgba(2, 132, 199, 0.2);
+        box-shadow: 0 0 0 rgba(181, 137, 0, 0);
     }
     50% {
-        box-shadow: 0 0 15px rgba(56, 189, 248, 0.8), 0 0 25px rgba(2, 132, 199, 0.5);
+        box-shadow: 0 0 14px rgba(181, 137, 0, 0.35);
     }
 }
 
 .pulse-glow {
-    animation: neon-pulse 2.5s infinite ease-in-out;
+    animation: warm-pulse 2.5s infinite ease-in-out;
 }
 
 @keyframes laser-scan {
     0% {
         transform: translateY(0) scaleX(0.95);
-        opacity: 0.4;
+        opacity: 0.3;
     }
     50% {
         transform: translateY(80px) scaleX(1);
-        opacity: 0.85;
+        opacity: 0.7;
     }
     100% {
         transform: translateY(0) scaleX(0.95);
-        opacity: 0.4;
+        opacity: 0.3;
     }
 }
 
@@ -61,7 +61,7 @@
 }
 
 .rotate-tech-icon:hover {
-    transform: rotate(15deg) scale(1.1);
+    transform: rotate(15deg) scale(1.05);
 }
 
 @keyframes slide-down-fade {

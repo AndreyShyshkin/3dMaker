@@ -1,32 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 210" width="360" height="210">
   <defs>
     <linearGradient id="bgScan" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0b1329" />
-      <stop offset="100%" stop-color="#070b18" />
+      <stop offset="0%" stop-color="#fdfbf7" />
+      <stop offset="100%" stop-color="#f4efe6" />
     </linearGradient>
-    <filter id="cyanGlow">
-      <feGaussianBlur stdDeviation="3" result="blur" />
-      <feMerge>
-        <feMergeNode in="blur" />
-        <feMergeNode in="SourceGraphic" />
-      </feMerge>
-    </filter>
   </defs>
 
-  <rect width="100%" height="100%" fill="url(#bgScan)" rx="10" stroke="#1e293b" stroke-width="1.5" />
+  <rect width="100%" height="100%" fill="url(#bgScan)" rx="10" stroke="#e5dfd3" stroke-width="1.5" />
 
-  <ellipse cx="190" cy="155" rx="90" ry="22" fill="#1e293b" stroke="#475569" stroke-width="2" />
-  <ellipse cx="190" cy="153" rx="80" ry="18" fill="#0f172a" />
+  <line x1="20" y1="50" x2="340" y2="50" stroke="#ece6db" stroke-width="1" stroke-dasharray="4,4" />
+  <line x1="20" y1="100" x2="340" y2="100" stroke="#ece6db" stroke-width="1" stroke-dasharray="4,4" />
+  <line x1="20" y1="150" x2="340" y2="150" stroke="#ece6db" stroke-width="1" stroke-dasharray="4,4" />
 
-  <rect x="170" y="85" width="40" height="60" fill="#0284c7" stroke="#38bdf8" stroke-width="1.5" rx="3" />
-  <circle cx="190" cy="75" r="16" fill="#38bdf8" stroke="#7dd3fc" stroke-width="1.5" />
+  <ellipse cx="250" cy="155" rx="55" ry="14" fill="#e5dfd3" stroke="#cfc7b6" stroke-width="1.5" />
 
-  <rect x="45" y="45" width="36" height="60" fill="#1e293b" rx="4" stroke="#64748b" stroke-width="1.5" />
-  <circle cx="63" cy="62" r="10" fill="#06b6d4" filter="url(#cyanGlow)" />
-  <circle cx="63" cy="85" r="6" fill="#0ea5e9" />
+  <path d="M230,145 L270,145 L265,95 L255,80 L245,80 L235,95 Z" fill="#2c3e50" stroke="#1d2d44" stroke-width="1.5" />
 
-  <path d="M81,55 L165,70 M81,62 L165,92 M81,70 L165,115 M81,78 L165,138" stroke="#06b6d4" stroke-width="1.5" stroke-dasharray="2,3" opacity="0.9" filter="url(#cyanGlow)" />
+  <polygon points="50,75 80,60 80,120 50,105" fill="#dcd5c7" stroke="#b5ad9e" stroke-width="1.5" />
+  <circle cx="75" cy="90" r="8" fill="#2b4c68" />
 
-  <rect x="50" y="180" width="260" height="22" fill="#0f172a" rx="11" stroke="#334155" stroke-width="1" />
-  <text x="180" y="195" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" fill="#06b6d4" letter-spacing="1">ОПТИЧНЕ 3D-СКАНУВАННЯ ТА CAD</text>
+  <polygon points="80,70 235,80 230,145 80,110" fill="#b58900" opacity="0.15" />
+
+  <rect x="75" y="178" width="210" height="22" fill="#ffffff" rx="11" stroke="#e5dfd3" stroke-width="1" />
+  <text x="180" y="193" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" fill="#2c3e50" letter-spacing="1">3D-СКАНУВАННЯ ТА РЕВЕРС</text>
 </svg>

@@ -34,10 +34,10 @@
         .reg-input {
             width: 100%;
             padding: 10px 14px;
-            background: #090d16;
+            background: #ffffff;
             border: 1px solid var(--color-border);
             border-radius: var(--radius-sm);
-            color: #ffffff;
+            color: var(--color-text-main);
             font-size: 1rem;
             transition: border-color 0.25s ease, box-shadow 0.25s ease;
         }
@@ -45,7 +45,7 @@
         .reg-input:focus {
             outline: none;
             border-color: var(--color-primary);
-            box-shadow: 0 0 10px rgba(2, 132, 199, 0.4);
+            box-shadow: 0 0 0 3px rgba(43, 76, 104, 0.1);
         }
 
         a:active, button:active {
@@ -99,7 +99,7 @@
             </p>
 
             <form action="cabinet.html" method="post">
-                <fieldset style="border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 24px; background: rgba(30, 41, 59, 0.25);">
+                <fieldset style="border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 24px; background: #faf8f4; border: 1px solid var(--color-border);">
                     <legend style="color: var(--color-primary-light); padding: 0 10px; font-weight: bold;">
                         Облікові дані користувача
                     </legend>
@@ -144,14 +144,14 @@
 
                     <div style="margin-top: 14px;">
                         <input type="checkbox" id="reg-terms" name="reg_terms" required>
-                        <label for="reg-terms" style="color: #cbd5e1; font-size: 0.95rem;">
+                        <label for="reg-terms" style="color: var(--color-text-main); font-size: 0.95rem;">
                             Я погоджуюся з <strong>Правилами сервісу</strong> та Політикою конфіденційності.
                         </label>
                     </div>
 
                     <div style="margin-top: 8px;">
                         <input type="checkbox" id="reg-newsletter" name="reg_newsletter" checked>
-                        <label for="reg-newsletter" style="color: #cbd5e1; font-size: 0.95rem;">
+                        <label for="reg-newsletter" style="color: var(--color-text-main); font-size: 0.95rem;">
                             Отримувати сповіщення про знижки на матеріали та нові послуги.
                         </label>
                     </div>

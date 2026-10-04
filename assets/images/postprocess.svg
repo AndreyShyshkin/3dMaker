@@ -1,32 +1,27 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 210" width="360" height="210">
   <defs>
     <linearGradient id="bgPost" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0b1329" />
-      <stop offset="100%" stop-color="#070b18" />
+      <stop offset="0%" stop-color="#fdfbf7" />
+      <stop offset="100%" stop-color="#f4efe6" />
     </linearGradient>
-    <filter id="pinkGlow">
-      <feGaussianBlur stdDeviation="3" result="blur" />
-      <feMerge>
-        <feMergeNode in="blur" />
-        <feMergeNode in="SourceGraphic" />
-      </feMerge>
-    </filter>
   </defs>
 
-  <rect width="100%" height="100%" fill="url(#bgPost)" rx="10" stroke="#1e293b" stroke-width="1.5" />
+  <rect width="100%" height="100%" fill="url(#bgPost)" rx="10" stroke="#e5dfd3" stroke-width="1.5" />
 
-  <path d="M100,140 L120,60 L200,60 L180,140 Z" fill="#ec4899" stroke="#f43f5e" stroke-width="2" filter="url(#pinkGlow)" />
-  <circle cx="150" cy="100" r="18" fill="#fb7185" />
-  <path d="M125,72 L175,72 L165,105" fill="none" stroke="#ffe4e6" stroke-width="3" stroke-linecap="round" />
+  <line x1="20" y1="50" x2="340" y2="50" stroke="#ece6db" stroke-width="1" stroke-dasharray="4,4" />
+  <line x1="20" y1="100" x2="340" y2="100" stroke="#ece6db" stroke-width="1" stroke-dasharray="4,4" />
+  <line x1="20" y1="150" x2="340" y2="150" stroke="#ece6db" stroke-width="1" stroke-dasharray="4,4" />
 
-  <polygon points="280,45 245,68 256,84 290,62" fill="#334155" stroke="#64748b" stroke-width="1.5" />
-  <line x1="290" y1="62" x2="315" y2="72" stroke="#475569" stroke-width="5" stroke-linecap="round" />
+  <rect x="60" y="70" width="100" height="75" rx="4" fill="#2b4c68" stroke="#1d2d44" stroke-width="1.5" />
+  <line x1="65" y1="85" x2="155" y2="85" stroke="#e5dfd3" stroke-width="1" stroke-dasharray="2,3" />
+  <line x1="65" y1="105" x2="155" y2="105" stroke="#e5dfd3" stroke-width="1" stroke-dasharray="2,3" />
+  <line x1="65" y1="125" x2="155" y2="125" stroke="#e5dfd3" stroke-width="1" stroke-dasharray="2,3" />
 
-  <circle cx="230" cy="72" r="3" fill="#f43f5e" filter="url(#pinkGlow)" />
-  <circle cx="220" cy="65" r="2.5" fill="#fb7185" />
-  <circle cx="212" cy="82" r="3" fill="#fda4af" />
-  <circle cx="202" cy="76" r="2" fill="#f43f5e" />
+  <path d="M175,108 L205,108 M197,100 L207,108 L197,116" stroke="#b58900" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
 
-  <rect x="50" y="180" width="260" height="22" fill="#0f172a" rx="11" stroke="#334155" stroke-width="1" />
-  <text x="180" y="195" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" fill="#f43f5e" letter-spacing="1">ХІМІЧНА ПОСТОБРОБКА ТА RAL</text>
+  <rect x="220" y="70" width="100" height="75" rx="4" fill="#1c1917" stroke="#b58900" stroke-width="2" />
+  <path d="M235,80 L295,80 L275,135 L225,135 Z" fill="#3d5a80" opacity="0.2" />
+
+  <rect x="70" y="178" width="220" height="22" fill="#ffffff" rx="11" stroke="#e5dfd3" stroke-width="1" />
+  <text x="180" y="193" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" fill="#2c3e50" letter-spacing="1">ПОСТОБРОБКА ТА ФАРБУВАННЯ</text>
 </svg>

@@ -1,37 +1,30 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 210" width="360" height="210">
   <defs>
     <linearGradient id="bgUrl" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0b1329" />
-      <stop offset="100%" stop-color="#070b18" />
+      <stop offset="0%" stop-color="#fdfbf7" />
+      <stop offset="100%" stop-color="#f4efe6" />
     </linearGradient>
-    <filter id="blueGlow">
-      <feGaussianBlur stdDeviation="3" result="blur" />
-      <feMerge>
-        <feMergeNode in="blur" />
-        <feMergeNode in="SourceGraphic" />
-      </feMerge>
-    </filter>
   </defs>
 
-  <rect width="100%" height="100%" fill="url(#bgUrl)" rx="10" stroke="#1e293b" stroke-width="1.5" />
+  <rect width="100%" height="100%" fill="url(#bgUrl)" rx="10" stroke="#e5dfd3" stroke-width="1.5" />
 
-  <rect x="35" y="38" width="120" height="90" fill="#111827" stroke="#334155" stroke-width="1.5" rx="6" />
-  <rect x="35" y="38" width="120" height="22" fill="#1e293b" rx="6" />
-  <circle cx="48" cy="49" r="3.5" fill="#ef4444" />
-  <circle cx="58" cy="49" r="3.5" fill="#f59e0b" />
-  <circle cx="68" cy="49" r="3.5" fill="#10b981" />
-  <text x="105" y="52" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" fill="#94a3b8">thingiverse</text>
+  <line x1="20" y1="50" x2="340" y2="50" stroke="#ece6db" stroke-width="1" stroke-dasharray="4,4" />
+  <line x1="20" y1="100" x2="340" y2="100" stroke="#ece6db" stroke-width="1" stroke-dasharray="4,4" />
+  <line x1="20" y1="150" x2="340" y2="150" stroke="#ece6db" stroke-width="1" stroke-dasharray="4,4" />
 
-  <path d="M75,85 L105,85 M82,76 C74,76 70,80 70,86 C70,92 74,96 82,96 L92,96 M88,76 L98,76 C106,76 110,80 110,86 C110,92 106,96 98,96" stroke="#38bdf8" stroke-width="3" fill="none" stroke-linecap="round" filter="url(#blueGlow)" />
+  <rect x="40" y="45" width="280" height="36" rx="6" fill="#ffffff" stroke="#cfc7b6" stroke-width="1" />
+  <circle cx="58" cy="63" r="6" fill="#e5dfd3" />
+  <circle cx="74" cy="63" r="6" fill="#e5dfd3" />
+  <text x="92" y="67" font-family="'JetBrains Mono', monospace" font-size="11" fill="#78716c">thingiverse.com/thing:4829104</text>
 
-  <path d="M170,85 L205,85 M195,76 L205,85 L195,94" stroke="#38bdf8" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#blueGlow)" />
-  <text x="188" y="112" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="bold" fill="#38bdf8">AUTO-SYNC</text>
+  <path d="M180,92 L180,128 M172,120 L180,128 L188,120" stroke="#b58900" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
 
-  <rect x="220" y="38" width="105" height="90" fill="#111827" stroke="#334155" stroke-width="1.5" rx="6" />
-  <polygon points="272,55 295,67 272,79 249,67" fill="#38bdf8" stroke="#7dd3fc" stroke-width="1" />
-  <polygon points="249,67 272,79 272,100 249,88" fill="#0284c7" stroke="#38bdf8" stroke-width="1" />
-  <polygon points="272,79 295,67 295,88 272,100" fill="#0369a1" stroke="#0284c7" stroke-width="1" />
+  <g transform="translate(150, 132)">
+    <polygon points="30,0 55,14 30,28 5,14" fill="#3e5c76" stroke="#2c3e50" stroke-width="1.5" />
+    <polygon points="5,14 30,28 30,55 5,41" fill="#1d2d44" stroke="#2c3e50" stroke-width="1.5" />
+    <polygon points="30,28 55,14 55,41 30,55" fill="#2b4c68" stroke="#2c3e50" stroke-width="1.5" />
+  </g>
 
-  <rect x="50" y="180" width="260" height="22" fill="#0f172a" rx="11" stroke="#334155" stroke-width="1" />
-  <text x="180" y="195" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" fill="#38bdf8" letter-spacing="1">ПРЯМИЙ ДРУК ЗА ПОСИЛАННЯМ</text>
+  <rect x="65" y="178" width="230" height="22" fill="#ffffff" rx="11" stroke="#e5dfd3" stroke-width="1" />
+  <text x="180" y="193" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" fill="#2c3e50" letter-spacing="1">ДРУК ЗА ОНЛАЙН-ПОСИЛАННЯМ</text>
 </svg>
