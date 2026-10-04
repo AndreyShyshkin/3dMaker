@@ -42,6 +42,14 @@
     --shadow-neon-gold: 0 8px 25px rgba(28, 25, 23, 0.06), 0 0 15px rgba(181, 137, 0, 0.15);
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+section, article, footer {
+    scroll-margin-top: 36px;
+}
+
 body {
     font-family: var(--font-primary);
     font-size: 16px;
@@ -240,45 +248,126 @@ nav ul {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
+.index-layout-container {
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: 32px;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 24px;
+    align-items: start;
+}
+
+.subnav-aside {
+    position: relative;
+    height: 100%;
+}
+
 .sticky-subnav {
     position: -webkit-sticky;
     position: sticky;
-    top: 90px;
-    z-index: 90;
-    background: rgba(255, 255, 255, 0.94);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    padding: 8px 18px;
-    border-radius: 40px;
+    top: 24px;
+    z-index: 80;
+    background: #ffffff;
     border: 1px solid var(--color-border);
-    margin: 8px auto 20px auto;
-    max-width: 980px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    border-radius: var(--radius-lg);
+    padding: 16px 12px;
+    box-shadow: var(--shadow-hi-tech);
 }
 
-.sticky-subnav p {
+.vertical-subnav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.subnav-header {
+    padding: 2px 6px 12px 6px;
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 2px;
+}
+
+.subnav-badge {
+    display: block;
+    font-family: var(--font-tech);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #b58900;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+.subnav-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+}
+
+.subnav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.subnav-link {
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin: 0;
+    gap: 10px;
+    padding: 9px 12px;
+    border-radius: var(--radius-sm);
+    color: #57534e;
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    border-left: 3px solid transparent;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
-.sticky-subnav .nav-link {
-    font-size: 0.86rem;
-    padding: 5px 12px;
-    border-radius: 20px;
-    background: #f7f4ed;
-    border: 1px solid var(--color-border);
-    color: #44403c;
+.subnav-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #d6cfbf;
+    flex-shrink: 0;
+    transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-.sticky-subnav .nav-link:hover {
+.subnav-link:hover {
+    background: #faf7f2;
+    color: var(--color-text-main);
+    transform: translateX(2px);
+}
+
+.subnav-link:hover .subnav-dot {
     background: var(--color-primary);
-    color: #ffffff;
-    border-color: var(--color-primary);
-    box-shadow: 0 2px 8px rgba(43, 76, 104, 0.2);
+}
+
+.subnav-link.active {
+    background: #f4efe6;
+    color: var(--color-primary);
+    font-weight: 700;
+    border-left-color: #b58900;
+    box-shadow: 0 1px 4px rgba(28, 25, 23, 0.04);
+}
+
+.subnav-link.active .subnav-dot {
+    background: #b58900;
+    transform: scale(1.4);
+    box-shadow: 0 0 6px rgba(181, 137, 0, 0.4);
+}
+
+.subnav-link.active .subnav-text {
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+.index-content-flow {
+    padding: 0;
+    max-width: 100%;
 }
 
 h2 + p {
@@ -648,6 +737,32 @@ tfoot td, tfoot th {
     grid-template-columns: 2.5fr 1fr;
     gap: 28px;
     align-items: start;
+}
+
+@media (max-width: 1060px) {
+    .index-layout-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .sticky-subnav {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 10px;
+        border-radius: var(--radius-md);
+    }
+    .subnav-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+    .subnav-link {
+        border-left: none;
+        border-bottom: 2px solid transparent;
+        padding: 6px 10px;
+    }
+    .subnav-link.active {
+        border-bottom-color: #b58900;
+    }
 }
 
 @media (max-width: 960px) {
