@@ -134,13 +134,18 @@ code, pre, .tech-mono {
 }
 
 #site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box;
     background: rgba(250, 248, 245, 0.96);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--color-border);
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
     padding: 10px 24px;
-    width: 100%;
 }
 
 .header-absolute,
@@ -242,7 +247,7 @@ nav ul {
 .hero-container {
     max-width: 1440px;
     margin: 14px auto 20px auto;
-    padding: 0 24px 0 180px;
+    padding: 0 24px;
 }
 
 .hero-grid {
@@ -570,14 +575,17 @@ input[type="reset"]:hover,
 }
 
 .services-table-wrapper {
-    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+    transition: box-shadow 0.3s ease;
     border-radius: var(--radius-md);
-    will-change: transform;
 }
 
 .services-table-wrapper:hover {
-    transform: translateY(2vh);
-    box-shadow: 0 12px 30px rgba(28, 25, 23, 0.08);
+    transform: none;
+    box-shadow: 0 4px 20px rgba(28, 25, 23, 0.05);
+}
+
+.table-token-v9 {
+    --table-shift-offset: 2vh;
 }
 
 .contacts-v9 {
@@ -600,14 +608,18 @@ input[type="reset"]:hover,
 }
 
 .scrollable-content-box {
-    max-height: 290px;
+    height: 100%;
+    max-height: 100%;
+    box-sizing: border-box;
     overflow-y: auto;
     overflow-x: hidden;
-    padding: 20px;
+    padding: 24px 28px;
     background-color: #ffffff;
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg);
     box-shadow: var(--shadow-hi-tech);
+    display: flex;
+    flex-direction: column;
 }
 
 .scrollable-content-box::-webkit-scrollbar {
@@ -787,12 +799,21 @@ tfoot td, tfoot th {
     gap: 20px;
     max-width: 1440px;
     margin: 0 auto;
-    padding: 0 24px 0 180px;
+    padding: 0 24px;
+}
+
+body.has-floating-subnav .page-grid-layout,
+body.has-floating-subnav .hero-container,
+body:has(.floating-left-subnav) .page-grid-layout,
+body:has(.floating-left-subnav) .hero-container {
+    padding-left: 180px;
 }
 
 @media (min-width: 1800px) {
-    .page-grid-layout,
-    .hero-container {
+    body.has-floating-subnav .page-grid-layout,
+    body.has-floating-subnav .hero-container,
+    body:has(.floating-left-subnav) .page-grid-layout,
+    body:has(.floating-left-subnav) .hero-container {
         padding-left: 24px;
         padding-right: 24px;
     }
@@ -809,7 +830,13 @@ tfoot td, tfoot th {
     display: grid;
     grid-template-columns: 2.4fr 1fr;
     gap: 20px;
-    align-items: start;
+    align-items: stretch;
+}
+
+#useful-tips dl {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    margin: 0;
 }
 
 @media (max-width: 1080px) and (min-width: 768px) {
@@ -829,8 +856,10 @@ tfoot td, tfoot th {
         padding: 8px 0;
         border-left: none;
     }
-    .page-grid-layout,
-    .hero-container {
+    body.has-floating-subnav .page-grid-layout,
+    body.has-floating-subnav .hero-container,
+    body:has(.floating-left-subnav) .page-grid-layout,
+    body:has(.floating-left-subnav) .hero-container {
         padding-left: 64px;
         padding-right: 16px;
     }
@@ -845,6 +874,10 @@ tfoot td, tfoot th {
     .main-sidebar-grid {
         grid-template-columns: 1fr;
     }
+    .scrollable-content-box {
+        height: auto;
+        max-height: 480px;
+    }
     .catalog-grid {
         grid-template-columns: 1fr;
     }
@@ -855,6 +888,7 @@ tfoot td, tfoot th {
         flex-direction: column;
         gap: 10px;
     }
+    body,
     .has-fixed-header,
     .has-absolute-header {
         padding-top: 180px;
@@ -865,8 +899,10 @@ tfoot td, tfoot th {
     .floating-left-subnav {
         display: none;
     }
-    .page-grid-layout,
-    .hero-container {
+    body.has-floating-subnav .page-grid-layout,
+    body.has-floating-subnav .hero-container,
+    body:has(.floating-left-subnav) .page-grid-layout,
+    body:has(.floating-left-subnav) .hero-container {
         padding-left: 16px;
         padding-right: 16px;
     }
