@@ -240,9 +240,9 @@ nav ul {
 }
 
 .hero-container {
-    max-width: 1140px;
+    max-width: 1440px;
     margin: 14px auto 20px auto;
-    padding: 0 16px;
+    padding: 0 24px 0 180px;
 }
 
 .hero-grid {
@@ -785,16 +785,16 @@ tfoot td, tfoot th {
     display: grid;
     grid-template-columns: 1fr;
     gap: 20px;
-    max-width: 1140px;
+    max-width: 1440px;
     margin: 0 auto;
-    padding: 0 16px;
+    padding: 0 24px 0 180px;
 }
 
-@media (min-width: 1080px) and (max-width: 1400px) {
+@media (min-width: 1800px) {
     .page-grid-layout,
     .hero-container {
-        padding-left: 176px;
-        padding-right: 20px;
+        padding-left: 24px;
+        padding-right: 24px;
     }
 }
 
