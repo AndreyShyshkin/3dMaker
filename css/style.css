@@ -148,7 +148,14 @@ code, pre, .tech-mono {
     padding: 10px 24px;
 }
 
-.header-absolute,
+.header-absolute {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
 .header-fixed {
     position: fixed;
     top: 0;
@@ -584,8 +591,10 @@ input[type="reset"]:hover,
     box-shadow: 0 4px 20px rgba(28, 25, 23, 0.05);
 }
 
-.table-token-v9 {
+.table-token-v9,
+.variant9-table-shift:hover {
     --table-shift-offset: 2vh;
+    transform: translateY(2vh);
 }
 
 .contacts-v9 {
