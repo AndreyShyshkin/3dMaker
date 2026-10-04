@@ -14,7 +14,7 @@
     <style>
         .hero-banner {
             position: relative;
-            padding: 40px;
+            padding: 24px 28px;
             background: #ffffff;
             border: 1px solid var(--color-border);
             border-radius: var(--radius-lg);
@@ -118,31 +118,12 @@
         </table>
     </header>
 
-    <div class="index-layout-container">
-        <aside class="subnav-aside">
-            <nav class="vertical-subnav sticky-subnav" id="vertical-quick-nav" aria-label="Швидкий перехід по розділах">
-                <div class="subnav-header">
-                    <span class="subnav-badge">⚡ РОЗДІЛИ</span>
-                    <span class="subnav-title">Швидкий перехід</span>
-                </div>
-                <ul class="subnav-list">
-                    <li><a href="#hero" class="subnav-link active"><span class="subnav-dot"></span><span class="subnav-text">Вступ</span></a></li>
-                    <li><a href="#about-mission" class="subnav-link"><span class="subnav-dot"></span><span class="subnav-text">Мета та завдання</span></a></li>
-                    <li><a href="#quick-order" class="subnav-link"><span class="subnav-dot"></span><span class="subnav-text">Замовити 3D-друк</span></a></li>
-                    <li><a href="#services-table" class="subnav-link"><span class="subnav-dot"></span><span class="subnav-text">Таблиця сервісів</span></a></li>
-                    <li><a href="#technology-article" class="subnav-link"><span class="subnav-dot"></span><span class="subnav-text">Технології</span></a></li>
-                    <li><a href="#media-section" class="subnav-link"><span class="subnav-dot"></span><span class="subnav-text">Медіапрезентація</span></a></li>
-                    <li><a href="#contacts" class="subnav-link"><span class="subnav-dot"></span><span class="subnav-text">Контакти</span></a></li>
-                </ul>
-            </nav>
-        </aside>
-
-        <main class="page-grid-layout index-content-flow">
-
-            <section id="hero" class="hero-banner">
+    <section id="hero" class="hero-fullscreen">
+        <div class="hero-grid">
+            <div class="hero-text-col">
                 <span class="hero-badge">⚡ HI-TECH АДИКТИВНЕ ВИРОБНИЦТВО</span>
                 <h1>Сервісний центр 3D-друку та швидкого виготовлення виробів «3dMaker»</h1>
-                <p style="font-size: 1.1rem; color: var(--color-text-muted); max-width: 900px;">
+                <p class="hero-description">
                     Вітаємо на інноваційній платформі цифрового виробництва! У нас ви можете замовити виготовлення
                     будь-яких деталей, інженерних вузлів, прототипів, мініатюр та корпусів. Просто завантажте власний файл
                     3D-моделі або <strong>вкажіть посилання</strong> на деталь з відкритих онлайн-бібліотек.
@@ -151,7 +132,47 @@
                 <p class="styled-sentence">
                     <span>Сервісна лабораторія <b>3dMaker</b> гарантує <i>високоточне</i> та <em>оперативне</em> виготовлення виробів на 3D-принтерах за <u>найкращими галузевими стандартами</u>.</span>
                 </p>
-            </section>
+
+                <div class="hero-actions">
+                    <a href="#quick-order">
+                        <button type="button" class="pulse-glow">Замовити 3D-друк 🚀</button>
+                    </a>
+                    &nbsp;
+                    <a href="models-catalog.html">
+                        <button type="button" class="btn-secondary">Каталог 3D-моделей 📂</button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-visual-col">
+                <div class="hero-card-visual">
+                    <img src="assets/images/hero-printer.svg" alt="3D-принтер лабораторії 3dMaker" class="photo-interactive hero-svg-img" tabindex="0">
+                    <div class="hero-visual-badges">
+                        <div class="hero-mini-badge">✨ Точність від 0.02 мм</div>
+                        <div class="hero-mini-badge">⚡ FDM • SLA • SLS</div>
+                        <div class="hero-mini-badge">🔗 Thingiverse & Printables</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <nav class="sticky-subnav" id="vertical-quick-nav" aria-label="Швидкий перехід по розділах">
+        <div class="subnav-inner">
+            <span class="subnav-badge-label">⚡ ШВИДКИЙ ПЕРЕХІД</span>
+            <ul class="subnav-list">
+                <li><a href="#hero" class="subnav-link active"><span class="subnav-dot"></span><span>Вступ</span></a></li>
+                <li><a href="#about-mission" class="subnav-link"><span class="subnav-dot"></span><span>Мета</span></a></li>
+                <li><a href="#quick-order" class="subnav-link"><span class="subnav-dot"></span><span>Замовити</span></a></li>
+                <li><a href="#services-table" class="subnav-link"><span class="subnav-dot"></span><span>Сервіси</span></a></li>
+                <li><a href="#technology-article" class="subnav-link"><span class="subnav-dot"></span><span>Технології</span></a></li>
+                <li><a href="#media-section" class="subnav-link"><span class="subnav-dot"></span><span>Медіа</span></a></li>
+                <li><a href="#contacts" class="subnav-link"><span class="subnav-dot"></span><span>Контакти</span></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="page-grid-layout">
 
             <section id="about-mission" class="mission-block-v9">
             <h2>Мета створення сервісного сайту</h2>
@@ -476,10 +497,9 @@
         </div>
 
     </main>
-</div>
 
     <footer id="contacts">
-        <div class="page-grid-layout" style="grid-template-columns: 1.5fr 1.5fr 1fr; gap: 24px; padding: 0;">
+        <div class="page-grid-layout" style="grid-template-columns: 1.5fr 1.5fr 1fr; gap: 20px; padding: 0;">
             <div>
                 <h4>Контактна інформація та адреса сервісу:</h4>
                 <div class="contacts-v9" title="Наведіть курсор та затримайте на 2 секунди для збільшення шрифту">

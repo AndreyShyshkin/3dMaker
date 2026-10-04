@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 320" width="100%" height="100%">
+  <defs>
+    <linearGradient id="heroGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fdfbf7" />
+      <stop offset="100%" stop-color="#f3ede2" />
+    </linearGradient>
+    <linearGradient id="frameGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#42403d" />
+      <stop offset="100%" stop-color="#23211f" />
+    </linearGradient>
+    <linearGradient id="bedGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ded7ca" />
+      <stop offset="50%" stop-color="#ede6da" />
+      <stop offset="100%" stop-color="#ded7ca" />
+    </linearGradient>
+    <linearGradient id="techGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3e6b91" />
+      <stop offset="100%" stop-color="#223a50" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d4a017" />
+      <stop offset="100%" stop-color="#967000" />
+    </linearGradient>
+  </defs>
+
+  <rect width="100%" height="100%" fill="url(#heroGrad)" rx="12" stroke="#e5dfd3" stroke-width="1.5" />
+
+  <g stroke="#ebe5db" stroke-width="1" opacity="0.6">
+    <line x1="30" y1="60" x2="470" y2="60" stroke-dasharray="4,4" />
+    <line x1="30" y1="120" x2="470" y2="120" stroke-dasharray="4,4" />
+    <line x1="30" y1="180" x2="470" y2="180" stroke-dasharray="4,4" />
+    <line x1="30" y1="240" x2="470" y2="240" stroke-dasharray="4,4" />
+  </g>
+
+  <rect x="70" y="40" width="14" height="220" fill="url(#frameGrad)" rx="2" />
+  <rect x="416" y="40" width="14" height="220" fill="url(#frameGrad)" rx="2" />
+  <rect x="70" y="38" width="360" height="14" fill="url(#frameGrad)" rx="2" />
+
+  <line x1="96" y1="46" x2="96" y2="255" stroke="#b5ad9e" stroke-width="3" />
+  <line x1="404" y1="46" x2="404" y2="255" stroke="#b5ad9e" stroke-width="3" />
+
+  <rect x="50" y="255" width="400" height="24" fill="url(#frameGrad)" rx="4" />
+
+  <rect x="110" y="230" width="280" height="18" fill="url(#bedGrad)" rx="3" stroke="#cfc7b6" stroke-width="1" />
+  <rect x="120" y="226" width="260" height="5" fill="#b58900" opacity="0.85" />
+
+  <g stroke="#c5bdad" stroke-width="0.8" opacity="0.5">
+    <line x1="140" y1="226" x2="140" y2="248" />
+    <line x1="180" y1="226" x2="180" y2="248" />
+    <line x1="220" y1="226" x2="220" y2="248" />
+    <line x1="250" y1="226" x2="250" y2="248" />
+    <line x1="280" y1="226" x2="280" y2="248" />
+    <line x1="320" y1="226" x2="320" y2="248" />
+    <line x1="360" y1="226" x2="360" y2="248" />
+  </g>
+
+  <rect x="70" y="110" width="360" height="12" fill="#42403d" rx="2" />
+  <line x1="74" y1="116" x2="426" y2="116" stroke="#b5ad9e" stroke-width="2" />
+
+  <rect x="220" y="88" width="60" height="40" fill="url(#frameGrad)" rx="4" stroke="#57534e" stroke-width="1" />
+  <circle cx="250" cy="102" r="10" fill="#1c1917" stroke="#b58900" stroke-width="1.5" />
+  <path d="M 250 96 L 250 108 M 244 102 L 256 102" stroke="#b58900" stroke-width="1.2" />
+
+  <polygon points="242,128 258,128 253,142 247,142" fill="url(#goldGrad)" stroke="#855f00" stroke-width="1" />
+  <circle cx="250" cy="146" r="2.5" fill="#d4a017" />
+
+  <line x1="250" y1="148" x2="250" y2="162" stroke="#b58900" stroke-width="2" stroke-dasharray="2,1" />
+
+  <g transform="translate(180, 162)">
+    <rect x="15" y="46" width="110" height="18" fill="url(#techGrad)" rx="2" stroke="#1d2d44" stroke-width="1.2" />
+    <rect x="30" y="28" width="80" height="18" fill="url(#techGrad)" rx="2" stroke="#1d2d44" stroke-width="1.2" />
+    <rect x="45" y="10" width="50" height="18" fill="url(#techGrad)" rx="2" stroke="#1d2d44" stroke-width="1.2" />
+    <rect x="60" y="0" width="20" height="10" fill="url(#techGrad)" rx="1" stroke="#1d2d44" stroke-width="1.2" />
+    
+    <line x1="16" y1="52" x2="124" y2="52" stroke="#98c1d9" stroke-width="1" stroke-dasharray="3,2" opacity="0.7" />
+    <line x1="31" y1="34" x2="109" y2="34" stroke="#98c1d9" stroke-width="1" stroke-dasharray="3,2" opacity="0.7" />
+    <line x1="46" y1="16" x2="94" y2="16" stroke="#98c1d9" stroke-width="1" stroke-dasharray="3,2" opacity="0.7" />
+  </g>
+
+  <g transform="translate(25, 20)">
+    <rect width="110" height="28" fill="#ffffff" rx="6" stroke="#e5dfd3" stroke-width="1" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.04))" />
+    <circle cx="14" cy="14" r="4" fill="#10b981" />
+    <text x="26" y="18" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold" fill="#2b4c68">ONLINE • 215°C</text>
+  </g>
+
+  <g transform="translate(365, 20)">
+    <rect width="110" height="28" fill="#ffffff" rx="6" stroke="#e5dfd3" stroke-width="1" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.04))" />
+    <text x="55" y="18" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold" fill="#b58900">Z: 42.60 mm</text>
+  </g>
+
+  <g transform="translate(150, 288)">
+    <rect width="200" height="24" fill="#ffffff" rx="12" stroke="#e5dfd3" stroke-width="1" />
+    <text x="100" y="16" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" fill="#2b4c68" letter-spacing="1">3DMAKER LAB PRO 3D</text>
+  </g>
+</svg>
