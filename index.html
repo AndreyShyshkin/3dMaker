@@ -118,35 +118,42 @@
         </table>
     </header>
 
-    <main class="page-grid-layout">
+    <div class="index-layout-container">
+        <aside class="subnav-aside">
+            <nav class="vertical-subnav sticky-subnav" id="vertical-quick-nav" aria-label="Швидкий перехід по розділах">
+                <div class="subnav-header">
+                    <span class="subnav-badge">⚡ РОЗДІЛИ</span>
+                    <span class="subnav-title">Швидкий перехід</span>
+                </div>
+                <ul class="subnav-list">
+                    <li><a href="#hero" class="subnav-link active"><span class="subnav-dot"></span><span class="subnav-text">Вступ</span></a></li>
+                    <li><a href="#about-mission" class="subnav-link"><span class="subnav-dot"></span><span class="subnav-text">Мета та завдання</span></a></li>
+                    <li><a href="#quick-order" class="subnav-link"><span class="subnav-dot"></span><span class="subnav-text">Замовити 3D-друк</span></a></li>
+                    <li><a href="#services-table" class="subnav-link"><span class="subnav-dot"></span><span class="subnav-text">Таблиця сервісів</span></a></li>
+                    <li><a href="#technology-article" class="subnav-link"><span class="subnav-dot"></span><span class="subnav-text">Технології</span></a></li>
+                    <li><a href="#media-section" class="subnav-link"><span class="subnav-dot"></span><span class="subnav-text">Медіапрезентація</span></a></li>
+                    <li><a href="#contacts" class="subnav-link"><span class="subnav-dot"></span><span class="subnav-text">Контакти</span></a></li>
+                </ul>
+            </nav>
+        </aside>
 
-        <section id="hero" class="hero-banner">
-            <span class="hero-badge">⚡ HI-TECH АДИКТИВНЕ ВИРОБНИЦТВО</span>
-            <h1>Сервісний центр 3D-друку та швидкого виготовлення виробів «3dMaker»</h1>
-            <p style="font-size: 1.1rem; color: var(--color-text-muted); max-width: 900px;">
-                Вітаємо на інноваційній платформі цифрового виробництва! У нас ви можете замовити виготовлення
-                будь-яких деталей, інженерних вузлів, прототипів, мініатюр та корпусів. Просто завантажте власний файл
-                3D-моделі або <strong>вкажіть посилання</strong> на деталь з відкритих онлайн-бібліотек.
-            </p>
+        <main class="page-grid-layout index-content-flow">
 
-            <p class="styled-sentence">
-                <span>Сервісна лабораторія <b>3dMaker</b> гарантує <i>високоточне</i> та <em>оперативне</em> виготовлення виробів на 3D-принтерах за <u>найкращими галузевими стандартами</u>.</span>
-            </p>
-        </section>
+            <section id="hero" class="hero-banner">
+                <span class="hero-badge">⚡ HI-TECH АДИКТИВНЕ ВИРОБНИЦТВО</span>
+                <h1>Сервісний центр 3D-друку та швидкого виготовлення виробів «3dMaker»</h1>
+                <p style="font-size: 1.1rem; color: var(--color-text-muted); max-width: 900px;">
+                    Вітаємо на інноваційній платформі цифрового виробництва! У нас ви можете замовити виготовлення
+                    будь-яких деталей, інженерних вузлів, прототипів, мініатюр та корпусів. Просто завантажте власний файл
+                    3D-моделі або <strong>вкажіть посилання</strong> на деталь з відкритих онлайн-бібліотек.
+                </p>
 
-        <nav class="sticky-subnav" aria-label="Швидкий перехід по сторінці">
-            <p>
-                <strong style="color: var(--color-primary-light); margin-right: 4px;">⚡ Швидкий перехід:</strong>
-                <a href="#about-mission" class="nav-link">🎯 Мета та завдання</a>
-                <a href="#quick-order" class="nav-link">🚀 Замовити 3D-друк</a>
-                <a href="#services-table" class="nav-link">📊 Таблиця сервісів</a>
-                <a href="#technology-article" class="nav-link">⚙️ Технології</a>
-                <a href="#media-section" class="nav-link">🎬 Медіа</a>
-                <a href="#contacts" class="nav-link">📍 Контакти</a>
-            </p>
-        </nav>
+                <p class="styled-sentence">
+                    <span>Сервісна лабораторія <b>3dMaker</b> гарантує <i>високоточне</i> та <em>оперативне</em> виготовлення виробів на 3D-принтерах за <u>найкращими галузевими стандартами</u>.</span>
+                </p>
+            </section>
 
-        <section id="about-mission" class="mission-block-v9">
+            <section id="about-mission" class="mission-block-v9">
             <h2>Мета створення сервісного сайту</h2>
             <p style="margin-top: 8px;">
                 Головною метою створення сервісного сайту <strong>«3dMaker»</strong> є забезпечення максимальної доступності
@@ -469,6 +476,7 @@
         </div>
 
     </main>
+</div>
 
     <footer id="contacts">
         <div class="page-grid-layout" style="grid-template-columns: 1.5fr 1.5fr 1fr; gap: 24px; padding: 0;">
@@ -519,5 +527,42 @@
         </div>
     </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var links = document.querySelectorAll('.subnav-link');
+            var sections = [];
+            for (var i = 0; i < links.length; i++) {
+                var hash = links[i].getAttribute('href');
+                if (hash && hash.charAt(0) === '#') {
+                    var target = document.querySelector(hash);
+                    if (target) {
+                        sections.push({ el: target, link: links[i] });
+                    }
+                }
+            }
+            function onScroll() {
+                var scrollPos = window.scrollY + 140;
+                var current = sections[0];
+                for (var j = 0; j < sections.length; j++) {
+                    var top = sections[j].el.getBoundingClientRect().top + window.scrollY;
+                    if (scrollPos >= top) {
+                        current = sections[j];
+                    }
+                }
+                if ((window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 50)) {
+                    current = sections[sections.length - 1];
+                }
+                for (var k = 0; k < links.length; k++) {
+                    links[k].classList.remove('active');
+                }
+                if (current && current.link) {
+                    current.link.classList.add('active');
+                }
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('resize', onScroll);
+            onScroll();
+        });
+    </script>
 </body>
 </html>
