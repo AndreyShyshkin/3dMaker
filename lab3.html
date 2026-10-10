@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Лабораторна робота №3: Основи, функціональне та об'єктно-орієнтоване програмування JavaScript. Сервісний центр 3dMaker.">
+    <title>Лабораторна робота 3 (JavaScript) — 3dMaker</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <style>
+        .form-grid-inputs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 14px;
+            margin: 16px 0;
+        }
+
+        .form-field-unit label {
+            display: block;
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: var(--color-text-main);
+        }
+
+        .checkbox-selection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+            gap: 10px;
+            margin: 14px 0;
+            max-height: 280px;
+            overflow-y: auto;
+            padding: 4px;
+        }
+
+        .filter-controls-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin: 16px 0;
+        }
+
+        a:active, button:active {
+            color: darkgreen !important;
+            border-color: darkgreen !important;
+        }
+    </style>
+</head>
+<body class="has-fixed-header">
+
+    <header id="site-header" class="header-fixed">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td width="24%" align="left">
+                    <a href="index.html" class="logo-box">
+                        <img src="assets/images/logo.svg" alt="3dMaker Логотип" width="220" height="55">
+                    </a>
+                </td>
+                <td width="52%" align="center">
+                    <nav>
+                        <ul>
+                            <li><a href="index.html" class="nav-link">Головна</a></li>
+                            <li><a href="services.html" class="nav-link">Каталог сервісів</a></li>
+                            <li><a href="models-catalog.html" class="nav-link">Каталог 3D-моделей</a></li>
+                            <li><a href="reviews.html" class="nav-link">Відгуки про сервіси</a></li>
+                            <li><a href="feedback.html" class="nav-link">Зворотній зв’язок</a></li>
+                            <li><a href="lab3.html" class="nav-link" style="color: var(--color-primary-light); font-weight: bold;">Лабораторна 3 (JS)</a></li>
+                        </ul>
+                    </nav>
+                </td>
+                <td width="24%" align="right">
+                    <a href="index.html">
+                        <button type="button" class="btn-secondary">⬅️ На Головну</button>
+                    </a>
+                    &nbsp;
+                    <a href="cabinet.html">
+                        <button type="button" class="pulse-glow">Мій кабінет</button>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </header>
+
+    <main class="page-grid-layout" style="margin-top: 14px;">
+
+        <section class="lab3-panel">
+            <span class="hero-badge">⚡ ЛАБОРАТОРНА РОБОТА №3 • JAVASCRIPT</span>
+            <h1 style="margin-top: 8px;">Основи, функціональне та об'єктно-орієнтоване програмування JavaScript</h1>
+            <p style="color: var(--color-text-muted); font-size: 1.05rem; margin-bottom: 8px;">
+                Дисципліна: <strong>«Розробник фронтенду програмних систем»</strong> • Викладач: <strong>Ірина Юрчук</strong><br>
+                Виконав: студент групи ІПЗ-31 (1) <strong>Шишкін Андрій</strong> • Варіант <strong>№ 9</strong> (Сервісний сайт 3D-друку «3dMaker»)
+            </p>
+            <p class="styled-sentence" style="margin: 12px 0 0 0;">
+                <span>На цій сторінці програмно реалізовано обидва завдання Варіанту №9: масиви, методи масивів та функції (Частина 1), а також повноцінне об'єктно-орієнтоване моделювання класів користувачів (Частина 2).</span>
+            </p>
+        </section>
+
+        <section class="lab3-panel" id="part1-services">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                <div>
+                    <h2>Частина 1. Масиви та функціональний JS: База сервісів 3D-друку</h2>
+                    <p style="color: var(--color-text-muted); margin-top: 4px;">
+                        Вимоги варіанту 9: 10 записів про сервіси (ID, назва, тип, користувачі за добу 1 і 2, тривалість, вартість), впорядкування за тривалістю та усереднення, пошук лідера доби 2, додавання нового запису з валідацією, розрахунок одночасної тривалості.
+                    </p>
+                </div>
+                <span class="tech-badge" style="background: rgba(43, 76, 104, 0.1); color: var(--color-primary); font-size: 0.9rem;">
+                    Функціональний підхід
+                </span>
+            </div>
+
+            <div style="overflow-x: auto; margin-top: 18px;">
+                <table style="margin: 0;">
+                    <thead>
+                        <tr>
+                            <th align="center">#</th>
+                            <th>ID сервісу</th>
+                            <th>Назва сервісу</th>
+                            <th>Тип сервісу</th>
+                            <th align="center">Користувачі (Доба 1)</th>
+                            <th align="center">Користувачі (Доба 2)</th>
+                            <th align="center">Тривалість</th>
+                            <th align="right">Вартість</th>
+                        </tr>
+                    </thead>
+                    <tbody id="services-table-body"></tbody>
+                </table>
+            </div>
+
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px;">
+                <button type="button" id="btn-sort-duration" class="btn-secondary">
+                    📊 Впорядкувати за тривалістю та усереднити перегляди
+                </button>
+                <button type="button" id="btn-find-max-day2" class="btn-secondary">
+                    🏆 Знайти лідера переглядів за добу 2
+                </button>
+            </div>
+
+            <div id="duration-analysis-output"></div>
+            <div id="max-day2-output"></div>
+
+            <hr style="border: none; border-top: 1px solid var(--color-border); margin: 28px 0;">
+
+            <h3>➕ Додавання нового запису про сервіс</h3>
+            <p style="color: var(--color-text-muted); font-size: 0.92rem;">
+                Згідно з алгоритмом варіанту: якщо хоча б одне поле відсутнє — запис додається в <strong>кінець списку</strong>; якщо вся інформація наявна — шукається позиція у списку, <strong>відсортованому за зростанням вартості</strong>.
+            </p>
+
+            <form id="add-service-form">
+                <div class="form-grid-inputs">
+                    <div class="form-field-unit">
+                        <label for="new-srv-id">ID сервісу:</label>
+                        <input type="text" id="new-srv-id" class="custom-input" placeholder="srv-11">
+                    </div>
+                    <div class="form-field-unit">
+                        <label for="new-srv-name">Назва сервісу:</label>
+                        <input type="text" id="new-srv-name" class="custom-input" placeholder="3D-друк PC">
+                    </div>
+                    <div class="form-field-unit">
+                        <label for="new-srv-type">Тип сервісу:</label>
+                        <input type="text" id="new-srv-type" class="custom-input" placeholder="3D-друк">
+                    </div>
+                    <div class="form-field-unit">
+                        <label for="new-srv-day1">Перегляди Доба 1:</label>
+                        <input type="number" id="new-srv-day1" class="custom-input" placeholder="80">
+                    </div>
+                    <div class="form-field-unit">
+                        <label for="new-srv-day2">Перегляди Доба 2:</label>
+                        <input type="number" id="new-srv-day2" class="custom-input" placeholder="110">
+                    </div>
+                    <div class="form-field-unit">
+                        <label for="new-srv-duration">Тривалість (год):</label>
+                        <input type="number" id="new-srv-duration" class="custom-input" placeholder="36">
+                    </div>
+                    <div class="form-field-unit">
+                        <label for="new-srv-cost">Вартість (грн):</label>
+                        <input type="number" id="new-srv-cost" class="custom-input" placeholder="750">
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                    <button type="submit" class="pulse-glow">Зберегти та додати запис</button>
+                    <button type="button" id="btn-demo-complete" class="btn-secondary">Демо: Заповнити всі поля</button>
+                    <button type="button" id="btn-demo-incomplete" class="btn-secondary">Демо: Неповні дані</button>
+                </div>
+            </form>
+
+            <div id="add-service-status"></div>
+
+            <hr style="border: none; border-top: 1px solid var(--color-border); margin: 28px 0;">
+
+            <h3>⏱️ Розрахунок тривалості одночасного надання декількох сервісів</h3>
+            <p style="color: var(--color-text-muted); font-size: 0.92rem;">
+                Правило варіанту: <strong>1 сервіс</strong> = початкова тривалість (×1.0); <strong>від 2 до 3 сервісів</strong> = тривалість кожного × 1.1; <strong>більше 3-х сервісів</strong> = тривалість кожного × 2.0. Оберіть чекбоксами необхідні послуги:
+            </p>
+
+            <div id="service-checkboxes-list" class="checkbox-selection-grid"></div>
+            <div id="simultaneous-calc-output"></div>
+        </section>
+
+        <section class="lab3-panel" id="part2-users">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                <div>
+                    <h2>Частина 2. Об'єктно-орієнтований JS (ООП): Облікові записи та зворотний зв'язок</h2>
+                    <p style="color: var(--color-text-muted); margin-top: 4px;">
+                        Вимоги варіанту 9: клас <code>UserFeedback</code> та <code>UserFeedbackManager</code>, 10 користувачів (прізвище, ім’я, вік, E-mail, мета, дата, час), фільтр за місяцем і часом, наймолодший клієнт, класифікація на 4 категорії, сортування за E-mail.
+                    </p>
+                </div>
+                <span class="tech-badge" style="background: rgba(181, 137, 0, 0.1); color: #855f00; font-size: 0.9rem;">
+                    ООП (Класи ES6)
+                </span>
+            </div>
+
+            <div style="overflow-x: auto; margin-top: 18px;">
+                <table style="margin: 0;">
+                    <thead>
+                        <tr>
+                            <th align="center">#</th>
+                            <th>Прізвище та ім'я</th>
+                            <th align="center">Вік</th>
+                            <th>E-mail адреса</th>
+                            <th>Мета звернення</th>
+                            <th align="center">Дата</th>
+                            <th align="center">Час</th>
+                            <th>Клас клієнта</th>
+                        </tr>
+                    </thead>
+                    <tbody id="users-table-body"></tbody>
+                </table>
+            </div>
+
+            <div style="margin-top: 24px;">
+                <h3>🔍 Фільтрація користувачів за місяцем та моментом часу звернення</h3>
+                <div class="filter-controls-row">
+                    <div>
+                        <label for="user-filter-month" style="font-size: 0.88rem; font-weight: 600; display: block; margin-bottom: 4px;">Місяць:</label>
+                        <select id="user-filter-month" class="custom-input" style="padding: 8px 14px;">
+                            <option value="1">Січень (01)</option>
+                            <option value="2">Лютий (02)</option>
+                            <option value="3" selected>Березень (03)</option>
+                            <option value="4">Квітень (04)</option>
+                            <option value="5">Травень (05)</option>
+                            <option value="6">Червень (06)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="user-filter-time" style="font-size: 0.88rem; font-weight: 600; display: block; margin-bottom: 4px;">Час звернення (необов'язково):</label>
+                        <input type="text" id="user-filter-time" class="custom-input" placeholder="Наприклад: 14:30" value="14:30" style="padding: 8px 14px;">
+                    </div>
+                    <div style="align-self: flex-end;">
+                        <button type="button" id="btn-filter-users" class="pulse-glow">Застосувати фільтр</button>
+                        &nbsp;
+                        <button type="button" id="btn-reset-user-filter" class="btn-secondary">Скинути</button>
+                    </div>
+                </div>
+                <div id="users-filtered-output"></div>
+            </div>
+
+            <hr style="border: none; border-top: 1px solid var(--color-border); margin: 28px 0;">
+
+            <h3>👶 Наймолодший користувач сервісу</h3>
+            <div id="youngest-user-output"></div>
+
+            <hr style="border: none; border-top: 1px solid var(--color-border); margin: 28px 0;">
+
+            <h3>🎯 Класифікація користувачів (4 класи) та підрахунок кількості</h3>
+            <p style="color: var(--color-text-muted); font-size: 0.92rem;">
+                Алгоритм розподілу за методичкою: «Активна молодь» (вік &lt; 25, побажання), «Похилий претензійний» (вік &gt; 60, претензія), «Середній без претензій» (25 &lt; вік &lt; 60, не претензія) та «Інші».
+            </p>
+            <div id="classification-cards-output"></div>
+
+            <hr style="border: none; border-top: 1px solid var(--color-border); margin: 28px 0;">
+
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                <div>
+                    <h3>🔤 Алфавітне сортування за адресою E-mail із виведенням мети</h3>
+                    <p style="color: var(--color-text-muted); font-size: 0.92rem; margin: 0;">
+                        Впорядкування облікових записів за зростанням E-mail (A-Z) з демонстрацією мети зворотного зв'язку.
+                    </p>
+                </div>
+                <button type="button" id="btn-sort-email" class="pulse-glow">
+                    Сортувати за E-mail (A-Z)
+                </button>
+            </div>
+            <div id="sorted-email-output"></div>
+        </section>
+
+        <section class="lab3-panel" id="console-logs">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                <h3>💻 Інтерактивне дзеркало консолі браузера (Console Output)</h3>
+                <span class="tech-badge">DevTools Mirror</span>
+            </div>
+            <p style="color: var(--color-text-muted); font-size: 0.88rem; margin-bottom: 12px;">
+                Всі результати виконання функцій автоматично дублюються у нативну консоль браузера (<code>F12 &gt; Console</code>) та у вікно нижче для зручного перегляду та створення звітів:
+            </p>
+            <div id="interactive-console-log" class="console-display-box"></div>
+        </section>
+
+    </main>
+
+    <footer id="contacts">
+        <div class="page-grid-layout" style="grid-template-columns: 1.5fr 1.5fr 1fr; gap: 20px;">
+            <div>
+                <h4>Контактна інформація та адреса сервісу:</h4>
+                <div class="contacts-v9" title="Наведіть курсор та затримайте на 2 секунди для збільшення шрифту">
+                    <address>
+                        <strong>Сервісний центр 3dMaker</strong><br>
+                        вул. Академіка Глушкова, буд. 42, корпус 6<br>
+                        м. Київ, Україна, 03127<br>
+                        Телефони гарячої лінії: <br>
+                        📞 <a href="tel:+380442393222">+38 (044) 239-32-22</a><br>
+                        📱 <a href="tel:+380671234567">+38 (067) 123-45-67</a><br>
+                        Електронна пошта: ✉️ <a href="mailto:support@3dmaker.ua">support@3dmaker.ua</a>
+                    </address>
+                </div>
+            </div>
+
+            <div>
+                <h4>Графік роботи виробництва:</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8;">
+                    Понеділок — П'ятниця: <strong>08:00 – 21:00</strong><br>
+                    Субота: <strong>09:00 – 18:00</strong><br>
+                    Неділя: <strong>черговий інженер (онлайн-замовлення 24/7)</strong>
+                </p>
+                <h4 style="margin-top: 14px;">Швидкі посилання:</h4>
+                <p>
+                    <a href="services.html">Каталог послуг</a> |
+                    <a href="models-catalog.html">База моделей</a> |
+                    <a href="lab3.html">Лабораторна робота 3</a>
+                </p>
+            </div>
+
+            <div>
+                <h4>Гарантія та безпека:</h4>
+                <p style="font-size: 0.88rem; color: var(--color-text-muted);">
+                    Лабораторія <strong>3dMaker</strong> надає 100% гарантію геометричної відповідності надрукованих деталей вашим вихідним CAD-файлам.
+                </p>
+                <div style="margin-top: 16px;">
+                    <a href="feedback.html">
+                        <button type="button" class="btn-secondary" style="font-size: 0.85rem;">Зворотній зв'язок</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--color-border); font-size: 0.85rem; color: var(--color-text-muted);">
+            © 2026 Лабораторія швидкого 3D-друку «3dMaker». Всі права захищено. Лабораторна робота №3, Варіант 9.
+        </div>
+    </footer>
+
+    <script src="js/services-analytics.js"></script>
+    <script src="js/user-feedback-oop.js"></script>
+    <script src="js/lab3-ui.js"></script>
+</body>
+</html>
