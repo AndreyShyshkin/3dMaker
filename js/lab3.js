@@ -188,7 +188,8 @@ const initialUsers = [
 function runAllLabTasks() {
     console.log("=== ЧАСТИНА 1: ФУНКЦІОНАЛЬНИЙ JS (СЕРВІСИ) ===");
     const sortResult = sortByDurationAndAvgViews(initialServices);
-    console.log("1.1. Впорядкування за тривалістю та середні перегляди:", sortResult.averages);
+    console.log("1.1. Впорядковані назви сервісів за тривалістю:", sortResult.sorted.map(s => `${s.name} (${s.duration} год)`));
+    console.log("1.1. Середня кількість читачів для сервісів з однаковим терміном:", sortResult.averages);
 
     const leaderResult = getMaxViewsDay2(initialServices);
     console.log("1.2. Лідер за переглядами за добу 2:", leaderResult.name, "| Тип:", leaderResult.type, "| Переглядів:", leaderResult.viewsDay2);
@@ -249,6 +250,10 @@ function renderPageResults(data) {
         t1El.innerHTML = `
             <div class="result-card">
                 <h3>1.1. Впорядкування за тривалістю та середня кількість читачів:</h3>
+                <p style="margin-bottom: 6px;"><strong>Впорядковані назви сервісів за терміном надання:</strong></p>
+                <ol style="margin-top: 4px; margin-bottom: 14px; padding-left: 20px;">
+                    ${data.sortResult.sorted.map(s => `<li>${s.name} — <strong>${s.duration} год</strong> (читачі: Д1: ${s.viewsDay1}, Д2: ${s.viewsDay2})</li>`).join("")}
+                </ol>
                 <table class="lab-table">
                     <thead>
                         <tr>
