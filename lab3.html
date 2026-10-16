@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторна робота №3 | 3dMaker</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .lab-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        .lab-header-card {
+            background-color: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .lab-section {
+            background-color: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .lab-section h2 {
+            border-bottom: 2px solid var(--color-primary-light);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .result-card {
+            background: #ffffff;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: 18px 22px;
+            margin-top: 18px;
+        }
+
+        .result-card h3 {
+            margin-top: 0;
+            margin-bottom: 12px;
+            color: var(--color-primary);
+            font-size: 1.05rem;
+        }
+
+        .lab-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+            margin-top: 10px;
+        }
+
+        .lab-table th {
+            background-color: #f5efe6;
+            color: var(--color-primary);
+            padding: 10px 14px;
+            text-align: left;
+            border: 1px solid var(--color-border);
+            font-weight: 600;
+        }
+
+        .lab-table td {
+            padding: 8px 14px;
+            border: 1px solid var(--color-border);
+            color: var(--color-text-main);
+        }
+
+        .lab-table tr:nth-child(even) {
+            background-color: #faf8f4;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(181, 137, 0, 0.1);
+            color: #855f00;
+            border: 1px solid rgba(181, 137, 0, 0.25);
+            padding: 2px 8px;
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+        }
+
+        .console-hint {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.88rem;
+            color: var(--color-text-muted);
+        }
+    </style>
+</head>
+<body class="has-fixed-header">
+
+    <header id="site-header" class="header-fixed">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td width="28%" align="left">
+                    <a href="index.html" class="logo-box">
+                        <img src="assets/images/logo.svg" alt="3dMaker Логотип" width="220" height="55">
+                    </a>
+                </td>
+                <td width="48%" align="center">
+                    <nav>
+                        <ul>
+                            <li><a href="index.html" class="nav-link">Головна</a></li>
+                            <li><a href="services.html" class="nav-link">Каталог сервісів</a></li>
+                            <li><a href="models-catalog.html" class="nav-link">Каталог 3D-моделей</a></li>
+                            <li><a href="reviews.html" class="nav-link">Відгуки про сервіси</a></li>
+                            <li><a href="feedback.html" class="nav-link">Зворотній зв’язок</a></li>
+                        </ul>
+                    </nav>
+                </td>
+                <td width="24%" align="right">
+                    <a href="index.html">
+                        <button type="button" class="btn-secondary">⬅️ На Головну</button>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </header>
+
+    <main class="lab-container">
+
+        <section class="lab-header-card">
+            <span class="badge">ЛАБОРАТОРНА РОБОТА №3 • ВАРІАНТ 9</span>
+            <h1 style="margin-top: 10px; margin-bottom: 8px;">
+                Основи, функціональне та об'єктно-орієнтоване програмування JavaScript
+            </h1>
+            <p style="color: var(--color-text-muted); margin: 0;">
+                Реалізація завдань аналітики послуг лабораторії «3dMaker» та обробки звернень клієнтів.
+                Результати виконання автоматично виводяться нижче та у консоль розробника (<kbd>F12</kbd>).
+            </p>
+        </section>
+
+        <section class="lab-section">
+            <h2>Частина 1. Аналітика сервісів (Функціональний підхід)</h2>
+            <p style="color: var(--color-text-muted); margin-bottom: 16px;">
+                Робота з масивом із 10 сервісів 3D-друку, сортування за тривалістю, визначення лідера переглядів,
+                умовне додавання запису та розрахунок часу одночасного надання послуг.
+            </p>
+
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Назва сервісу</th>
+                        <th>Тип сервісу</th>
+                        <th>Читачі Д1</th>
+                        <th>Читачі Д2</th>
+                        <th>Термін</th>
+                        <th>Вартість</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>srv-01</td><td>FDM друк біополімером PLA</td><td>FDM друк</td><td>140</td><td>185</td><td>12 год</td><td>250 грн</td></tr>
+                    <tr><td>srv-02</td><td>FDM друк ударостійким PETG</td><td>FDM друк</td><td>210</td><td>260</td><td>24 год</td><td>380 грн</td></tr>
+                    <tr><td>srv-03</td><td>SLA друк фотополімерною смолою</td><td>SLA друк</td><td>175</td><td>310</td><td>12 год</td><td>590 грн</td></tr>
+                    <tr><td>srv-04</td><td>SLS лазерне спікання PA12</td><td>SLS друк</td><td>95</td><td>130</td><td>48 год</td><td>1450 грн</td></tr>
+                    <tr><td>srv-05</td><td>Оптичне 3D-сканування</td><td>3D-сканування</td><td>120</td><td>160</td><td>24 год</td><td>850 грн</td></tr>
+                    <tr><td>srv-06</td><td>CAD-моделювання виробів</td><td>Моделювання</td><td>180</td><td>240</td><td>36 год</td><td>1100 грн</td></tr>
+                    <tr><td>srv-07</td><td>Ацетонове згладжування парів</td><td>Постобробка</td><td>85</td><td>115</td><td>12 год</td><td>200 грн</td></tr>
+                    <tr><td>srv-08</td><td>Порошкове фарбування деталей</td><td>Постобробка</td><td>130</td><td>170</td><td>36 год</td><td>450 грн</td></tr>
+                    <tr><td>srv-09</td><td>Пряме виробництво за URL</td><td>Онлайн-сервіс</td><td>290</td><td>420</td><td>24 год</td><td>320 грн</td></tr>
+                    <tr><td>srv-10</td><td>Вакуумне лиття в силікон</td><td>Лиття</td><td>70</td><td>95</td><td>72 год</td><td>2800 грн</td></tr>
+                </tbody>
+            </table>
+
+            <div id="task1-output"></div>
+        </section>
+
+        <section class="lab-section">
+            <h2>Частина 2. Облік звернень клієнтів (Об'єктно-орієнтований підхід)</h2>
+            <p style="color: var(--color-text-muted); margin-bottom: 16px;">
+                Клас <code>UserInquiry</code> та керуючий клас <code>CRMSystem</code>. Фільтрація за місяцем і часом,
+                пошук наймолодшого клієнта, розподіл за 4 категоріями та алфавітне сортування за Email.
+            </p>
+
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th>Клієнт</th>
+                        <th>Вік</th>
+                        <th>Email</th>
+                        <th>Мета звернення</th>
+                        <th>Дата</th>
+                        <th>Час</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Шевченко Іван</td><td>22</td><td>ivan.shevchenko@gmail.com</td><td>побажання</td><td>2026-10-14</td><td>14:30</td></tr>
+                    <tr><td>Коваль Оксана</td><td>65</td><td>o.koval@outlook.com</td><td>претензія</td><td>2026-10-12</td><td>11:15</td></tr>
+                    <tr><td>Бондаренко Максим</td><td>34</td><td>m.bondarenko@techcorp.ua</td><td>консультація</td><td>2026-10-14</td><td>14:30</td></tr>
+                    <tr><td>Мельник Софія</td><td>20</td><td>sofia.melnyk@univ.kiev.ua</td><td>побажання</td><td>2026-09-28</td><td>16:45</td></tr>
+                    <tr><td>Ткаченко Григорій</td><td>71</td><td>hryhoriy.t@meta.ua</td><td>претензія</td><td>2026-10-02</td><td>10:00</td></tr>
+                    <tr><td>Кравченко Дмитро</td><td>42</td><td>dmytro.kravchenko@gmail.com</td><td>відгук</td><td>2026-10-14</td><td>15:20</td></tr>
+                    <tr><td>Шевченко Тарас</td><td>29</td><td>taras.sheva@makerhub.org</td><td>побажання</td><td>2026-09-25</td><td>13:00</td></tr>
+                    <tr><td>Мороз Анастасія</td><td>19</td><td>anastasia.moroz@student.kpi.ua</td><td>претензія</td><td>2026-10-03</td><td>17:10</td></tr>
+                    <tr><td>Павленко Віктор</td><td>62</td><td>v.pavlenko@engineering.com</td><td>консультація</td><td>2026-10-15</td><td>12:00</td></tr>
+                    <tr><td>Лисенко Артем</td><td>25</td><td>artem.lysenko@inbox.ua</td><td>побажання</td><td>2026-10-09</td><td>14:30</td></tr>
+                </tbody>
+            </table>
+
+            <div id="task2-output"></div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="lab-container" style="text-align: center; padding: 20px 0;">
+            <p style="color: var(--color-text-muted); font-size: 0.9rem; margin: 0;">
+                &copy; 2026 <strong>3dMaker</strong>. Лабораторна робота №3 з дисципліни «Розробка фронтенду програмних систем». Варіант №9.
+            </p>
+        </div>
+    </footer>
+
+    <script src="js/lab3.js"></script>
+</body>
+</html>
