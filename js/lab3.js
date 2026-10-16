@@ -1,4 +1,4 @@
-const initialServices = [
+const initialServicesData = [
     { id: "srv-01", name: "FDM друк біополімером PLA", type: "FDM друк", viewsDay1: 140, viewsDay2: 185, duration: 12, price: 250 },
     { id: "srv-02", name: "FDM друк ударостійким PETG", type: "FDM друк", viewsDay1: 210, viewsDay2: 260, duration: 24, price: 380 },
     { id: "srv-03", name: "SLA друк фотополімерною смолою", type: "SLA друк", viewsDay1: 175, viewsDay2: 310, duration: 12, price: 590 },
@@ -36,6 +36,7 @@ function sortByDurationAndAvgViews(list) {
 function getMaxViewsDay2(list) {
     const leader = list.reduce((max, s) => (s.viewsDay2 > max.viewsDay2 ? s : max), list[0]);
     return {
+        leader,
         name: leader.name,
         type: leader.type,
         viewsDay2: leader.viewsDay2
@@ -172,7 +173,7 @@ class CRMSystem {
     }
 }
 
-const initialUsers = [
+const initialUsersRaw = [
     new UserInquiry("Шевченко", "Іван", 22, "ivan.shevchenko@gmail.com", "побажання", "2026-10-14", "14:30"),
     new UserInquiry("Коваль", "Оксана", 65, "o.koval@outlook.com", "претензія", "2026-10-12", "11:15"),
     new UserInquiry("Бондаренко", "Максим", 34, "m.bondarenko@techcorp.ua", "консультація", "2026-10-14", "14:30"),
@@ -185,194 +186,320 @@ const initialUsers = [
     new UserInquiry("Лисенко", "Артем", 25, "artem.lysenko@inbox.ua", "побажання", "2026-10-09", "14:30")
 ];
 
-function runAllLabTasks() {
-    console.log("=== ЧАСТИНА 1: ФУНКЦІОНАЛЬНИЙ JS (СЕРВІСИ) ===");
-    const sortResult = sortByDurationAndAvgViews(initialServices);
-    console.log("1.1. Впорядковані назви сервісів за тривалістю:", sortResult.sorted.map(s => `${s.name} (${s.duration} год)`));
-    console.log("1.1. Середня кількість читачів для сервісів з однаковим терміном:", sortResult.averages);
+let currentServices = initialServicesData.map(s => ({ ...s }));
+let selectedServiceIds = new Set();
+let showAveragesColumn = false;
+let durationMultiplier = 1.0;
+let leaderServiceId = null;
+let addedServiceId = null;
 
-    const leaderResult = getMaxViewsDay2(initialServices);
-    console.log("1.2. Лідер за переглядами за добу 2:", leaderResult.name, "| Тип:", leaderResult.type, "| Переглядів:", leaderResult.viewsDay2);
+let currentUsers = [...initialUsersRaw];
+let showClassesColumn = false;
+let youngestUserEmail = null;
 
-    const testIncomplete = { id: "srv-11", name: "Новий сервіс" };
-    const addIncompleteResult = addServiceRecord(initialServices, testIncomplete);
-    console.log("1.3a. Додавання неповного запису:", addIncompleteResult.action, "| Позиція:", addIncompleteResult.insertedIndex);
+function renderServicesTable() {
+    const tbody = document.getElementById("services-tbody");
+    const thAvg = document.getElementById("th-avg-readership");
+    if (!tbody) return;
 
-    const testComplete = { id: "srv-12", name: "3D-друк смолою Tough", type: "SLA друк", viewsDay1: 90, viewsDay2: 140, duration: 18, price: 400 };
-    const addCompleteResult = addServiceRecord(initialServices, testComplete);
-    console.log("1.3b. Додавання повного запису (ціна 400):", addCompleteResult.action, "| Позиція:", addCompleteResult.insertedIndex);
-
-    const duration1 = calculateSimultaneousDuration([initialServices[0]]);
-    const duration2 = calculateSimultaneousDuration([initialServices[0], initialServices[1]]);
-    const duration4 = calculateSimultaneousDuration([initialServices[0], initialServices[1], initialServices[2], initialServices[3]]);
-    console.log("1.4. Тривалість одночасного надання:");
-    console.log("  1 сервіс (коеф. " + duration1.multiplier + "):", duration1.totalHours, "год");
-    console.log("  2 сервіси (коеф. " + duration2.multiplier + "):", duration2.totalHours, "год");
-    console.log("  4 сервіси (коеф. " + duration4.multiplier + "):", duration4.totalHours, "год");
-
-    console.log("\n=== ЧАСТИНА 2: ОБ'ЄКТНО-ОРІЄНТОВАНИЙ JS (CRM КОРИСТУВАЧІВ) ===");
-    const crm = new CRMSystem(initialUsers);
-
-    const filteredUsers = crm.filterByMonthAndTime(10, "14:30");
-    console.log("2.1. Звернення за жовтень о 14:30:", filteredUsers.map(u => `${u.fullName} (${u.email})`));
-
-    const youngest = crm.getYoungestUser();
-    console.log("2.2. Наймолодший клієнт: вік " + youngest.age + ", email: " + youngest.email + ", дата: " + youngest.date);
-
-    const categories = crm.getCategoryCounts();
-    console.log("2.3. Кількість користувачів за класами:", categories);
-
-    const sortedUsers = crm.sortByEmailWithPurpose();
-    console.log("2.4. Сортування за алфавітом email із метою:", sortedUsers);
-
-    if (typeof document !== "undefined") {
-        renderPageResults({
-            services: initialServices,
-            sortResult,
-            leaderResult,
-            addIncompleteResult,
-            addCompleteResult,
-            durations: { duration1, duration2, duration4 },
-            users: initialUsers,
-            filteredUsers,
-            youngest,
-            categories,
-            sortedUsers
-        });
+    if (thAvg) {
+        thAvg.style.display = showAveragesColumn ? "table-cell" : "none";
     }
+
+    const { averages } = sortByDurationAndAvgViews(currentServices);
+    const avgMap = {};
+    for (const a of averages) {
+        avgMap[a.duration] = a.avgReadership;
+    }
+
+    tbody.innerHTML = currentServices.map(s => {
+        const isChecked = selectedServiceIds.has(s.id);
+        const isLeader = s.id === leaderServiceId;
+        const isAdded = s.id === addedServiceId;
+        const displayDuration = isChecked && durationMultiplier > 1.0
+            ? `${(s.duration * durationMultiplier).toFixed(1)} год`
+            : `${s.duration} год`;
+
+        let rowClass = "";
+        if (isLeader) rowClass = "row-leader";
+        if (isAdded) rowClass = "row-added";
+
+        return `
+            <tr class="${rowClass}">
+                <td align="center">
+                    <input type="checkbox" data-service-id="${s.id}" ${isChecked ? "checked" : ""}>
+                </td>
+                <td><code>${s.id}</code></td>
+                <td><strong>${s.name}</strong></td>
+                <td><span class="badge">${s.type}</span></td>
+                <td>${s.viewsDay1}</td>
+                <td><strong>${s.viewsDay2}</strong></td>
+                <td><span class="duration-pill ${isChecked && durationMultiplier > 1.0 ? "pill-adjusted" : ""}">${displayDuration}</span></td>
+                <td>${s.price !== null && s.price !== undefined ? `${s.price} грн` : "—"}</td>
+                ${showAveragesColumn ? `<td><strong>${avgMap[s.duration] || "—"}</strong></td>` : ""}
+            </tr>
+        `;
+    }).join("");
+
+    const checkboxes = tbody.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach(cb => {
+        cb.addEventListener("change", e => {
+            const id = e.target.getAttribute("data-service-id");
+            if (e.target.checked) {
+                selectedServiceIds.add(id);
+            } else {
+                selectedServiceIds.delete(id);
+            }
+            updateSimultaneousDurationUI();
+        });
+    });
 }
 
-function renderPageResults(data) {
-    const t1El = document.getElementById("task1-output");
-    const t2El = document.getElementById("task2-output");
+function updateSimultaneousDurationUI() {
+    const selected = currentServices.filter(s => selectedServiceIds.has(s.id));
+    const result = calculateSimultaneousDuration(selected);
+    durationMultiplier = result.multiplier;
 
-    if (t1El) {
-        t1El.innerHTML = `
-            <div class="result-card">
-                <h3>1.1. Впорядкування за тривалістю та середня кількість читачів:</h3>
-                <p style="margin-bottom: 6px;"><strong>Впорядковані назви сервісів за терміном надання:</strong></p>
-                <ol style="margin-top: 4px; margin-bottom: 14px; padding-left: 20px;">
-                    ${data.sortResult.sorted.map(s => `<li>${s.name} — <strong>${s.duration} год</strong> (читачі: Д1: ${s.viewsDay1}, Д2: ${s.viewsDay2})</li>`).join("")}
-                </ol>
-                <table class="lab-table">
-                    <thead>
-                        <tr>
-                            <th>Тривалість</th>
-                            <th>Кількість сервісів</th>
-                            <th>Сервіси</th>
-                            <th>Середня аудиторія</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${data.sortResult.averages.map(a => `
-                            <tr>
-                                <td><strong>${a.duration} год</strong></td>
-                                <td>${a.count}</td>
-                                <td>${a.services.join(", ")}</td>
-                                <td><strong>${a.avgReadership}</strong></td>
-                            </tr>
-                        `).join("")}
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="result-card">
-                <h3>1.2. Лідер за кількістю читачів за добу 2:</h3>
-                <p>
-                    Назва: <strong>${data.leaderResult.name}</strong><br>
-                    Тип сервісу: <span class="badge">${data.leaderResult.type}</span><br>
-                    Читачів за добу 2: <strong>${data.leaderResult.viewsDay2}</strong>
-                </p>
-            </div>
-
-            <div class="result-card">
-                <h3>1.3. Додавання нового запису:</h3>
-                <p>
-                    <strong>Неповні дані:</strong> ${data.addIncompleteResult.action} (позиція індексу: ${data.addIncompleteResult.insertedIndex})<br>
-                    <strong>Повні дані (ціна 400 грн):</strong> ${data.addCompleteResult.action} (позиція індексу: ${data.addCompleteResult.insertedIndex})
-                </p>
-            </div>
-
-            <div class="result-card">
-                <h3>1.4. Одночасне надання декількох сервісів:</h3>
-                <ul>
-                    <li>1 сервіс (коефіцієнт ${data.durations.duration1.multiplier}x): <strong>${data.durations.duration1.totalHours} год</strong></li>
-                    <li>2 сервіси (коефіцієнт ${data.durations.duration2.multiplier}x): <strong>${data.durations.duration2.totalHours} год</strong></li>
-                    <li>4 сервіси (коефіцієнт ${data.durations.duration4.multiplier}x): <strong>${data.durations.duration4.totalHours} год</strong></li>
-                </ul>
-            </div>
-        `;
+    const statusEl = document.getElementById("services-status");
+    if (selected.length > 0) {
+        statusEl.innerHTML = `<strong>1.4. Одночасне надання:</strong> обрано ${result.count} сервісів (коефіцієнт ${result.multiplier}x). Загальна тривалість: <strong>${result.totalHours} год</strong>.`;
+        statusEl.style.display = "block";
+    } else {
+        durationMultiplier = 1.0;
+        statusEl.style.display = "none";
     }
 
-    if (t2El) {
-        t2El.innerHTML = `
-            <div class="result-card">
-                <h3>2.1. Користувачі, що звернулися у жовтні (місяць 10) о 14:30:</h3>
-                <ul>
-                    ${data.filteredUsers.map(u => `
-                        <li><strong>${u.fullName}</strong> — Email: ${u.email}, Мета: ${u.purpose}, Дата: ${u.date}</li>
-                    `).join("")}
-                </ul>
-            </div>
+    renderServicesTable();
+}
 
-            <div class="result-card">
-                <h3>2.2. Наймолодший користувач:</h3>
-                <p>
-                    Ім'я: <strong>${data.youngest.fullName}</strong><br>
-                    Мінімальний вік: <strong>${data.youngest.age} років</strong><br>
-                    Email: <strong>${data.youngest.email}</strong><br>
-                    Дата звернення: <strong>${data.youngest.date}</strong>
-                </p>
-            </div>
+function handleSortByDuration() {
+    const result = sortByDurationAndAvgViews(currentServices);
+    currentServices = result.sorted;
+    showAveragesColumn = true;
+    leaderServiceId = null;
+    addedServiceId = null;
+    renderServicesTable();
 
-            <div class="result-card">
-                <h3>2.3. Розподіл клієнтів на класи:</h3>
-                <table class="lab-table">
-                    <thead>
-                        <tr>
-                            <th>Клас</th>
-                            <th>Критерій класифікації</th>
-                            <th>Кількість</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>«активна молодь»</td><td>вік &lt; 25 та мета = «побажання»</td><td><strong>${data.categories["активна молодь"]}</strong></td></tr>
-                        <tr><td>«похилий претензійний»</td><td>вік &gt; 60 та мета = «претензія»</td><td><strong>${data.categories["похилий претензійний"]}</strong></td></tr>
-                        <tr><td>«середній без претензій»</td><td>25 &lt; вік &lt; 60 та мета &ne; «претензія»</td><td><strong>${data.categories["середній без претензій"]}</strong></td></tr>
-                        <tr><td>«інші»</td><td>всі інші випадки</td><td><strong>${data.categories["інші"]}</strong></td></tr>
-                    </tbody>
-                </table>
-            </div>
+    const statusEl = document.getElementById("services-status");
+    statusEl.innerHTML = `
+        <strong>1.1. Таблицю впорядковано за тривалістю надання:</strong> додано колонку середньої кількості читачів для однакових термінів.
+        (${result.averages.map(a => `${a.duration} год: <strong>${a.avgReadership}</strong>`).join(" | ")})
+    `;
+    statusEl.style.display = "block";
+}
 
-            <div class="result-card">
-                <h3>2.4. Сортування за алфавітом Email із метою зворотнього зв'язку:</h3>
-                <table class="lab-table">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Email адреса</th>
-                            <th>Клієнт</th>
-                            <th>Мета звернення</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${data.sortedUsers.map((u, i) => `
-                            <tr>
-                                <td>${i + 1}</td>
-                                <td><code>${u.email}</code></td>
-                                <td>${u.fullName}</td>
-                                <td><span class="badge">${u.purpose}</span></td>
-                            </tr>
-                        `).join("")}
-                    </tbody>
-                </table>
-            </div>
-        `;
+function handleFindLeaderDay2() {
+    const result = getMaxViewsDay2(currentServices);
+    leaderServiceId = result.leader.id;
+    addedServiceId = null;
+    renderServicesTable();
+
+    const statusEl = document.getElementById("services-status");
+    statusEl.innerHTML = `
+        <strong>1.2. Лідер за кількістю читачів за добу 2:</strong> підсвічено у таблиці рядок <strong>«${result.name}»</strong>.
+        Тип сервісу: <span class="badge">${result.type}</span> | Читачів Д2: <strong>${result.viewsDay2}</strong>.
+    `;
+    statusEl.style.display = "block";
+}
+
+function handleAddIncompleteService() {
+    const newRecord = {
+        id: `srv-${currentServices.length + 1}`,
+        name: "3D-друк експериментальним полімером"
+    };
+    const result = addServiceRecord(currentServices, newRecord);
+    currentServices = result.list;
+    addedServiceId = newRecord.id;
+    leaderServiceId = null;
+    renderServicesTable();
+
+    const statusEl = document.getElementById("services-status");
+    statusEl.innerHTML = `
+        <strong>1.3. Додано неповний запис:</strong> додано в кінець таблиці рядок <code>${newRecord.id}</code> (позиція ${result.insertedIndex + 1}).
+    `;
+    statusEl.style.display = "block";
+}
+
+function handleAddCompleteService() {
+    const newRecord = {
+        id: `srv-${currentServices.length + 1}`,
+        name: "3D-друк фотополімером Tough Resin",
+        type: "SLA друк",
+        viewsDay1: 95,
+        viewsDay2: 140,
+        duration: 18,
+        price: 400
+    };
+    const result = addServiceRecord(currentServices, newRecord);
+    currentServices = result.list;
+    addedServiceId = newRecord.id;
+    leaderServiceId = null;
+    renderServicesTable();
+
+    const statusEl = document.getElementById("services-status");
+    statusEl.innerHTML = `
+        <strong>1.3. Додано повний запис:</strong> вставлено у відсортовану за вартістю таблицю рядок <code>${newRecord.id}</code> (ціна: 400 грн, позиція ${result.insertedIndex + 1}).
+    `;
+    statusEl.style.display = "block";
+}
+
+function handleResetServices() {
+    currentServices = initialServicesData.map(s => ({ ...s }));
+    selectedServiceIds.clear();
+    showAveragesColumn = false;
+    durationMultiplier = 1.0;
+    leaderServiceId = null;
+    addedServiceId = null;
+    renderServicesTable();
+
+    const statusEl = document.getElementById("services-status");
+    statusEl.style.display = "none";
+}
+
+function renderUsersTable() {
+    const tbody = document.getElementById("users-tbody");
+    const thClass = document.getElementById("th-user-class");
+    if (!tbody) return;
+
+    if (thClass) {
+        thClass.style.display = showClassesColumn ? "table-cell" : "none";
     }
+
+    tbody.innerHTML = currentUsers.map(u => {
+        const isYoungest = u.email === youngestUserEmail;
+        return `
+            <tr class="${isYoungest ? "row-youngest" : ""}">
+                <td><strong>${u.fullName}</strong></td>
+                <td>${u.age}</td>
+                <td><code>${u.email}</code></td>
+                <td><span class="badge">${u.purpose}</span></td>
+                <td>${u.date}</td>
+                <td>${u.time}</td>
+                ${showClassesColumn ? `<td><span class="class-pill class-${u.category.replace(/\s+/g, '-')}">${u.category}</span></td>` : ""}
+            </tr>
+        `;
+    }).join("");
+}
+
+function handleFilterUsers() {
+    const crm = new CRMSystem(initialUsersRaw);
+    currentUsers = crm.filterByMonthAndTime(10, "14:30");
+    youngestUserEmail = null;
+    renderUsersTable();
+
+    const statusEl = document.getElementById("users-status");
+    statusEl.innerHTML = `
+        <strong>2.1. Фільтрація (жовтень, 14:30):</strong> у таблиці залишено ${currentUsers.length} користувачів, які звернулися у цей момент.
+    `;
+    statusEl.style.display = "block";
+}
+
+function handleFindYoungestUser() {
+    const crm = new CRMSystem(initialUsersRaw);
+    const youngest = crm.getYoungestUser();
+    currentUsers = [...initialUsersRaw];
+    youngestUserEmail = youngest.email;
+    renderUsersTable();
+
+    const statusEl = document.getElementById("users-status");
+    statusEl.innerHTML = `
+        <strong>2.2. Наймолодший клієнт:</strong> підсвічено у таблиці рядок <strong>${youngest.fullName}</strong>.
+        Мінімальний вік: <strong>${youngest.age} років</strong> | Email: <code>${youngest.email}</code> | Дата звернення: <strong>${youngest.date}</strong>.
+    `;
+    statusEl.style.display = "block";
+}
+
+function handleSegmentUsers() {
+    const crm = new CRMSystem(initialUsersRaw);
+    currentUsers = [...initialUsersRaw];
+    showClassesColumn = true;
+    youngestUserEmail = null;
+    renderUsersTable();
+
+    const counts = crm.getCategoryCounts();
+    const statusEl = document.getElementById("users-status");
+    statusEl.innerHTML = `
+        <strong>2.3. Додано класифікацію користувачів за 4 класами:</strong>
+        «активна молодь»: <strong>${counts["активна молодь"]}</strong> |
+        «похилий претензійний»: <strong>${counts["похилий претензійний"]}</strong> |
+        «середній без претензій»: <strong>${counts["середній без претензій"]}</strong> |
+        «інші»: <strong>${counts["інші"]}</strong>.
+    `;
+    statusEl.style.display = "block";
+}
+
+function handleSortUsersByEmail() {
+    const crm = new CRMSystem(initialUsersRaw);
+    currentUsers = crm.sortByEmailWithPurpose().map(item => {
+        return initialUsersRaw.find(u => u.email === item.email);
+    });
+    youngestUserEmail = null;
+    renderUsersTable();
+
+    const statusEl = document.getElementById("users-status");
+    statusEl.innerHTML = `
+        <strong>2.4. Таблицю впорядковано за алфавітом Email:</strong> кожна адреса співставлена з відповідною метою звернення.
+    `;
+    statusEl.style.display = "block";
+}
+
+function handleResetUsers() {
+    currentUsers = [...initialUsersRaw];
+    showClassesColumn = false;
+    youngestUserEmail = null;
+    renderUsersTable();
+
+    const statusEl = document.getElementById("users-status");
+    statusEl.style.display = "none";
+}
+
+function runConsoleAudit() {
+    console.log("=== ЧАСТИНА 1: ФУНКЦІОНАЛЬНИЙ JS (СЕРВІСИ) ===");
+    const sortRes = sortByDurationAndAvgViews(initialServicesData);
+    console.log("1.1. Впорядковані назви за тривалістю:", sortRes.sorted.map(s => `${s.name} (${s.duration} год)`));
+    console.log("1.1. Середні перегляди для однакової тривалості:", sortRes.averages);
+
+    const leaderRes = getMaxViewsDay2(initialServicesData);
+    console.log("1.2. Лідер за переглядами за добу 2:", leaderRes.name, "| Тип:", leaderRes.type, "| Переглядів:", leaderRes.viewsDay2);
+
+    const addInc = addServiceRecord(initialServicesData, { id: "srv-11", name: "Неповний сервіс" });
+    console.log("1.3a. Додавання неповного запису:", addInc.action, "| Індекс:", addInc.insertedIndex);
+
+    const addComp = addServiceRecord(initialServicesData, { id: "srv-12", name: "Повний сервіс", type: "SLA друк", viewsDay1: 90, viewsDay2: 140, duration: 18, price: 400 });
+    console.log("1.3b. Додавання повного запису (ціна 400):", addComp.action, "| Індекс:", addComp.insertedIndex);
+
+    const d1 = calculateSimultaneousDuration([initialServicesData[0]]);
+    const d2 = calculateSimultaneousDuration([initialServicesData[0], initialServicesData[1]]);
+    const d4 = calculateSimultaneousDuration([initialServicesData[0], initialServicesData[1], initialServicesData[2], initialServicesData[3]]);
+    console.log("1.4. Одночасна тривалість: 1 сервіс =", d1.totalHours, "год | 2 сервіси =", d2.totalHours, "год | 4 сервіси =", d4.totalHours, "год");
+
+    console.log("\n=== ЧАСТИНА 2: ОБ'ЄКТНО-ОРІЄНТОВАНИЙ JS (CRM КОРИСТУВАЧІВ) ===");
+    const crm = new CRMSystem(initialUsersRaw);
+    console.log("2.1. Звернення за жовтень о 14:30:", crm.filterByMonthAndTime(10, "14:30").map(u => u.fullName));
+    const young = crm.getYoungestUser();
+    console.log("2.2. Наймолодший клієнт: вік", young.age, "| Email:", young.email, "| Дата:", young.date);
+    console.log("2.3. Кількість користувачів за 4 класами:", crm.getCategoryCounts());
+    console.log("2.4. Сортування за алфавітом Email:", crm.sortByEmailWithPurpose());
 }
 
 if (typeof window !== "undefined") {
-    window.addEventListener("DOMContentLoaded", runAllLabTasks);
+    window.addEventListener("DOMContentLoaded", () => {
+        runConsoleAudit();
+        renderServicesTable();
+        renderUsersTable();
+
+        document.getElementById("btn-sort-duration")?.addEventListener("click", handleSortByDuration);
+        document.getElementById("btn-leader-day2")?.addEventListener("click", handleFindLeaderDay2);
+        document.getElementById("btn-add-incomplete")?.addEventListener("click", handleAddIncompleteService);
+        document.getElementById("btn-add-complete")?.addEventListener("click", handleAddCompleteService);
+        document.getElementById("btn-reset-services")?.addEventListener("click", handleResetServices);
+
+        document.getElementById("btn-filter-users")?.addEventListener("click", handleFilterUsers);
+        document.getElementById("btn-youngest-user")?.addEventListener("click", handleFindYoungestUser);
+        document.getElementById("btn-segment-users")?.addEventListener("click", handleSegmentUsers);
+        document.getElementById("btn-sort-users")?.addEventListener("click", handleSortUsersByEmail);
+        document.getElementById("btn-reset-users")?.addEventListener("click", handleResetUsers);
+    });
 } else {
-    runAllLabTasks();
+    runConsoleAudit();
 }
