@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/flexbox-form.css">
+    <script src="js/lab4.js" defer></script>
 
     <style>
         .feedback-intro-banner {
@@ -130,7 +131,16 @@
                     <label for="details" class="flex-label" style="flex-basis: auto; margin-bottom: 6px;">
                         <strong>5. Текст звернення у поле «Детально»:</strong><span class="required-star">*</span>
                     </label>
-                    <textarea id="details" name="details" class="flex-input-control flex-textarea" rows="6" cols="48" maxlength="500" placeholder="Введіть текст вашого звернення (обмеження: висота 6 рядків, ширина 48 символів, максимум 500 символів)..." required></textarea>
+                    <div class="details-field-wrapper">
+                        <textarea id="details" name="details" class="flex-input-control flex-textarea" rows="6" cols="48" maxlength="500" placeholder="Введіть текст вашого звернення (обмеження: висота 6 рядків, ширина 48 символів, максимум 500 символів)..." required></textarea>
+                        <div id="details-tooltip" class="details-tooltip" role="tooltip" aria-hidden="true">
+                            <span class="details-tooltip-arrow"></span>
+                            <div class="details-tooltip-content">
+                                <span class="details-tooltip-icon">💡</span>
+                                <span>Дякуючи Вам, ми стаємо кращі! Конкретизуйте мету звернення, будь ласка</span>
+                            </div>
+                        </div>
+                    </div>
                     <small style="color: var(--color-text-muted); margin-top: 4px;">
                         <em>Властивості поля: <code>rows="6"</code>, <code>cols="48"</code>, <code>maxlength="500"</code> (жорсткі ліміти за варіантом).</em>
                     </small>

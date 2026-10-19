@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/animations.css">
+    <script src="js/lab4.js" defer></script>
 
     <style>
         .catalog-header-info {
@@ -51,10 +52,24 @@
                     </a>
                 </td>
                 <td width="48%" align="center">
-                    <nav>
+                    <nav id="site-nav">
                         <ul>
                             <li><a href="index.html" class="nav-link">Головна</a></li>
-                            <li><a href="services.html" class="nav-link" style="color: var(--color-primary-light); font-weight: bold;">Каталог сервісів</a></li>
+                            <li class="has-dropdown" id="services-menu-item">
+                                <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="services-menu-toggle" aria-expanded="false" style="color: var(--color-primary-light); font-weight: bold;">
+                                    Каталог сервісів <span class="dropdown-arrow">▾</span>
+                                </a>
+                                <ul class="dropdown-submenu" id="services-submenu">
+                                    <li><a href="#service-1">1. Пошаровий FDM-друк</a></li>
+                                    <li><a href="#service-2">2. SLA фотополімери</a></li>
+                                    <li><a href="#service-3">3. SLS лазерне спікання</a></li>
+                                    <li><a href="#service-4">4. Друк за посиланням</a></li>
+                                    <li><a href="#service-5">5. Оптичне 3D-сканування</a></li>
+                                    <li><a href="#service-6">6. Фінішна постобробка</a></li>
+                                    <li><a href="#service-7">7. Серійне виробництво</a></li>
+                                    <li><a href="#service-8">8. CAD-моделювання</a></li>
+                                </ul>
+                            </li>
                             <li><a href="models-catalog.html" class="nav-link">Каталог 3D-моделей</a></li>
                             <li><a href="reviews.html" class="nav-link">Відгуки про сервіси</a></li>
                             <li><a href="feedback.html" class="nav-link">Зворотній зв’язок</a></li>
@@ -87,8 +102,22 @@
         <section id="services-list" class="catalog-grid">
 
             <article id="service-1" class="catalog-item-v9">
-                <div align="center" style="margin-bottom: 16px;">
-                    <img src="assets/images/fdm.svg" alt="FDM 3D-друк термопластами" width="100%" height="190" class="photo-interactive animate-grayscale" tabindex="0" title="Натисніть або наведіть для чорно-білої анімації">
+                <div class="flip-card" tabindex="0">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="assets/images/fdm.svg" alt="FDM 3D-друк термопластами" class="photo-interactive animate-grayscale">
+                            <div class="flip-badge">↺ Умови експлуатації</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="flip-back-title">⚙️ Технічні умови та догляд:</div>
+                            <ul class="flip-back-list">
+                                <li><strong>Температурний режим:</strong> PLA до 55°C, PETG до 75°C, ABS до 100°C.</li>
+                                <li><strong>Очищення та догляд:</strong> теплий мильний розчин до 40°C. Без посудомийки.</li>
+                                <li><strong>Хімічна стійкість:</strong> PETG стійкий до спиртів; ABS розчинний в ацетоні.</li>
+                                <li><strong>Допуски:</strong> лінійна точність виготовлення ±0.15 мм на 100 мм.</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <h2>1. Пошаровий FDM-друк конструкційними термопластами</h2>
 
@@ -116,8 +145,22 @@
             </article>
 
             <article id="service-2" class="catalog-item-v9">
-                <div align="center" style="margin-bottom: 16px;">
-                    <img src="assets/images/sla.svg" alt="SLA фотополімерний друк" width="100%" height="190" class="photo-interactive animate-grayscale" tabindex="0" title="Натисніть або наведіть для чорно-білої анімації">
+                <div class="flip-card" tabindex="0">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="assets/images/sla.svg" alt="SLA фотополімерний друк" class="photo-interactive animate-grayscale">
+                            <div class="flip-badge">↺ Умови експлуатації</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="flip-back-title">⚙️ Технічні умови та догляд:</div>
+                            <ul class="flip-back-list">
+                                <li><strong>Температурний режим:</strong> стандартні смоли до 60°C, High-Temp до 230°C.</li>
+                                <li><strong>Очищення та догляд:</strong> ультразвукова ванна в ізопропіловому спирті (IPA).</li>
+                                <li><strong>УФ-захист:</strong> обов'язкове нанесення УФ-захисного лаку від пожовтіння.</li>
+                                <li><strong>Допуски:</strong> надвисока точність ±0.03 мм, товщина шару від 20 мкм.</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <h2>2. Високоточний стереолітографічний SLA-друк фотополімерами</h2>
 
@@ -145,8 +188,22 @@
             </article>
 
             <article id="service-3" class="catalog-item-v9">
-                <div align="center" style="margin-bottom: 16px;">
-                    <img src="assets/images/sls.svg" alt="SLS лазерне спікання" width="100%" height="190" class="photo-interactive animate-grayscale" tabindex="0" title="Натисніть або наведіть для чорно-білої анімації">
+                <div class="flip-card" tabindex="0">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="assets/images/sls.svg" alt="SLS лазерне спікання" class="photo-interactive animate-grayscale">
+                            <div class="flip-badge">↺ Умови експлуатації</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="flip-back-title">⚙️ Технічні умови та догляд:</div>
+                            <ul class="flip-back-list">
+                                <li><strong>Температурний режим:</strong> експлуатація від -40°C до +120°C без деформацій.</li>
+                                <li><strong>Очищення та догляд:</strong> віброабразивна або піскоструминна обробка.</li>
+                                <li><strong>Хімічна стійкість:</strong> повна стійкість до бензину, мастил та спиртів.</li>
+                                <li><strong>Допуски:</strong> ізотропна міцність у всіх вісях, точність ±0.1 мм.</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <h2>3. Промислове лазерне спікання порошкового поліаміду (SLS)</h2>
 
@@ -174,8 +231,22 @@
             </article>
 
             <article id="service-4" class="catalog-item-v9">
-                <div align="center" style="margin-bottom: 16px;">
-                    <img src="assets/images/url-import.svg" alt="Прямий друк за посиланням" width="100%" height="190" class="photo-interactive animate-grayscale" tabindex="0" title="Натисніть або наведіть для чорно-білої анімації">
+                <div class="flip-card" tabindex="0">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="assets/images/url-import.svg" alt="Прямий друк за посиланням" class="photo-interactive animate-grayscale">
+                            <div class="flip-badge">↺ Умови та ліцензії</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="flip-back-title">⚙️ Умови замовлення за посиланням:</div>
+                            <ul class="flip-back-list">
+                                <li><strong>Ліцензійна перевірка:</strong> обов'язкове дотримання Creative Commons.</li>
+                                <li><strong>Перевірка товщини стінок:</strong> мінімальна товщина для друку 0.8 мм.</li>
+                                <li><strong>Підтримувані джерела:</strong> прямий імпорт Thingiverse, Printables, Thangs.</li>
+                                <li><strong>Збереження:</strong> автоматичне збереження цифрового файлу в кабінеті.</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <h2>4. Друк за прямим посиланням з онлайн-каталогів</h2>
 
@@ -203,8 +274,22 @@
             </article>
 
             <article id="service-5" class="catalog-item-v9">
-                <div align="center" style="margin-bottom: 16px;">
-                    <img src="assets/images/scan.svg" alt="3D сканування деталей" width="100%" height="190" class="photo-interactive animate-grayscale" tabindex="0" title="Натисніть або наведіть для чорно-білої анімації">
+                <div class="flip-card" tabindex="0">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="assets/images/scan.svg" alt="3D сканування деталей" class="photo-interactive animate-grayscale">
+                            <div class="flip-badge">↺ Умови сканування</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="flip-back-title">⚙️ Умови оптичного сканування:</div>
+                            <ul class="flip-back-list">
+                                <li><strong>Підготовка поверхні:</strong> нанесення змивного матуючого спрею.</li>
+                                <li><strong>Точність оцифрування:</strong> апаратна похибка не перевищує 0.04 мм.</li>
+                                <li><strong>Габарити сканування:</strong> об'єкти від 10 мм до 2000 мм у довжину.</li>
+                                <li><strong>Формати передачі:</strong> видача хмари точок або параметричного STEP.</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <h2>5. Оптичне 3D-сканування та реверс-інжиніринг</h2>
 
@@ -232,8 +317,22 @@
             </article>
 
             <article id="service-6" class="catalog-item-v9">
-                <div align="center" style="margin-bottom: 16px;">
-                    <img src="assets/images/postprocess.svg" alt="Постобробка та фарбування" width="100%" height="190" class="photo-interactive animate-grayscale" tabindex="0" title="Натисніть або наведіть для чорно-білої анімації">
+                <div class="flip-card" tabindex="0">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="assets/images/postprocess.svg" alt="Постобробка та фарбування" class="photo-interactive animate-grayscale">
+                            <div class="flip-badge">↺ Умови постобробки</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="flip-back-title">⚙️ Умови постобробки виробів:</div>
+                            <ul class="flip-back-list">
+                                <li><strong>Хімічне згладжування:</strong> парова обробка розчинником без зміни геометрії.</li>
+                                <li><strong>Фарбування та ґрунтовка:</strong> 2-компонентний акрил за палітрою RAL.</li>
+                                <li><strong>Впаювання різьб:</strong> латунні втулки M2–M8 під нагріванням до 240°C.</li>
+                                <li><strong>Захисний шар:</strong> стійкий поліуретановий лак проти стирання та УФ.</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <h2>6. Фінішна постобробка, хімічне згладжування та фарбування</h2>
 
@@ -261,8 +360,22 @@
             </article>
 
             <article id="service-7" class="catalog-item-v9">
-                <div align="center" style="margin-bottom: 16px;">
-                    <img src="assets/images/model-bracket.svg" alt="Серійне виробництво" width="100%" height="190" class="photo-interactive animate-grayscale" tabindex="0" title="Натисніть або наведіть для чорно-білої анімації">
+                <div class="flip-card" tabindex="0">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="assets/images/model-bracket.svg" alt="Серійне виробництво" class="photo-interactive animate-grayscale">
+                            <div class="flip-badge">↺ Умови виробництва</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="flip-back-title">⚙️ Умови серійного випуску:</div>
+                            <ul class="flip-back-list">
+                                <li><strong>Мінімальна партія:</strong> від 10 одиниць до 2000 одиниць у партії.</li>
+                                <li><strong>Контроль якості:</strong> вибірковий ВТК калібрами та мікрометром.</li>
+                                <li><strong>Терміни виготовлення:</strong> від 48 годин на базову серію з 50 штук.</li>
+                                <li><strong>Упаковка:</strong> індивідуальні герметичні пакети з силікагелем.</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <h2>7. Дрібносерійне контрактне виробництво виробів</h2>
 
@@ -290,8 +403,22 @@
             </article>
 
             <article id="service-8" class="catalog-item-v9">
-                <div align="center" style="margin-bottom: 16px;">
-                    <img src="assets/images/model-gear.svg" alt="3D моделювання" width="100%" height="190" class="photo-interactive animate-grayscale" tabindex="0" title="Натисніть або наведіть для чорно-білої анімації">
+                <div class="flip-card" tabindex="0">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="assets/images/model-gear.svg" alt="3D моделювання" class="photo-interactive animate-grayscale">
+                            <div class="flip-badge">↺ Умови моделювання</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="flip-back-title">⚙️ Умови інженерного моделювання:</div>
+                            <ul class="flip-back-list">
+                                <li><strong>Усадка матеріалів:</strong> компенсація термічної усадки 0.4–1.8%.</li>
+                                <li><strong>Посадкові допуски:</strong> розрахунок зазорів під підшипники та вали.</li>
+                                <li><strong>Правки проекту:</strong> до 3 раундів коригувань за ТЗ без доплат.</li>
+                                <li><strong>Авторські права:</strong> повна передача вихідних файлів STEP/SLDPRT.</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <h2>8. Інженерне CAD-моделювання за ескізами та кресленнями</h2>
 
