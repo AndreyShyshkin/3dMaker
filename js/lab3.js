@@ -22,19 +22,24 @@ function sortByDurationAndAvgViews(list) {
     }
     const averages = Object.keys(groups).map(dur => {
         const items = groups[dur];
-        const totalViews = items.reduce((sum, s) => sum + s.viewsDay1 + s.viewsDay2, 0);
+        let totalViews = 0;
+        for (const s of items) {
+            totalViews += s.viewsDay1 + s.viewsDay2;
+        }
+        const rawAvg = totalViews / (items.length * 2);
         return {
             duration: Number(dur),
             count: items.length,
             services: items.map(s => s.name),
-            avgReadership: Number((totalViews / (items.length * 2)).toFixed(2))
+            avgReadership: Math.round(rawAvg * 100) / 100
         };
     });
     return { sorted, averages };
 }
 
 function getMaxViewsDay2(list) {
-    const leader = list.reduce((max, s) => (s.viewsDay2 > max.viewsDay2 ? s : max), list[0]);
+    const maxViews = Math.max(...list.map(s => s.viewsDay2));
+    const leader = list.find(s => s.viewsDay2 === maxViews) || list[0];
     return {
         leader,
         name: leader.name,
@@ -66,7 +71,15 @@ function addServiceRecord(list, newRecord) {
     }
 
     copy.sort((a, b) => a.price - b.price);
-    const targetIndex = copy.findIndex(item => item.price >= newRecord.price);
+    let targetIndex = -1;
+    let idx = 0;
+    while (idx < copy.length) {
+        if (copy[idx].price >= newRecord.price) {
+            targetIndex = idx;
+            break;
+        }
+        idx++;
+    }
     const insertAt = targetIndex === -1 ? copy.length : targetIndex;
     copy.splice(insertAt, 0, newRecord);
 
@@ -74,6 +87,43 @@ function addServiceRecord(list, newRecord) {
         list: copy,
         insertedIndex: insertAt,
         action: "Повні дані — вставлено за зростанням вартості"
+    };
+}
+
+const formatPrice = function(val) {
+    if (val === null || val === undefined) {
+        return "—";
+    }
+    return String(val) + " грн";
+};
+
+function computeStepTotal(baseValue, count) {
+    let total = 0;
+    let step = 0;
+    do {
+        total += baseValue;
+        step++;
+    } while (step < count);
+    return total;
+}
+
+function inspectDataTypes() {
+    const testNum = 42;
+    const testStr = "3D";
+    const testBool = true;
+    const testObj = { project: "3dMaker" };
+    const testArr = [1, 2, 3];
+    const testFn = function() {};
+    let testScale = 1;
+    testScale *= 2;
+    return {
+        primitiveNumber: typeof testNum,
+        primitiveString: typeof testStr,
+        primitiveBoolean: typeof testBool,
+        objectRecord: typeof testObj,
+        objectArray: typeof testArr,
+        objectFunction: typeof testFn,
+        scaledSample: testScale
     };
 }
 
@@ -122,6 +172,27 @@ class UserInquiry {
         return new Date(this.date).getMonth() + 1;
     }
 
+    getYear() {
+        return new Date(this.date).getFullYear();
+    }
+
+    getDay() {
+        return new Date(this.date).getDate();
+    }
+
+    getPriority() {
+        switch (this.purpose) {
+            case "претензія":
+                return "високий";
+            case "консультація":
+                return "середній";
+            case "побажання":
+                return "низький";
+            default:
+                return "стандартний";
+        }
+    }
+
     get category() {
         if (this.age < 25 && this.purpose === "побажання") {
             return "активна молодь";
@@ -146,7 +217,8 @@ class CRMSystem {
     }
 
     getYoungestUser() {
-        return this.users.reduce((youngest, u) => (u.age < youngest.age ? u : youngest), this.users[0]);
+        const minAge = Math.min(...this.users.map(u => u.age));
+        return this.users.find(u => u.age === minAge) || this.users[0];
     }
 
     getCategoryCounts() {
@@ -164,6 +236,7 @@ class CRMSystem {
 
     sortByEmailWithPurpose() {
         return [...this.users]
+            .filter(u => u.email.toLowerCase().includes("@"))
             .sort((a, b) => a.email.localeCompare(b.email))
             .map(u => ({
                 email: u.email,
@@ -235,7 +308,7 @@ function renderServicesTable() {
                 <td>${s.viewsDay1}</td>
                 <td><strong>${s.viewsDay2}</strong></td>
                 <td><span class="duration-pill ${isChecked && durationMultiplier > 1.0 ? "pill-adjusted" : ""}">${displayDuration}</span></td>
-                <td>${s.price !== null && s.price !== undefined ? `${s.price} грн` : "—"}</td>
+                <td>${formatPrice(s.price)}</td>
                 ${showAveragesColumn ? `<td><strong>${avgMap[s.duration] || "—"}</strong></td>` : ""}
             </tr>
         `;
@@ -454,7 +527,18 @@ function handleResetUsers() {
 }
 
 function runConsoleAudit() {
-    console.log("=== ЧАСТИНА 1: ФУНКЦІОНАЛЬНИЙ JS (СЕРВІСИ) ===");
+    console.log("=== ДЕМОНСТРАЦІЯ ТИПІВ ДАНИХ ТА typeof ===");
+    console.log(inspectDataTypes());
+
+    console.log("\n=== ДЕМОНСТРАЦІЯ Date / Math / String МЕТОДІВ ===");
+    const sampleUser = initialUsersRaw[0];
+    console.log("Date методи (рік, місяць, день):", sampleUser.getYear(), sampleUser.getMonth(), sampleUser.getDay());
+    console.log("Math методи (max, min, round):", Math.max(140, 420), Math.min(19, 71), Math.round(168.333));
+    console.log("String методи (lowercase, includes, localeCompare):", sampleUser.email.toLowerCase(), sampleUser.email.includes("@"), "alpha".localeCompare("beta"));
+    console.log("Switch оператор (пріоритет звернення):", sampleUser.getPriority());
+    console.log("do...while цикл (сума кроків):", computeStepTotal(10, 3));
+
+    console.log("\n=== ЧАСТИНА 1: ФУНКЦІОНАЛЬНИЙ JS (СЕРВІСИ) ===");
     const sortRes = sortByDurationAndAvgViews(initialServicesData);
     console.log("1.1. Впорядковані назви за тривалістю:", sortRes.sorted.map(s => `${s.name} (${s.duration} год)`));
     console.log("1.1. Середні перегляди для однакової тривалості:", sortRes.averages);
