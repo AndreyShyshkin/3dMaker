@@ -188,6 +188,67 @@ function initResponsiveNav() {
     const nav = document.getElementById('site-main-nav');
     if (!nav) return;
 
+    const toggleBtn = document.getElementById('mobile-nav-toggle');
+    const closeBtn = document.getElementById('mobile-nav-close');
+    const backdrop = document.getElementById('mobile-nav-backdrop');
+
+    function openMobileNav() {
+        nav.classList.add('is-open');
+        if (backdrop) {
+            backdrop.classList.add('is-active');
+            backdrop.setAttribute('aria-hidden', 'false');
+        }
+        if (toggleBtn) {
+            toggleBtn.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function closeMobileNav() {
+        nav.classList.remove('is-open');
+        if (backdrop) {
+            backdrop.classList.remove('is-active');
+            backdrop.setAttribute('aria-hidden', 'true');
+        }
+        if (toggleBtn) {
+            toggleBtn.setAttribute('aria-expanded', 'false');
+        }
+    }
+
+    function toggleMobileNav() {
+        if (nav.classList.contains('is-open')) {
+            closeMobileNav();
+        } else {
+            openMobileNav();
+        }
+    }
+
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', toggleMobileNav);
+    }
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeMobileNav);
+    }
+
+    if (backdrop) {
+        backdrop.addEventListener('click', closeMobileNav);
+    }
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && nav.classList.contains('is-open')) {
+            closeMobileNav();
+        }
+    });
+
+    const navInteractive = nav.querySelectorAll('.nav-link, .nav-footer-btn');
+    navInteractive.forEach(function (link) {
+        link.addEventListener('click', function () {
+            if (window.innerWidth <= 768) {
+                closeMobileNav();
+            }
+        });
+    });
+
     function updateNavOrientation() {
         if (window.innerWidth <= 768) {
             if (!nav.classList.contains('nav-vertical-right')) {
@@ -199,6 +260,7 @@ function initResponsiveNav() {
                 nav.classList.remove('nav-vertical-right');
                 nav.classList.add('nav-horizontal-top');
             }
+            closeMobileNav();
         }
     }
 
