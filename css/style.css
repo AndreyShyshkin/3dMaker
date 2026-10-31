@@ -829,11 +829,19 @@ tfoot td, tfoot th {
 
 .page-grid-layout {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 20px;
     max-width: 1440px;
     margin: 0 auto;
     padding: 0 24px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.page-grid-layout > * {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 body.has-floating-subnav .page-grid-layout,
@@ -862,9 +870,53 @@ body:has(.floating-left-subnav) .hero-container {
 
 .main-sidebar-grid {
     display: grid;
-    grid-template-columns: 2.4fr 1fr;
+    grid-template-columns: minmax(0, 2.4fr) minmax(0, 1fr);
     gap: 20px;
     align-items: stretch;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.main-sidebar-grid > * {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+#services-table {
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.services-table-wrapper {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+}
+
+.cabinet-form-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.cabinet-form-grid > * {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+input, select, textarea, button {
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 #useful-tips dl {
@@ -901,19 +953,19 @@ body:has(.floating-left-subnav) .hero-container {
 
 @media (max-width: 960px) {
     .hero-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         gap: 20px;
         padding: 20px;
     }
     .main-sidebar-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
     }
     .scrollable-content-box {
         height: auto;
         max-height: 480px;
     }
     .catalog-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
     }
     #site-header {
         padding: 10px 16px;
@@ -921,6 +973,10 @@ body:has(.floating-left-subnav) .hero-container {
     #site-header table, #site-header tr {
         flex-direction: column;
         gap: 10px;
+    }
+    footer .page-grid-layout {
+        grid-template-columns: minmax(0, 1fr) !important;
+        padding: 0 !important;
     }
     body,
     .has-fixed-header,
@@ -931,16 +987,54 @@ body:has(.floating-left-subnav) .hero-container {
 
 @media (max-width: 768px) {
     .order-card-table,
+    .order-card-table thead,
     .order-card-table tbody,
+    .order-card-table tfoot,
     .order-card-table tr,
     .order-card-table td,
     .order-card-table th {
         display: block !important;
         width: 100% !important;
+        max-width: 100% !important;
         box-sizing: border-box !important;
     }
     .order-card-table td {
         padding: 10px 14px !important;
+    }
+    .order-card-table tfoot td {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+    }
+    .order-card-table tfoot td button {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+    }
+    .mission-block-v9,
+    .hero-banner {
+        padding: 18px 14px !important;
+    }
+    .mission-block-v9::before {
+        font-size: 0.74rem !important;
+        padding: 5px 10px !important;
+        max-width: 100% !important;
+        white-space: normal !important;
+    }
+    .hero-actions {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        width: 100% !important;
+    }
+    .hero-actions a,
+    .hero-actions button {
+        width: 100% !important;
+        text-align: center !important;
+        box-sizing: border-box !important;
+    }
+    .cabinet-form-grid {
+        grid-template-columns: minmax(0, 1fr) !important;
     }
     .services-table-wrapper {
         width: 100%;
@@ -1882,6 +1976,15 @@ footer address {
         padding: 4px 8px;
         max-width: 100%;
         box-sizing: border-box;
+    }
+    .mission-block-v9,
+    .hero-banner {
+        padding: 14px 10px !important;
+    }
+    .mission-block-v9::before {
+        font-size: 0.68rem !important;
+        padding: 4px 8px !important;
+        letter-spacing: 0.02em !important;
     }
     footer {
         padding: 20px 12px;

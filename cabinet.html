@@ -148,7 +148,7 @@
                         1. Джерело тривимірної моделі
                     </legend>
 
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="cabinet-form-grid">
                         <div style="background: #faf8f4; border: 1px solid var(--color-border); padding: 16px; border-radius: var(--radius-md); border: 1px solid var(--color-border);">
                             <input type="radio" id="src-file" name="model_source_type" value="file" checked>
                             <label for="src-file"><strong>Варіант А: Завантажити файл</strong></label>
@@ -181,7 +181,7 @@
                         2. Назва та конфігурація друку
                     </legend>
 
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                    <div class="cabinet-form-grid">
                         <div>
                             <label for="model-name">Назва деталі / моделі:</label><br>
                             <input type="text" id="model-name" name="model_name" placeholder="Шестерня або Кронштейн" required style="width: 100%; padding: 8px 12px; background: #ffffff; border: 1px solid var(--color-border); border-radius: 4px; color: var(--color-text-main); margin-top: 6px;">
@@ -254,6 +254,7 @@
                 Список моделей у вашому хмарному кабінеті.
             </p>
 
+            <div class="services-table-wrapper">
             <table>
                 <thead>
                     <tr>
@@ -347,6 +348,7 @@
                     </tr>
                 </tbody>
             </table>
+            </div>
         </section>
 
         <p align="center" style="margin: 20px 0;">

@@ -13,6 +13,7 @@
 
     <style>
         .register-container {
+            width: 100%;
             max-width: 680px;
             margin: 0 auto;
             background-color: var(--color-bg-card);
@@ -20,6 +21,16 @@
             border-radius: var(--radius-lg);
             padding: 36px;
             box-shadow: var(--shadow-hi-tech);
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 480px) {
+            .register-container {
+                padding: 16px 12px;
+            }
+            .register-container fieldset {
+                padding: 14px 10px !important;
+            }
         }
 
         .reg-field-group {

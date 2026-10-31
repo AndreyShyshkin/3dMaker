@@ -22,6 +22,9 @@
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-hi-tech);
             overflow: hidden;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
         }
 
         .hero-badge {
@@ -279,7 +282,7 @@
                                 <label for="print-tech">Оберіть технологію друку:</label>
                             </td>
                             <td>
-                                <select id="print-tech" name="technology" class="custom-input" style="max-width: 320px;">
+                                <select id="print-tech" name="technology" class="custom-input" style="width: 100%; max-width: 320px;">
                                     <option value="fdm" selected>FDM (Пластикова нитка: PLA, PETG, ABS, Nylon)</option>
                                     <option value="sla">SLA (Фотополімерна рідка смола високої деталізації)</option>
                                     <option value="sls">SLS (Порошковий поліамід, промислова міцність)</option>
