@@ -6,8 +6,10 @@
     <meta name="description" content="Особистий кабінет користувача 3dMaker: завантаження STL-файлів, імпорт за посиланням з Thingiverse та Printables, збереження 3D-моделей та управління публікацією в каталозі.">
     <title>Власний кабінет — 3dMaker</title>
 
+    <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/animations.css">
+    <script src="js/lab4.js" defer></script>
 
     <style>
         .cabinet-user-card {
@@ -80,24 +82,38 @@
                     </a>
                 </td>
                 <td width="48%" align="center">
-                    <nav>
-                        <ul>
-                            <li><a href="index.html" class="nav-link">Головна</a></li>
-                            <li><a href="services.html" class="nav-link">Каталог сервісів</a></li>
-                            <li><a href="models-catalog.html" class="nav-link">Каталог 3D-моделей</a></li>
-                            <li><a href="reviews.html" class="nav-link">Відгуки про сервіси</a></li>
-                            <li><a href="feedback.html" class="nav-link">Зворотній зв’язок</a></li>
+                    <nav id="site-main-nav" class="nav-horizontal-top" aria-label="Головне меню сайту">
+                        <div class="nav-vertical-header">
+                            <span class="nav-vertical-badge">⚡ МЕНЮ САЙТУ</span>
+                            <button type="button" id="mobile-nav-close" class="nav-close-btn" aria-label="Закрити меню">✕</button>
+                        </div>
+                        <ul class="nav-menu-list">
+                            <li><a href="index.html" class="nav-link"><span class="nav-link-icon">🏠</span><span class="nav-link-text">Головна</span></a></li>
+                            <li><a href="services.html" class="nav-link"><span class="nav-link-icon">🖨️</span><span class="nav-link-text">Каталог сервісів</span></a></li>
+                            <li><a href="models-catalog.html" class="nav-link"><span class="nav-link-icon">📂</span><span class="nav-link-text">Каталог 3D-моделей</span></a></li>
+                            <li><a href="reviews.html" class="nav-link"><span class="nav-link-icon">⭐</span><span class="nav-link-text">Відгуки про сервіси</span></a></li>
+                            <li><a href="feedback.html" class="nav-link"><span class="nav-link-icon">✉️</span><span class="nav-link-text">Зворотній зв’язок</span></a></li>
                         </ul>
+                        <div class="nav-vertical-footer">
+                            <a href="cabinet.html" class="nav-footer-btn nav-footer-btn-primary">Особистий кабінет</a>
+                            <a href="register.html" class="nav-footer-btn nav-footer-btn-secondary">Зареєструватись</a>
+                        </div>
                     </nav>
                 </td>
                 <td width="24%" align="right">
-                    <a href="index.html">
+                    <a href="index.html" class="header-desktop-btn">
                         <button type="button" class="btn-secondary">⬅️ На Головну</button>
                     </a>
+                    <button type="button" id="mobile-nav-toggle" class="mobile-nav-toggle" aria-label="Відкрити меню навігації" aria-expanded="false">
+                        <span class="mobile-nav-toggle-icon">☰</span>
+                        <span class="mobile-nav-toggle-text">МЕНЮ</span>
+                    </button>
                 </td>
             </tr>
         </table>
     </header>
+
+    <div id="mobile-nav-backdrop" class="mobile-nav-backdrop" aria-hidden="true"></div>
 
     <main class="page-grid-layout">
 

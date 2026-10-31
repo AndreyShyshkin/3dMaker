@@ -185,7 +185,7 @@ function initFeedbackTooltip() {
 }
 
 function initResponsiveNav() {
-    const nav = document.getElementById('site-main-nav');
+    const nav = document.getElementById('site-main-nav') || document.getElementById('site-nav');
     if (!nav) return;
 
     const toggleBtn = document.getElementById('mobile-nav-toggle');
