@@ -158,13 +158,13 @@ function initFlipCards() {
 function hero_hower() {
 	const hero_visual_col = document.querySelectorAll('.hero-visual-col')
 
-	hero_visual_col.forEach(function (e) {
-		e.addEventListener('mouseenter', function () {
-			e.classList.add('hero-hower-effect')
+	hero_visual_col.forEach(function (img) {
+		img.addEventListener('mouseenter', function () {
+			img.classList.add('hero-hower-effect')
 		})
 
-		e.addEventListener('mouseleave', function () {
-			e.classList.remove('hero-hower-effect')
+		img.addEventListener('mouseleave', function () {
+			img.classList.remove('hero-hower-effect')
 		})
 	})
 }
